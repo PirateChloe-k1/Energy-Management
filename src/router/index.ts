@@ -1,5 +1,5 @@
 import { createRouter,createWebHistory } from "vue-router";
-import routes from '@/router/basicRouteMap';
+import routes from '@/router/basicRouteMap.ts';
 
 const router = createRouter({
     // 路由的模式
