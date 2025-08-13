@@ -1,3 +1,3 @@
 <template>
-    我是about
+    页面飞走了
 </template>

@@ -1,17 +1,5 @@
-import { createRouter,createWebHistory,type RouteRecordRaw } from "vue-router";
-
-const routes:RouteRecordRaw[] = [
-    {
-        path:"/",
-        name:"Home",
-        component:()=>import("@/views/Home.vue")
-    },
-    {
-        path:"/about",
-        name:"About",
-        component:()=>import("@/views/About.vue")
-    }
-]
+import { createRouter,createWebHistory } from "vue-router";
+import routes from '@/router/basicRouteMap';
 
 const router = createRouter({
     // 路由的模式
