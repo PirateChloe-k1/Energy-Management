@@ -26,6 +26,7 @@
 import logo from "@/assets/logo.png"
 import { reactive, ref } from "vue";
 import { type FormRules,type FormInstance } from "element-plus";
+import { useUserStore } from "@/store/auth";
 
 interface RuleForm {
     username:string,
@@ -48,12 +49,13 @@ const rules = reactive<FormRules<RuleForm>>({
 })
 
 const formRef=ref<FormInstance>()
-
+const userStore = useUserStore()
 const handleLogin = () => {
     // ?.表示可选链操作符
     formRef.value?.validate((valid:boolean) => {
         if(valid){
             // 校验通过
+            userStore.login(ruleform)
         }
     })
 }

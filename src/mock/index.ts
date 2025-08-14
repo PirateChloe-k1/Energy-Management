@@ -160,7 +160,7 @@ const menulist2 = [
 //登录接口
 Mock.mock("https://www.demo.com/login","post",(options:any)=>{
     const {username,password}= JSON.parse(options.body) ;
-    if(username==="admin"&&password==="admin"){
+    if(username==="admin"&&password==="123456"){
         return {
             code:200,
             message:"登陆成功",
