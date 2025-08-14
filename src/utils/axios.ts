@@ -21,8 +21,18 @@ service.interceptors.request.use((config:InternalAxiosRequestConfig)=>{
 
 // 响应拦截器
 service.interceptors.response.use((response:AxiosResponse)=>{
-    return response.data
+    if(response.data.code!==200){
+        ElNotification({
+            title:"Error",
+            message:response.data.message,
+            type:"error"
+        })
+        // 必须return response否则会卡住
+        return response.data
+    }
+    
 },(error:AxiosError)=>{
+    // 这里的失败指的是网络请求超时之类的失败，并不是用户名以及密码错误的失败
     ElNotification({
         title:"Error",
         message:error.message,

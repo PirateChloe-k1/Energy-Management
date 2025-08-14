@@ -29,7 +29,6 @@ export const useUserStore = defineStore('user',{
                 sessionStorage.setItem("menu",JSON.stringify(menulist))
                 router.push("/")
             }catch(error){
-                console.log("error",error)
             }
         }
     }
