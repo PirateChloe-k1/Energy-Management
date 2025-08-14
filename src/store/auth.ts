@@ -5,7 +5,7 @@ interface LoginParams {
     username:string,
     password:string
 }
-
+// 既存到pinia中又存到本地存储中是因为  1.pinia中数据是响应式   2.pinia存取速度要比本地存储快
 export const useUserStore = defineStore('user',{
     state:()=>({
         token:sessionStorage.getItem("token")||"",
@@ -16,7 +16,7 @@ export const useUserStore = defineStore('user',{
         menu:sessionStorage.getItem("menu")?JSON.parse(sessionStorage.getItem("menu")!):[]
     }),
     actions: {
-        async login(data:LoginParams){
+        async login(data:LoginParams,router:any){
             try{
                 const {data:{token,user:{username,roles},menulist}} = await loginApi(data)
                 this.token = token
@@ -27,6 +27,7 @@ export const useUserStore = defineStore('user',{
                 sessionStorage.setItem("username",username)
                 sessionStorage.setItem("roles",JSON.stringify(roles))
                 sessionStorage.setItem("menu",JSON.stringify(menulist))
+                router.push("/")
             }catch(error){
                 console.log("error",error)
             }
