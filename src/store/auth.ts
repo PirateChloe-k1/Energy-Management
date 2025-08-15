@@ -16,7 +16,7 @@ export const useUserStore = defineStore('user',{
         menu:sessionStorage.getItem("menu")?JSON.parse(sessionStorage.getItem("menu")!):[]
     }),
     actions: {
-        async login(data:LoginParams,router:any){
+        async login(data:LoginParams){
             try{
                 const {data:{token,user:{username,roles},menulist}} = await loginApi(data)
                 this.token = token
@@ -27,8 +27,8 @@ export const useUserStore = defineStore('user',{
                 sessionStorage.setItem("username",username)
                 sessionStorage.setItem("roles",JSON.stringify(roles))
                 sessionStorage.setItem("menu",JSON.stringify(menulist))
-                router.push("/")
             }catch(error){
+
             }
         }
     }

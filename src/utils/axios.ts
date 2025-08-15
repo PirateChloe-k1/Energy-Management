@@ -30,7 +30,7 @@ service.interceptors.response.use((response:AxiosResponse)=>{
         // 必须return response否则会卡住
         return response.data
     }
-    
+    return response.data
 },(error:AxiosError)=>{
     // 这里的失败指的是网络请求超时之类的失败，并不是用户名以及密码错误的失败
     ElNotification({
