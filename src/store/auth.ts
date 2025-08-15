@@ -11,7 +11,7 @@ export const useUserStore = defineStore('user',{
         token:sessionStorage.getItem("token")||"",
         // 权限
         // getItem("roles")!这里的!是非空断言，表示它一定不是空的
-        role:sessionStorage.getItem("roles")?JSON.parse(sessionStorage.getItem("roles")!):[],
+        roles:sessionStorage.getItem("roles")?JSON.parse(sessionStorage.getItem("roles")!):[],
         username:sessionStorage.getItem("username")||"",
         menu:sessionStorage.getItem("menu")?JSON.parse(sessionStorage.getItem("menu")!):[]
     }),
@@ -21,7 +21,7 @@ export const useUserStore = defineStore('user',{
                 const {data:{token,user:{username,roles},menulist}} = await loginApi(data)
                 this.token = token
                 this.username = username
-                this.role = roles
+                this.roles = roles
                 this.menu = menulist
                 sessionStorage.setItem("token",token)
                 sessionStorage.setItem("username",username)
