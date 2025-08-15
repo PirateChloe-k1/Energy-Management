@@ -1,6 +1,8 @@
 <template>
     <el-container>
-        <el-aside width="200px">Aside</el-aside>
+        <el-aside width="200px">
+            <Menu></Menu>
+        </el-aside>
         <el-container>
             <el-header>Header</el-header>
             <el-main>Main</el-main>
@@ -9,6 +11,9 @@
 </template>
 
 <script setup lang="ts">
+import Menu from "@/components/navMenu/Menu.vue"
+
+
 </script>
 
 <style lang="less" scoped>
