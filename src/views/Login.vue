@@ -53,7 +53,8 @@ const formRef=ref<FormInstance>()
 const userStore = useUserStore()
 const handleLogin = () => {
     // ?.表示可选链操作符
-    formRef.value?.validate(async(valid:boolean) => {
+    formRef.value?.validate(
+        async(valid:boolean) => {
         if(valid){
             // 校验通过
             await userStore.login(ruleform)
