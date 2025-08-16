@@ -23,7 +23,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from "vue"
 import { type MenuItem as MenuItemType } from "@/types/user/index.ts"
-import { useTabsStore } from "@/store/tsbs"
+import { useTabsStore } from "@/store/tabs"
 
 export default defineComponent({
     name: "MyMenu",
@@ -37,9 +37,10 @@ export default defineComponent({
     setup() {
         const tabStore = useTabsStore()
         // 这里使用的是方法,方法不是数据所以不用加storeToRefs保持响应式
-        const { addTab } = tabStore
+        const { addTab,setCurrentTab } = tabStore
         const add = (name: string, url: string, icon: string) => {
             addTab(name, url, icon)
+            setCurrentTab(name,url)
         }
         return { add }
     }

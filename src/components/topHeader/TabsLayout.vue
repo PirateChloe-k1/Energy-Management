@@ -1,6 +1,6 @@
 <!-- 快捷页签导航 -->
 <template>
-    <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick" type="card" closable @tab-remove="remove">
+    <el-tabs v-model="currentTab.name" class="demo-tabs" @tab-click="handleClick" type="card" closable @tab-remove="remove">
         <el-tab-pane v-for="item in tabs" :key="item.name" :label="item.name" :name="item.name">
             <template #label>
                 <span class="custom-tabs-label">
@@ -16,17 +16,20 @@
     <RouterView/>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
-import type { TabsPaneContext } from "element-plus";
-import { useTabsStore } from "@/store/tsbs";
+import { useTabsStore } from "@/store/tabs"
 import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
 
 const tabsStore = useTabsStore()
-const { tabs } = storeToRefs(tabsStore)
-const activeName = ref('third')
+const router = useRouter()
+const { tabs,currentTab } = storeToRefs(tabsStore)
+const {setCurrentTab} = tabsStore
 
-const handleClick = (tab: TabsPaneContext, event: Event) => {
-    console.log(tab, event)
+
+const handleClick = ({index}:{index:number}) => {
+    router.push(tabs.value[index].url)
+    // 设置当前高亮
+    setCurrentTab(tabs.value[index].name,tabs.value[index].url)
 }
 
 const remove = (TabPaneName: string) => {
