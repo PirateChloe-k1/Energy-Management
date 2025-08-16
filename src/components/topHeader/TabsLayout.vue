@@ -18,13 +18,37 @@
 <script setup lang="ts">
 import { useTabsStore } from "@/store/tabs"
 import { storeToRefs } from "pinia";
-import { useRouter } from "vue-router";
+import { useRouter,useRoute } from "vue-router";
+import { useUserStore } from "@/store/auth";
 
 const tabsStore = useTabsStore()
+const userStore = useUserStore()
+const {menu} = storeToRefs(userStore)
 const router = useRouter()
-const { tabs,currentTab } = storeToRefs(tabsStore)
-const {setCurrentTab} = tabsStore
+const route = useRoute()
 
+const { tabs,currentTab } = storeToRefs(tabsStore)
+const {addTab,setCurrentTab} = tabsStore
+
+const {name,url,icon}=findObjectByUrl(menu.value,route.path);
+addTab(name,url,icon)
+setCurrentTab(name,url)
+
+
+function findObjectByUrl(arr:any[],url:string){
+    for(const item of arr){
+        if(item.url===url){
+            return item
+        }
+        if(item.children){
+            const found:any=findObjectByUrl(item.children,url);
+            if(found){
+                return found
+            }
+        }
+    }
+    return null
+}
 
 const handleClick = ({index}:{index:number}) => {
     router.push(tabs.value[index].url)
