@@ -28,7 +28,7 @@ const router = useRouter()
 const route = useRoute()
 
 const { tabs,currentTab } = storeToRefs(tabsStore)
-const {addTab,setCurrentTab} = tabsStore
+const {addTab,setCurrentTab,removeTab} = tabsStore
 
 const {name,url,icon}=findObjectByUrl(menu.value,route.path);
 addTab(name,url,icon)
@@ -57,7 +57,8 @@ const handleClick = ({index}:{index:number}) => {
 }
 
 const remove = (TabPaneName: string) => {
-    console.log(TabPaneName)
+    removeTab(TabPaneName)
+    router.push(currentTab.value.url)
 }
 </script>
 <style lang="less" scoped>
