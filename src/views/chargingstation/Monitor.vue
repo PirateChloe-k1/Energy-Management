@@ -21,7 +21,7 @@
                 </el-select>
             </el-col>
             <el-col :span="6">
-                <el-button type="primary">查询</el-button>
+                <el-button type="primary" @click="loadData">查询</el-button>
                 <el-button>重置</el-button>
             </el-col>
         </el-row>
@@ -45,24 +45,84 @@
     <el-card class="mt">
         <el-button type="primary" icon="Plus">新增充电站</el-button>
     </el-card>
+
+    <el-card class="mt">
+        <el-table :data="tableData" style="width: 100%" v-loading="loading">
+            <!-- elementplus提供的序号列 -->
+            <el-table-column type="index" width="80" label="序号" />
+            <el-table-column prop="name" label="站点名称" />
+            <el-table-column prop="id" label="站点ID" />
+            <el-table-column prop="city" label="所属城市" />
+            <el-table-column prop="fast" label="快充数" />
+            <el-table-column prop="slow" label="慢充数" />
+            <el-table-column prop="status" label="充电站状态">
+                <template #default="scope">
+                    <!-- scope.row可以拿到一整行的数据 -->
+                    <el-tag v-if="scope.row.status == 2" type="primary">使用中</el-tag>
+                    <el-tag v-if="scope.row.status == 3" type="success">空闲中</el-tag>
+                    <el-tag v-if="scope.row.status == 4" type="warning">维护中</el-tag>
+                    <el-tag v-if="scope.row.status == 5" type="danger">待维修</el-tag>
+                </template>
+            </el-table-column>
+            <el-table-column prop="now" label="正在充电" />
+            <el-table-column prop="fault" label="故障数" />
+            <el-table-column prop="person" label="站点负责人" />
+            <el-table-column prop="tel" label="负责人电话" />
+            <el-table-column label="操作">
+                <template #default="scope">
+                    <el-button type="primary" size="small" >编辑</el-button>
+                    <el-button type="danger" size="small">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+
+        <el-pagination class="fr mt mb" v-model:current-page="pageInfo.page" v-model:page-size="pageInfo.pageSize"
+            :page-sizes="[10, 20, 30, 40]" layout="sizes, prev, pager, next, jumper,total" :total="totals"
+            @size-change="handleSizeChange" @current-change="handleCurrentChange" background />
+    </el-card>
+
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, onMounted } from "vue"
-import { listApi } from "@/api/chargingstation";
+import { listApi } from "@/api/chargingstation"
 
 const select = ref("name");
 const formParams = reactive({
     input: "",
     value: 1
 })
-
-const loadData = async () => {
-    const res = await listApi({page:1,pageSize:10,status:1})
-    console.log(res)
-}
-onMounted(()=>{
-    loadData()
+const tableData = ref([]);
+const totals=ref<number>(0)
+const pageInfo=reactive({
+    page:1,
+    pageSize:10
 })
+
+const loading=ref<boolean>(false)
+const loadData = async () => {
+    loading.value=true
+    const { data: { list, total } } = await listApi({
+        ...pageInfo,
+        status:formParams.value,
+        [select.value]:formParams.input
+    });
+    loading.value=false
+    tableData.value = list
+    totals.value=total
+}
+
+onMounted(() => {
+    loadData();
+})
+
+const  handleSizeChange=(size:number)=>{
+    pageInfo.pageSize=size;
+    loadData()
+}
+const handleCurrentChange=(page:number)=>{
+    pageInfo.page=page;
+    loadData()
+}
 
 </script>
