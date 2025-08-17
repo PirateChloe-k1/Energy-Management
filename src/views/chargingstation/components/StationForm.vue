@@ -1,40 +1,37 @@
 <template>
     <el-dialog 
-    v-model="dialogVisible" 
+    :model-value="dialogVisible" 
     title="新增充电站"
+    @close="handleCancel"
     >
-        <el-form 
-            label-width="120"
-            :rules="rules"
-            :model="ruleForm"
-        >
+        <el-form label-width="120" :rules="rules" :model="ruleForm">
             <el-row>
                 <el-col :span="12">
                     <el-form-item label="站点名称:" prop="name">
-                        <el-input v-model="ruleForm.name"/>
+                        <el-input v-model="ruleForm.name" />
                     </el-form-item>
                     <el-form-item label="站点id:" prop="id">
-                        <el-input v-model="ruleForm.id"/>
+                        <el-input v-model="ruleForm.id" />
                     </el-form-item>
                     <el-form-item label="所属城市：" prop="city">
-                        <el-input   v-model="ruleForm.city"/>
+                        <el-input v-model="ruleForm.city" />
                     </el-form-item>
                     <el-form-item label="站点负责人：" prop="person">
-                        <el-input  v-model="ruleForm.person"/>
+                        <el-input v-model="ruleForm.person" />
                     </el-form-item>
                     <el-form-item label="负责人电话：" prop="tel">
-                        <el-input v-model="ruleForm.tel"/>
+                        <el-input v-model="ruleForm.tel" />
                     </el-form-item>
                 </el-col>
                 <el-col :span="12">
                     <el-form-item label="快充数：" prop="fast">
-                        <el-input  v-model="ruleForm.fast"/>
+                        <el-input v-model="ruleForm.fast" />
                     </el-form-item>
                     <el-form-item label="慢充数：" prop="slow">
-                        <el-input  v-model="ruleForm.slow"/>
+                        <el-input v-model="ruleForm.slow" />
                     </el-form-item>
-                    <el-form-item label="充电站状态：" prop="status" >
-                        <el-select placeholder="充电站状态"  v-model="ruleForm.status">
+                    <el-form-item label="充电站状态：" prop="status">
+                        <el-select placeholder="充电站状态" v-model="ruleForm.status">
                             <el-option label="全部" :value="1"></el-option>
                             <el-option label="使用中" :value="2"></el-option>
                             <el-option label="空闲中" :value="3"></el-option>
@@ -42,41 +39,56 @@
                             <el-option label="待维修" :value="5"></el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="正在充电：" prop="now" >
-                        <el-input v-model="ruleForm.now"/>
+                    <el-form-item label="正在充电：" prop="now">
+                        <el-input v-model="ruleForm.now" />
                     </el-form-item>
                     <el-form-item label="故障数：" prop="fault">
-                        <el-input v-model="ruleForm.fault"/>
+                        <el-input v-model="ruleForm.fault" />
                     </el-form-item>
                 </el-col>
             </el-row>
         </el-form>
+        <template #footer>
+            <div class="dialog-footer">
+                <el-button @click="handleCancel">取消</el-button>
+                <el-button type="primary">
+                    确认
+                </el-button>
+            </div>
+        </template>
     </el-dialog>
 </template>
 
 <script setup lang="ts">
-import { ref,reactive } from "vue"
+import { ref, reactive } from "vue"
 import type { FormRules } from "element-plus";
-import type{RowType} from "@/types/station"
+import type { RowType } from "@/types/station"
 
-const dialogVisible = ref<boolean>(true)
-
-const ruleForm=ref<RowType>({
-    name:"",
-    id:"",
-    city:"",
-    fast:"",
-    slow:"",
-    status:1,
-    now:"",
-    fault:"",
-    person:"",
-    tel:""
+const props = defineProps({
+    dialogVisible: {
+        type: Boolean,
+        required: true
+    }
 })
 
-const rules=reactive<FormRules<RowType>>({
-    name:[
-        {required:true,message:"站点名称不能为空",trigger:"blur"}
+const emit = defineEmits(["close"])
+
+const ruleForm = ref<RowType>({
+    name: "",
+    id: "",
+    city: "",
+    fast: "",
+    slow: "",
+    status: 1,
+    now: "",
+    fault: "",
+    person: "",
+    tel: ""
+})
+
+const rules = reactive<FormRules<RowType>>({
+    name: [
+        { required: true, message: "站点名称不能为空", trigger: "blur" }
     ],
     id: [
         { required: true, message: '站点id不能为空', trigger: 'blur' },
@@ -106,5 +118,9 @@ const rules=reactive<FormRules<RowType>>({
         { required: true, message: '故障数量不能为空', trigger: 'blur' },
     ]
 })
+
+const handleCancel=()=>{
+   emit("close")
+}
 
 </script>

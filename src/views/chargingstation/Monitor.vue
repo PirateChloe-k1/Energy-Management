@@ -71,7 +71,7 @@
             <el-table-column prop="tel" label="负责人电话" />
             <el-table-column label="操作">
                 <template #default="scope">
-                    <el-button type="primary" size="small">编辑</el-button>
+                    <el-button type="primary" size="small" @click="edit(scope.row)">编辑</el-button>
                     <el-button type="danger" size="small">删除</el-button>
                 </template>
             </el-table-column>
@@ -81,7 +81,7 @@
             :page-sizes="[10, 20, 30, 40]" layout="sizes, prev, pager, next, jumper,total" :total="totals"
             @size-change="handleSizeChange" @current-change="handleCurrentChange" background />
     </el-card>
-    <StationForm/>
+    <StationForm :dialog-visible="visible" @close="visible=false"/>
 </template>
 
 <script setup lang="ts">
@@ -137,4 +137,9 @@ const handleReset = () => {
     loadData()
 }
 
+// 子组件的弹窗
+const visible = ref<boolean>(false)
+const edit = (row:RowType) => {
+    visible.value = true
+}
 </script>
