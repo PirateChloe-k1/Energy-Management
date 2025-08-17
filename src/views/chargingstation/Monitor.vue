@@ -48,11 +48,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue"
+import { ref, reactive, onMounted } from "vue"
+import { listApi } from "@/api/chargingstation";
+
 const select = ref("name");
 const formParams = reactive({
     input: "",
     value: 1
+})
+
+const loadData = async () => {
+    const res = await listApi({page:1,pageSize:10,status:1})
+    console.log(res)
+}
+onMounted(()=>{
+    loadData()
 })
 
 </script>
