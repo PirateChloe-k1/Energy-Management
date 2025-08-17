@@ -157,7 +157,7 @@
         <el-col :span="6">
             <el-card>
                 <template #header>
-                    <div class="card-heder"> 
+                    <div class="card-heder">
                         <h1>设备总览</h1>
                     </div>
                 </template>
@@ -264,13 +264,13 @@
                     <el-timeline-item timestamp="2024/2/3" placement="top" :hollow="true" type="warning">
                         <el-card>
                             <h4>黄河南路超出服务区域</h4>
-                           
+
                         </el-card>
                     </el-timeline-item>
                     <el-timeline-item timestamp="2024/5/17" placement="top" :hollow="true" type="danger">
                         <el-card>
                             <h4>6号机组异常断电</h4>
-                          
+
                         </el-card>
                     </el-timeline-item>
                 </el-timeline>
@@ -450,7 +450,7 @@ useChart(chartRef, setChartData)
 useChart(chartRef2, setChartData2)
 useChart(chartRef3, setChartData3)
 
-console.log(555,import.meta.env.VITE_API_URL)
+console.log(555, import.meta.env.VITE_API_URL)
 
 </script>
 

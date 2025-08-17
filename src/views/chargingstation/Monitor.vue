@@ -2,7 +2,8 @@
     <el-card>
         <el-row :gutter="20">
             <el-col :span="6">
-                <el-input v-model="formParams.input" placeholder="请输入站点名称、ID">
+                <!-- 在v-model后加上.trim就可以避免输入框输入空格 -->
+                <el-input v-model.trim="formParams.input" placeholder="请输入站点名称、ID">
                     <template #append>
                         <el-select v-model="select" style="width: 115px">
                             <el-option label="按名称查询" value="name" />
@@ -22,7 +23,7 @@
             </el-col>
             <el-col :span="6">
                 <el-button type="primary" @click="loadData">查询</el-button>
-                <el-button>重置</el-button>
+                <el-button @click="handleReset">重置</el-button>
             </el-col>
         </el-row>
     </el-card>
@@ -70,7 +71,7 @@
             <el-table-column prop="tel" label="负责人电话" />
             <el-table-column label="操作">
                 <template #default="scope">
-                    <el-button type="primary" size="small" >编辑</el-button>
+                    <el-button type="primary" size="small">编辑</el-button>
                     <el-button type="danger" size="small">删除</el-button>
                 </template>
             </el-table-column>
@@ -80,48 +81,59 @@
             :page-sizes="[10, 20, 30, 40]" layout="sizes, prev, pager, next, jumper,total" :total="totals"
             @size-change="handleSizeChange" @current-change="handleCurrentChange" background />
     </el-card>
-
+    <StationForm/>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, onMounted } from "vue"
 import { listApi } from "@/api/chargingstation"
+import StationForm from "./components/StationForm.vue";
+import type { RowType } from "@/types/station";
 
 const select = ref("name");
 const formParams = reactive({
     input: "",
     value: 1
 })
-const tableData = ref([]);
-const totals=ref<number>(0)
-const pageInfo=reactive({
-    page:1,
-    pageSize:10
+const tableData = ref<RowType[]>([]);
+const totals = ref<number>(0)
+const pageInfo = reactive({
+    page: 1,
+    pageSize: 10
 })
 
-const loading=ref<boolean>(false)
+const loading = ref<boolean>(false)
 const loadData = async () => {
-    loading.value=true
+    loading.value = true
     const { data: { list, total } } = await listApi({
         ...pageInfo,
-        status:formParams.value,
-        [select.value]:formParams.input
+        status: formParams.value,
+        [select.value]: formParams.input
     });
-    loading.value=false
+    loading.value = false
     tableData.value = list
-    totals.value=total
+    totals.value = total
 }
 
 onMounted(() => {
     loadData();
 })
 
-const  handleSizeChange=(size:number)=>{
-    pageInfo.pageSize=size;
+const handleSizeChange = (size: number) => {
+    pageInfo.pageSize = size;
     loadData()
 }
-const handleCurrentChange=(page:number)=>{
-    pageInfo.page=page;
+const handleCurrentChange = (page: number) => {
+    pageInfo.page = page;
+    loadData()
+}
+
+const handleReset = () => {
+    pageInfo.page = 1
+    pageInfo.pageSize = 10;
+    formParams.input = ""
+    formParams.value = 1;
+    select.value = "name";
     loadData()
 }
 
