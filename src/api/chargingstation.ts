@@ -9,12 +9,19 @@ interface ListType {
     status: number
 }
 
+interface RevenueType {
+    page: number,
+    pageSize: number,
+    name: string
+}
+
 const Api = {
     List: "/stationList",
     // 后端会判断是否有id,没有就是新增,有就是编辑
     Edit: "/station/edit",
     Delete: "/station/delete",
-    RevenueChart: "/revenueChart"
+    RevenueChart: "/revenueChart",
+    Revenue: "/revenueList"
 } as const
 
 function listApi(data: ListType) {
@@ -32,5 +39,8 @@ function deleteApi(id: string) {
 function chartApi() {
     return get(Api.RevenueChart)
 }
+function revenueApi(data: RevenueType) {
+    return post(Api.Revenue, data)
+}
 
-export { listApi, editApi, deleteApi, chartApi }
+export { listApi, editApi, deleteApi, chartApi, revenueApi }
