@@ -657,6 +657,45 @@ Mock.mock("https://www.demo.com/stationList", 'post', (options: any) => {
 Mock.mock("https://www.demo.com/station/edit", 'post', (options: any) => {
   const res: any = JSON.parse(options.body);
   console.log("新增/编辑充电站接口收到数据：",res)
+
+  // 新增的逻辑：真正处理数据的新增和编辑
+  // 检查是否是编辑操作（有id且id存在于数组中）
+  const existingIndex = chargingStation.findIndex(item => item.id === res.id);
+
+  if (existingIndex !== -1) {
+    // 编辑操作：更新现有数据
+    chargingStation[existingIndex] = {
+      ...chargingStation[existingIndex],
+      ...res
+    };
+    console.log("编辑成功，更新后的数据：", chargingStation[existingIndex]);
+  } else {
+    // 新增操作：添加新数据
+    const newStation = {
+      name: res.name,
+      id: res.id,
+      city: res.city,
+      fast: parseInt(res.fast) || 0,
+      slow: parseInt(res.slow) || 0,
+      status: res.status,
+      now: parseInt(res.now) || 0,
+      fault: parseInt(res.fault) || 0,
+      person: res.person,
+      tel: res.tel
+    };
+    chargingStation.push(newStation);
+    console.log("新增成功，新增的数据：", newStation);
+  }
+
+  // 原始代码（已注释）：
+  // const res: any = JSON.parse(options.body);
+  // console.log("新增/编辑充电站接口收到数据：",res)
+  // return {
+  //   code: 200,
+  //   success: true,
+  //   data: "操作成功",
+  // };
+
   return {
     code: 200,
     success: true,
