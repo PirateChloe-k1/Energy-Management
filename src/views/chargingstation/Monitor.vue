@@ -81,7 +81,7 @@
             :page-sizes="[10, 20, 30, 40]" layout="sizes, prev, pager, next, jumper,total" :total="totals"
             @size-change="handleSizeChange" @current-change="handleCurrentChange" background />
     </el-card>
-    <StationForm :dialog-visible="visible" @close="visible=false"/>
+    <StationForm :dialog-visible="visible" @close="visible=false" @reload="loadData"/>
 </template>
 
 <script setup lang="ts">

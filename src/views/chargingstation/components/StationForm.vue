@@ -1,19 +1,14 @@
 <template>
     <!-- destory-on-close是el-dialog的一个属性,关闭弹窗后会销毁元素,避免打开新弹窗时上次的验证规则信息还保留着 -->
-    <el-dialog 
-    :model-value="dialogVisible" 
-    :title="title" 
-    @close="handleCancel"
-    destory-on-close
-    >
-        <el-form label-width="120" :rules="rules" :model="ruleForm">
+    <el-dialog :model-value="dialogVisible" :title="title" @close="handleCancel" destory-on-close>
+        <el-form label-width="120" :rules="rules" :model="ruleForm" ref="formRef">
             <el-row>
                 <el-col :span="12">
                     <el-form-item label="站点名称:" prop="name">
                         <el-input v-model="ruleForm.name" />
                     </el-form-item>
                     <el-form-item label="站点id:" prop="id">
-                        <el-input v-model="ruleForm.id" :disabled="disabled"/>
+                        <el-input v-model="ruleForm.id" :disabled="disabled" />
                     </el-form-item>
                     <el-form-item label="所属城市：" prop="city">
                         <el-input v-model="ruleForm.city" />
@@ -42,10 +37,10 @@
                         </el-select>
                     </el-form-item>
                     <el-form-item label="正在充电：" prop="now">
-                        <el-input v-model="ruleForm.now" :disabled="disabled"/>
+                        <el-input v-model="ruleForm.now" :disabled="disabled" />
                     </el-form-item>
                     <el-form-item label="故障数：" prop="fault">
-                        <el-input v-model="ruleForm.fault" :disabled="disabled"/>
+                        <el-input v-model="ruleForm.fault" :disabled="disabled" />
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -53,7 +48,7 @@
         <template #footer>
             <div class="dialog-footer">
                 <el-button @click="handleCancel">取消</el-button>
-                <el-button type="primary">
+                <el-button type="primary" @click="handleConfirm">
                     确认
                 </el-button>
             </div>
@@ -63,10 +58,11 @@
 
 <script setup lang="ts">
 import { ref, reactive, watch } from "vue"
-import type { FormRules } from "element-plus";
+import { ElMessage, type FormInstance, type FormRules } from "element-plus";
 import type { RowType } from "@/types/station"
 import { useStationStore } from "@/store/station"
 import { storeToRefs } from "pinia";
+import { editApi } from "@/api/chargingstation";
 
 const props = defineProps({
     dialogVisible: {
@@ -75,7 +71,7 @@ const props = defineProps({
     }
 })
 
-const emit = defineEmits(["close"])
+const emit = defineEmits(["close","reload"])
 
 const ruleForm = ref<RowType>({
     name: "",
@@ -126,15 +122,15 @@ const rules = reactive<FormRules<RowType>>({
 const stationStore = useStationStore()
 const { rowData } = storeToRefs(stationStore)
 const title = ref<string>()
-watch(()=>props.dialogVisible,()=>{
-    if(rowData.value.name){
+watch(() => props.dialogVisible, () => {
+    if (rowData.value.name) {
         title.value = "编辑充电站信息"
         disabled.value = true
-    }else{
+    } else {
         title.value = "新增充电站信息"
         disabled.value = false
     }
-        ruleForm.value = rowData.value
+    ruleForm.value = rowData.value
 })
 
 const disabled = ref<boolean>(false)
@@ -143,4 +139,20 @@ const handleCancel = () => {
     emit("close")
 }
 
+const formRef = ref<FormInstance>()
+const handleConfirm = () => {
+    formRef.value?.validate(async (valid: boolean) => {
+        if (valid) {
+            const res = await editApi(ruleForm.value)
+            if(res.code==200){
+                ElMessage({
+                    message:res.data,
+                    type:"success"
+                });
+                handleCancel()
+                emit("reload")
+            }
+        }
+    })
+}
 </script>
