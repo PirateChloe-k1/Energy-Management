@@ -1,5 +1,11 @@
 <template>
-    <el-dialog :model-value="dialogVisible" title="新增充电站" @close="handleCancel">
+    <!-- destory-on-close是el-dialog的一个属性,关闭弹窗后会销毁元素,避免打开新弹窗时上次的验证规则信息还保留着 -->
+    <el-dialog 
+    :model-value="dialogVisible" 
+    :title="title" 
+    @close="handleCancel"
+    destory-on-close
+    >
         <el-form label-width="120" :rules="rules" :model="ruleForm">
             <el-row>
                 <el-col :span="12">
@@ -62,7 +68,6 @@ import type { RowType } from "@/types/station"
 import { useStationStore } from "@/store/station"
 import { storeToRefs } from "pinia";
 
-
 const props = defineProps({
     dialogVisible: {
         type: Boolean,
@@ -120,9 +125,16 @@ const rules = reactive<FormRules<RowType>>({
 
 const stationStore = useStationStore()
 const { rowData } = storeToRefs(stationStore)
+const title = ref<string>()
 watch(()=>props.dialogVisible,()=>{
-    ruleForm.value = rowData.value
-    disabled.value = true
+    if(rowData.value.name){
+        title.value = "编辑充电站信息"
+        disabled.value = true
+    }else{
+        title.value = "新增充电站信息"
+        disabled.value = false
+    }
+        ruleForm.value = rowData.value
 })
 
 const disabled = ref<boolean>(false)

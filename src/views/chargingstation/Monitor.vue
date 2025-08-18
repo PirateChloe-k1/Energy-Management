@@ -44,7 +44,7 @@
         </el-row>
     </el-card>
     <el-card class="mt">
-        <el-button type="primary" icon="Plus">新增充电站</el-button>
+        <el-button type="primary" icon="Plus" @click="handleAdd">新增充电站</el-button>
     </el-card>
 
     <el-card class="mt">
@@ -145,5 +145,22 @@ const {setRowData} = stationStore
 const edit = (row:RowType) => {
     setRowData(row)
     visible.value = true
+}
+
+// 新增充电站
+const handleAdd = () => {
+    setRowData({
+        name:"",
+        id:"",
+        city:"",
+        fast:"",
+        slow:"",
+        status:1,
+        now:"",
+        fault:"",
+        person:"",
+        tel:""
+    })
+    visible.value=true
 }
 </script>
