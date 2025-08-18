@@ -13,7 +13,7 @@
                         <h4>今日总收入（元）</h4>
                     </div>
                     <div class="total mt">
-                        <h1>239,824</h1>
+                        <h1>{{formatNumberToThousands(12239824)}}</h1>
                         <div class="percent" >-21%</div>
                     </div>
                 </el-card>
@@ -30,7 +30,7 @@
                         <h4>本月总收入 (万元)</h4>
                     </div>
                     <div class="total mt">
-                        <h1>2,924</h1>
+                        <h1>{{formatNumberToThousands(2924)}}</h1>
                         <div class="percent">-21%</div>
                     </div>
                 </el-card>
@@ -47,7 +47,7 @@
                         <h4>会员卡储值金额 (元)</h4>
                     </div>
                     <div class="total mt">
-                        <h1>239,824</h1>
+                        <h1>{{formatNumberToThousands(239824)}}</h1>
                         <div class="percent">-16%</div>
                     </div>
                 </el-card>
@@ -64,7 +64,7 @@
                         <h4>服务费总金额 (元)</h4>
                     </div>
                     <div class="total mt">
-                        <h1>239,824</h1>
+                        <h1>{{formatNumberToThousands(16824)}}</h1>
                         <div class="percent">-7%</div>
                     </div>
                 </el-card>
@@ -81,7 +81,7 @@
                         <h4>停车费总金额 (元)</h4>
                     </div>
                     <div class="total mt">
-                        <h1>239,824</h1>
+                        <h1>{{formatNumberToThousands(9687)}}</h1>
                         <div class="percent">-4%</div>
                     </div>
                 </el-card>
@@ -98,7 +98,7 @@
                         <h4>电费总金额 (元)</h4>
                     </div>
                     <div class="total mt">
-                        <h1>239,824</h1>
+                        <h1>{{formatNumberToThousands(223674)}}</h1>
                         <div class="percent">-19%</div>
                     </div>
                 </el-card>
@@ -107,6 +107,7 @@
     </div>
 </template>
 <script setup lang="ts">
+import formatNumberToThousands from '@/utils/toThousands';
 
 </script>
 
