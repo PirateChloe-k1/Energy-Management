@@ -1,6 +1,9 @@
 <template>
     <el-card>
-        <el-select style="width: 300px;" placeholder="选择站点名称"></el-select>
+        <!-- filterable是el-select的方法,可以进行数据筛选 -->
+        <el-select style="width: 300px;" placeholder="选择站点名称" v-model="value" filterable>
+            <el-option v-for="item in options" :key="item.id" :value="item.name" :label="item.name"></el-option>
+        </el-select>
     </el-card>
 
     <el-card class="mt">
@@ -19,13 +22,8 @@
             <el-col :span="6">
                 <div class="item">
                     <div class="pic">
-                        <p >空闲中</p>
+                        <p>空闲中</p>
                         <img :src=free width="100px">
-                        <!-- <p >充电中</p>
-                        <p >连接中</p>
-                        <p >排队中</p>
-                        <p >已预约</p>
-                        <p >故障/离线</p> -->
                         <p>80%</p>
                     </div>
                     <div class="info">
@@ -54,6 +52,21 @@
 </template>
 <script setup lang="ts">
 import free from "@/assets/free.png"
+import { currentListApi } from "@/api/chargingstation"
+import { onMounted, ref } from "vue"
+
+const options = ref<any>([])
+
+const loadData = async () => {
+    const { data } = await currentListApi()
+    options.value = data
+}
+
+onMounted(() => {
+    loadData()
+})
+
+const value = ref("")
 </script>
 
 <style lang="less" scoped>
