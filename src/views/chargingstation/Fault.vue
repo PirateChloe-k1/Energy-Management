@@ -7,32 +7,38 @@
     </el-card>
 
     <el-card class="mt">
-        <el-radio-group size="large">
-            <el-radio-button label="全部" :value="0" />
-            <el-radio-button label="空闲中" :value="1" />
-            <el-radio-button label="充电中" :value="2" />
-            <el-radio-button label="连接中" :value="3" />
-            <el-radio-button label="排队中" :value="4" />
-            <el-radio-button label="已预约" :value="5" />
-            <el-radio-button label="故障/离线" :value="6" />
+        <el-radio-group size="large" v-model="radio">
+            <el-radio-button :label="`全部(${allCount})`" :value="0" />
+            <el-radio-button :label="`空闲中(${checkCount(1)})`" :value="1" />
+            <el-radio-button :label="`充电中(${checkCount(2)})`" :value="2" />
+            <el-radio-button :label="`连接中(${checkCount(3)})`" :value="3" />
+            <el-radio-button :label="`排队中(${checkCount(4)})`" :value="4" />
+            <el-radio-button :label="`已预约(${checkCount(5)})`" :value="5" />
+            <el-radio-button :label="`故障/离线(${checkCount(6)})`" :value="6" />
         </el-radio-group>
     </el-card>
     <el-card class="mt">
         <el-row :gutter="20">
-            <el-col :span="6">
+            <el-col :span="6" v-for="item in dataList" :key="item.id">
                 <div class="item">
                     <div class="pic">
-                        <p>空闲中</p>
-                        <img :src=free width="100px">
-                        <p>80%</p>
+                        <p v-if="item.status === 1">空闲中</p>
+                        <p v-else-if="item.status === 2">充电中</p>
+                        <p v-else-if="item.status === 3">连接中</p>
+                        <p v-else-if="item.status === 4">排队中</p>
+                        <p v-else-if="item.status === 5">已预约</p>
+                        <p v-else-if="item.status === 6">故障/离线</p>
+                        <img :src="item.status == 1 ? free : (item.status == 6 ? outline : ing)" width="100px">
+                        <p v-if="item.status == 2">{{ item.percent }}</p>
+                        <p v-else>0%</p>
                     </div>
                     <div class="info">
-                        <h3>CD1001</h3>
+                        <h3>{{ item.id }}</h3>
                         <hr class="mb">
-                        <p>电压：314v</p>
-                        <p>电流：212.2A</p>
-                        <p>功率：21KW</p>
-                        <p>温度：32°c</p>
+                        <p>电压：{{ item.voltage }}</p>
+                        <p>电流：{{ item.current }}</p>
+                        <p>功率：{{ item.power }}</p>
+                        <p>温度：{{ item.tem }}</p>
                     </div>
                 </div>
                 <div class="btn">
@@ -52,21 +58,32 @@
 </template>
 <script setup lang="ts">
 import free from "@/assets/free.png"
+import outline from "@/assets/outline.png"
+import ing from "@/assets/ing.png"
 import { currentListApi } from "@/api/chargingstation"
-import { onMounted, ref } from "vue"
+import { onMounted, ref, computed } from "vue"
 
+// 下拉菜单数据
 const options = ref<any>([])
-
+// 列表数据
+const dataList = ref<any>([])
 const loadData = async () => {
     const { data } = await currentListApi()
     options.value = data
+    dataList.value = data[0].list
 }
 
 onMounted(() => {
     loadData()
 })
 
-const value = ref("")
+const value = ref<string>("")
+const radio = ref<number>(0)
+function checkCount(num: number) {
+    return dataList.value.filter((item: any) => item.status == num).length
+}
+
+const allCount = computed(() => checkCount(1) + checkCount(2) + checkCount(3) + checkCount(4) + checkCount(5) + checkCount(6))
 </script>
 
 <style lang="less" scoped>
