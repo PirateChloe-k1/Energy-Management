@@ -87,8 +87,9 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted } from "vue"
 import { listApi } from "@/api/chargingstation"
-import StationForm from "./components/StationForm.vue";
-import type { RowType } from "@/types/station";
+import StationForm from "./components/StationForm.vue"
+import type { RowType } from "@/types/station"
+import {useStationStore} from "@/store/station"
 
 const select = ref("name");
 const formParams = reactive({
@@ -139,7 +140,10 @@ const handleReset = () => {
 
 // 子组件的弹窗
 const visible = ref<boolean>(false)
+const stationStore = useStationStore()
+const {setRowData} = stationStore
 const edit = (row:RowType) => {
+    setRowData(row)
     visible.value = true
 }
 </script>
