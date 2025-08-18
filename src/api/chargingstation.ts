@@ -12,7 +12,8 @@ interface ListType {
 const Api = {
     List: "/stationList",
     // 后端会判断是否有id,没有就是新增,有就是编辑
-    Edit: "/station/edit"
+    Edit: "/station/edit",
+    Delete: "/station/delete"
 } as const
 
 function listApi(data: ListType) {
@@ -23,4 +24,8 @@ function editApi(data: RowType) {
     return post(Api.Edit, data)
 }
 
-export { listApi, editApi }
+function deleteApi(id: string) {
+    return post(Api.Delete, {id})
+}
+
+export { listApi, editApi, deleteApi }

@@ -706,12 +706,39 @@ Mock.mock("https://www.demo.com/station/edit", 'post', (options: any) => {
 
 //删除充电站接口
 Mock.mock("https://www.demo.com/station/delete", "post", (options: any) => {
-  console.log("删除充电站接口收到参数", JSON.parse(options.body))
-  return {
-    code: 200,
-    success: true,
-    data: "操作成功",
-  };
+  const { id } = JSON.parse(options.body);
+  console.log("删除充电站接口收到参数", { id })
+
+  // 新增的逻辑：真正处理数据的删除
+  // 查找要删除的充电站索引
+  const deleteIndex = chargingStation.findIndex(item => item.id === id);
+
+  if (deleteIndex !== -1) {
+    // 找到了要删除的充电站，从数组中移除
+    const deletedStation = chargingStation.splice(deleteIndex, 1)[0];
+    console.log("删除成功，删除的数据：", deletedStation);
+    return {
+      code: 200,
+      success: true,
+      data: "删除成功",
+    };
+  } else {
+    // 没有找到要删除的充电站
+    console.log("删除失败，未找到ID为", id, "的充电站");
+    return {
+      code: 404,
+      success: false,
+      data: "未找到要删除的充电站",
+    };
+  }
+
+  // 原始代码（已注释）：
+  // console.log("删除充电站接口收到参数", JSON.parse(options.body))
+  // return {
+  //   code: 200,
+  //   success: true,
+  //   data: "操作成功",
+  // };
 })
 
 //营收统计图表

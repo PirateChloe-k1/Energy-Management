@@ -72,7 +72,12 @@
             <el-table-column label="操作">
                 <template #default="scope">
                     <el-button type="primary" size="small" @click="edit(scope.row)">编辑</el-button>
-                    <el-button type="danger" size="small">删除</el-button>
+                    <!-- confirm是el-popconfirm的事件,点击确认按钮时触发 -->
+                    <el-popconfirm title="确认要删除当前站点吗？" @confirm="handleDelete(scope.row.id)">
+                        <template #reference>
+                            <el-button type="danger" size="small">删除</el-button>
+                        </template>
+                    </el-popconfirm>
                 </template>
             </el-table-column>
         </el-table>
@@ -81,15 +86,16 @@
             :page-sizes="[10, 20, 30, 40]" layout="sizes, prev, pager, next, jumper,total" :total="totals"
             @size-change="handleSizeChange" @current-change="handleCurrentChange" background />
     </el-card>
-    <StationForm :dialog-visible="visible" @close="visible=false" @reload="loadData"/>
+    <StationForm :dialog-visible="visible" @close="visible = false" @reload="loadData" />
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, onMounted } from "vue"
-import { listApi } from "@/api/chargingstation"
+import { listApi, deleteApi } from "@/api/chargingstation"
 import StationForm from "./components/StationForm.vue"
 import type { RowType } from "@/types/station"
-import {useStationStore} from "@/store/station"
+import { useStationStore } from "@/store/station"
+import { ElMessage, messageConfig } from "element-plus"
 
 const select = ref("name");
 const formParams = reactive({
@@ -141,8 +147,8 @@ const handleReset = () => {
 // 子组件的弹窗
 const visible = ref<boolean>(false)
 const stationStore = useStationStore()
-const {setRowData} = stationStore
-const edit = (row:RowType) => {
+const { setRowData } = stationStore
+const edit = (row: RowType) => {
     setRowData(row)
     visible.value = true
 }
@@ -150,17 +156,34 @@ const edit = (row:RowType) => {
 // 新增充电站
 const handleAdd = () => {
     setRowData({
-        name:"",
-        id:"",
-        city:"",
-        fast:"",
-        slow:"",
-        status:1,
-        now:"",
-        fault:"",
-        person:"",
-        tel:""
+        name: "",
+        id: "",
+        city: "",
+        fast: "",
+        slow: "",
+        status: 1,
+        now: "",
+        fault: "",
+        person: "",
+        tel: ""
     })
-    visible.value=true
+    visible.value = true
+}
+
+const handleDelete = async(id:string) => {
+    const res = await deleteApi(id)
+    if(res.code == 200){
+        ElMessage({
+            message:res.data,
+            type:"success"
+        })
+        // 删除成功后重新加载数据
+        loadData()
+    } else {
+        ElMessage({
+            message:res.data || "删除失败",
+            type:"error"
+        })
+    }
 }
 </script>
