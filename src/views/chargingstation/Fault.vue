@@ -7,7 +7,7 @@
     </el-card>
 
     <el-card class="mt">
-        <el-radio-group size="large" v-model="radio">
+        <el-radio-group size="large" v-model="radio" @click="handleChange">
             <el-radio-button :label="`全部(${allCount})`" :value="0" />
             <el-radio-button :label="`空闲中(${checkCount(1)})`" :value="1" />
             <el-radio-button :label="`充电中(${checkCount(2)})`" :value="2" />
@@ -19,7 +19,7 @@
     </el-card>
     <el-card class="mt">
         <el-row :gutter="20">
-            <el-col :span="6" v-for="item in dataList" :key="item.id">
+            <el-col :span="6" v-for="item in dataListCopy" :key="item.id">
                 <div class="item">
                     <div class="pic">
                         <p v-if="item.status === 1">空闲中</p>
@@ -67,10 +67,14 @@ import { onMounted, ref, computed } from "vue"
 const options = ref<any>([])
 // 列表数据
 const dataList = ref<any>([])
+const dataListCopy = ref<any>([])
 const loadData = async () => {
     const { data } = await currentListApi()
     options.value = data
+    // 原始数据
     dataList.value = data[0].list
+    // 做列表渲染
+    dataListCopy.value = data[0].list
 }
 
 onMounted(() => {
@@ -84,6 +88,14 @@ function checkCount(num: number) {
 }
 
 const allCount = computed(() => checkCount(1) + checkCount(2) + checkCount(3) + checkCount(4) + checkCount(5) + checkCount(6))
+
+const handleChange = () => {
+    // 每次查询前都需要先重置数据
+    dataListCopy.value = dataList.value
+    if (radio.value != 0) {
+        dataListCopy.value = dataListCopy.value.filter((item: any) => item.status == radio.value)
+    }
+}
 </script>
 
 <style lang="less" scoped>
