@@ -15,15 +15,15 @@ interface RevenueType {
     name: string
 }
 
-const Api = {
-    List: "/stationList",
+enum Api {
+    List = "/stationList",
     // 后端会判断是否有id,没有就是新增,有就是编辑
-    Edit: "/station/edit",
-    Delete: "/station/delete",
-    RevenueChart: "/revenueChart",
-    Revenue: "/revenueList",
-    CurrentList: "/currentList"
-} as const
+    Edit = "/station/edit",
+    Delete = "/station/delete",
+    RevenueChart = "/revenueChart",
+    Revenue = "/revenueList",
+    CurrentList = "/currentList"
+}
 
 function listApi(data: ListType) {
     return post(Api.List, data)

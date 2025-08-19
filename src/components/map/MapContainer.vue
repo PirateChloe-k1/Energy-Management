@@ -7,8 +7,11 @@
 <script setup lang="ts">
 
 import AMapLoader from '@amap/amap-jsapi-loader';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
+import { mapListApi } from '@/api/map';
+import icon from "@/assets/flashIcon.png"
 let map: any = null;
+const markersData = ref<any>([])
 onMounted(() => {
     AMapLoader.load({
         // 申请好的Web端开发者Key，首次调用 load 时必填
@@ -27,11 +30,24 @@ onMounted(() => {
             zoom: 5,
             center: [116.397428, 39.90923], // 初始化地图中心点位置
         });
+        //添加自定义标记
+        mapListApi().then(({ data }) => {
+            // 存储所有充电站的数据
+            markersData.value = data;
+            // 循环创建标记
+            markersData.value.forEach((markerData: any) => {
+                const marker = new AMap.Marker({
+                    position: markerData.position,
+                    icon: icon, //添加 icon 图标 URL
+                    title: "北京",
+                });
+                map.add(marker)
+            })
+        })
     }).catch((e) => {
         console.log(e);
     });
 })
-
 </script>
 
 <style lang="less" scoped>
