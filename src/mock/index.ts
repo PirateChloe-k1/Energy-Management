@@ -4296,26 +4296,221 @@ Mock.mock("https://www.demo.com/mapList", "post", () => {
 
 
 //订单管理接口
+// 固定的订单数据 - 120条2025年的数据
+let orderList = [
+  // 1月份订单 (10条)
+  { orderNo: "177862", date: "2025-01-05", startTime: "08:00:23", endTime: "09:10:11", equipmentNo: "C227", money: "88.9", pay: "储值卡", status: 2, name: "北京西单充电站" },
+  { orderNo: "701968", date: "2025-01-08", startTime: "09:15:30", endTime: "10:45:22", equipmentNo: "B109", money: "66.5", pay: "微信", status: 3, name: "上海陆家嘴充电站" },
+  { orderNo: "386693", date: "2025-01-12", startTime: "14:20:15", endTime: "15:30:45", equipmentNo: "D158", money: "45.8", pay: "储值卡", status: 4, name: "广州花城广场充电站" },
+  { orderNo: "875957", date: "2025-01-15", startTime: "16:30:12", endTime: "17:45:33", equipmentNo: "C106", money: "72.3", pay: "微信", status: 3, name: "深圳大梅沙充电站" },
+  { orderNo: "458677", date: "2025-01-18", startTime: "11:45:28", endTime: "12:55:17", equipmentNo: "A205", money: "36.5", pay: "支付宝", status: 2, name: "成都天府广场充电站" },
+  { orderNo: "462592", date: "2025-01-22", startTime: "13:20:45", endTime: "14:35:22", equipmentNo: "E301", money: "54.7", pay: "储值卡", status: 3, name: "西安钟楼充电站" },
+  { orderNo: "707848", date: "2025-01-25", startTime: "10:15:33", endTime: "11:25:18", equipmentNo: "F402", money: "88.9", pay: "支付宝", status: 4, name: "杭州西湖充电站" },
+  { orderNo: "715711", date: "2025-01-28", startTime: "15:40:27", endTime: "16:50:15", equipmentNo: "G503", money: "29.8", pay: "微信", status: 2, name: "南京夫子庙充电站" },
+  { orderNo: "705388", date: "2025-01-30", startTime: "12:30:18", endTime: "13:40:25", equipmentNo: "H604", money: "67.2", pay: "储值卡", status: 3, name: "天津意大利风情区充电站" },
+  { orderNo: "892456", date: "2025-01-31", startTime: "17:25:42", endTime: "18:35:28", equipmentNo: "I705", money: "43.6", pay: "微信", status: 4, name: "青岛栈桥充电站" },
+
+  // 2月份订单 (10条)
+  { orderNo: "234567", date: "2025-02-03", startTime: "08:45:15", endTime: "09:55:33", equipmentNo: "C227", money: "52.4", pay: "支付宝", status: 2, name: "武汉黄鹤楼充电站" },
+  { orderNo: "345678", date: "2025-02-07", startTime: "14:15:28", endTime: "15:25:45", equipmentNo: "B109", money: "78.9", pay: "微信", status: 3, name: "福州三坊七巷充电站" },
+  { orderNo: "456789", date: "2025-02-10", startTime: "11:30:42", endTime: "12:40:18", equipmentNo: "D158", money: "34.7", pay: "储值卡", status: 4, name: "合肥包公园充电站" },
+  { orderNo: "567890", date: "2025-02-14", startTime: "16:20:35", endTime: "17:30:22", equipmentNo: "C106", money: "91.3", pay: "支付宝", status: 2, name: "重庆解放碑充电站" },
+  { orderNo: "678901", date: "2025-02-17", startTime: "09:50:18", endTime: "11:00:45", equipmentNo: "A205", money: "46.8", pay: "微信", status: 3, name: "桂林漓江充电站" },
+  { orderNo: "789012", date: "2025-02-20", startTime: "13:40:27", endTime: "14:50:15", equipmentNo: "E301", money: "63.2", pay: "储值卡", status: 4, name: "苏州园区充电站" },
+  { orderNo: "890123", date: "2025-02-23", startTime: "15:25:33", endTime: "16:35:28", equipmentNo: "F402", money: "27.9", pay: "支付宝", status: 2, name: "昆明滇池充电站" },
+  { orderNo: "901234", date: "2025-02-26", startTime: "10:35:42", endTime: "11:45:18", equipmentNo: "G503", money: "85.6", pay: "微信", status: 3, name: "南宁青秀山充电站" },
+  { orderNo: "012345", date: "2025-02-27", startTime: "12:15:25", endTime: "13:25:33", equipmentNo: "H604", money: "39.4", pay: "储值卡", status: 4, name: "长沙橘子洲头充电站" },
+  { orderNo: "123456", date: "2025-02-28", startTime: "17:45:18", endTime: "18:55:42", equipmentNo: "I705", money: "71.8", pay: "支付宝", status: 2, name: "哈尔滨中央大街充电站" },
+
+  // 3月份订单 (10条)
+  { orderNo: "234567", date: "2025-03-02", startTime: "08:20:33", endTime: "09:30:15", equipmentNo: "J806", money: "58.7", pay: "微信", status: 3, name: "石家庄正定古城充电站" },
+  { orderNo: "345678", date: "2025-03-05", startTime: "14:50:28", endTime: "16:00:42", equipmentNo: "K907", money: "42.3", pay: "储值卡", status: 4, name: "兰州黄河桥充电站" },
+  { orderNo: "456789", date: "2025-03-08", startTime: "11:10:45", endTime: "12:20:18", equipmentNo: "L108", money: "76.9", pay: "支付宝", status: 2, name: "济南大明湖充电站" },
+  { orderNo: "567890", date: "2025-03-12", startTime: "16:40:22", endTime: "17:50:35", equipmentNo: "M209", money: "33.6", pay: "微信", status: 3, name: "沈阳故宫充电站" },
+  { orderNo: "678901", date: "2025-03-15", startTime: "09:25:18", endTime: "10:35:45", equipmentNo: "N310", money: "89.2", pay: "储值卡", status: 4, name: "福州西湖充电站" },
+  { orderNo: "789012", date: "2025-03-18", startTime: "13:15:33", endTime: "14:25:28", equipmentNo: "O411", money: "47.8", pay: "支付宝", status: 2, name: "无锡灵山大佛充电站" },
+  { orderNo: "890123", date: "2025-03-22", startTime: "15:55:42", endTime: "17:05:15", equipmentNo: "P512", money: "64.5", pay: "微信", status: 3, name: "郑州二七广场充电站" },
+  { orderNo: "901234", date: "2025-03-25", startTime: "10:05:28", endTime: "11:15:33", equipmentNo: "Q613", money: "28.7", pay: "储值卡", status: 4, name: "大连星海广场充电站" },
+  { orderNo: "012345", date: "2025-03-28", startTime: "12:45:15", endTime: "13:55:42", equipmentNo: "R714", money: "82.4", pay: "支付宝", status: 2, name: "宁波天一广场充电站" },
+  { orderNo: "123456", date: "2025-03-30", startTime: "17:20:33", endTime: "18:30:18", equipmentNo: "S815", money: "36.9", pay: "微信", status: 3, name: "贵阳甲秀楼充电站" },
+
+  // 4月份订单 (10条)
+  { orderNo: "987654", date: "2025-04-02", startTime: "08:35:45", endTime: "09:45:22", equipmentNo: "T916", money: "73.6", pay: "储值卡", status: 4, name: "珠海长隆海洋王国充电站" },
+  { orderNo: "876543", date: "2025-04-05", startTime: "14:25:18", endTime: "15:35:33", equipmentNo: "U017", money: "41.2", pay: "支付宝", status: 2, name: "天津滨海新区充电站" },
+  { orderNo: "765432", date: "2025-04-08", startTime: "11:55:42", endTime: "13:05:15", equipmentNo: "V118", money: "87.8", pay: "微信", status: 3, name: "北京西单充电站" },
+  { orderNo: "654321", date: "2025-04-12", startTime: "16:15:28", endTime: "17:25:45", equipmentNo: "W219", money: "29.5", pay: "储值卡", status: 4, name: "上海陆家嘴充电站" },
+  { orderNo: "543210", date: "2025-04-15", startTime: "09:40:33", endTime: "10:50:18", equipmentNo: "X320", money: "65.7", pay: "支付宝", status: 2, name: "广州花城广场充电站" },
+  { orderNo: "432109", date: "2025-04-18", startTime: "13:30:15", endTime: "14:40:42", equipmentNo: "Y421", money: "48.3", pay: "微信", status: 3, name: "深圳大梅沙充电站" },
+  { orderNo: "321098", date: "2025-04-22", startTime: "15:10:28", endTime: "16:20:35", equipmentNo: "Z522", money: "79.9", pay: "储值卡", status: 4, name: "成都天府广场充电站" },
+  { orderNo: "210987", date: "2025-04-25", startTime: "10:50:45", endTime: "12:00:22", equipmentNo: "AA623", money: "34.8", pay: "支付宝", status: 2, name: "西安钟楼充电站" },
+  { orderNo: "109876", date: "2025-04-28", startTime: "12:20:18", endTime: "13:30:33", equipmentNo: "BB724", money: "91.6", pay: "微信", status: 3, name: "杭州西湖充电站" },
+  { orderNo: "098765", date: "2025-04-30", startTime: "17:35:42", endTime: "18:45:15", equipmentNo: "CC825", money: "37.4", pay: "储值卡", status: 4, name: "南京夫子庙充电站" },
+
+  // 5月份订单 (10条)
+  { orderNo: "147258", date: "2025-05-03", startTime: "08:15:28", endTime: "09:25:45", equipmentNo: "DD926", money: "68.2", pay: "支付宝", status: 2, name: "天津意大利风情区充电站" },
+  { orderNo: "258369", date: "2025-05-06", startTime: "14:45:33", endTime: "15:55:18", equipmentNo: "EE027", money: "43.7", pay: "微信", status: 3, name: "青岛栈桥充电站" },
+  { orderNo: "369147", date: "2025-05-09", startTime: "11:25:42", endTime: "12:35:28", equipmentNo: "FF128", money: "85.3", pay: "储值卡", status: 4, name: "武汉黄鹤楼充电站" },
+  { orderNo: "147852", date: "2025-05-12", startTime: "16:05:15", endTime: "17:15:33", equipmentNo: "GG229", money: "31.9", pay: "支付宝", status: 2, name: "福州三坊七巷充电站" },
+  { orderNo: "258963", date: "2025-05-15", startTime: "09:55:28", endTime: "11:05:42", equipmentNo: "HH330", money: "77.6", pay: "微信", status: 3, name: "合肥包公园充电站" },
+  { orderNo: "369741", date: "2025-05-18", startTime: "13:35:45", endTime: "14:45:18", equipmentNo: "II431", money: "44.8", pay: "储值卡", status: 4, name: "重庆解放碑充电站" },
+  { orderNo: "741852", date: "2025-05-22", startTime: "15:20:33", endTime: "16:30:28", equipmentNo: "JJ532", money: "92.4", pay: "支付宝", status: 2, name: "桂林漓江充电站" },
+  { orderNo: "852963", date: "2025-05-25", startTime: "10:40:15", endTime: "11:50:42", equipmentNo: "KK633", money: "38.6", pay: "微信", status: 3, name: "苏州园区充电站" },
+  { orderNo: "963741", date: "2025-05-28", startTime: "12:00:28", endTime: "13:10:35", equipmentNo: "LL734", money: "74.2", pay: "储值卡", status: 4, name: "昆明滇池充电站" },
+  { orderNo: "159753", date: "2025-05-30", startTime: "17:50:45", endTime: "19:00:18", equipmentNo: "MM835", money: "26.7", pay: "支付宝", status: 2, name: "南宁青秀山充电站" },
+
+  // 6月份订单 (10条)
+  { orderNo: "753159", date: "2025-06-02", startTime: "08:25:33", endTime: "09:35:28", equipmentNo: "NN936", money: "81.5", pay: "微信", status: 3, name: "长沙橘子洲头充电站" },
+  { orderNo: "951357", date: "2025-06-05", startTime: "14:55:42", endTime: "16:05:15", equipmentNo: "OO037", money: "49.3", pay: "储值卡", status: 4, name: "哈尔滨中央大街充电站" },
+  { orderNo: "357951", date: "2025-06-08", startTime: "11:15:18", endTime: "12:25:33", equipmentNo: "PP138", money: "66.8", pay: "支付宝", status: 2, name: "石家庄正定古城充电站" },
+  { orderNo: "159357", date: "2025-06-12", startTime: "16:35:28", endTime: "17:45:42", equipmentNo: "QQ239", money: "32.4", pay: "微信", status: 3, name: "兰州黄河桥充电站" },
+  { orderNo: "357159", date: "2025-06-15", startTime: "09:05:45", endTime: "10:15:18", equipmentNo: "RR340", money: "88.7", pay: "储值卡", status: 4, name: "济南大明湖充电站" },
+  { orderNo: "951753", date: "2025-06-18", startTime: "13:45:33", endTime: "14:55:28", equipmentNo: "SS441", money: "45.9", pay: "支付宝", status: 2, name: "沈阳故宫充电站" },
+  { orderNo: "753951", date: "2025-06-22", startTime: "15:25:42", endTime: "16:35:15", equipmentNo: "TT542", money: "73.1", pay: "微信", status: 3, name: "福州西湖充电站" },
+  { orderNo: "159951", date: "2025-06-25", startTime: "10:15:28", endTime: "11:25:45", equipmentNo: "UU643", money: "39.7", pay: "储值卡", status: 4, name: "无锡灵山大佛充电站" },
+  { orderNo: "951159", date: "2025-06-28", startTime: "12:55:33", endTime: "14:05:18", equipmentNo: "VV744", money: "95.3", pay: "支付宝", status: 2, name: "郑州二七广场充电站" },
+  { orderNo: "753357", date: "2025-06-30", startTime: "17:10:42", endTime: "18:20:28", equipmentNo: "WW845", money: "28.6", pay: "微信", status: 3, name: "大连星海广场充电站" },
+
+  // 7月份订单 (10条)
+  { orderNo: "486213", date: "2025-07-03", startTime: "08:40:15", endTime: "09:50:33", equipmentNo: "XX946", money: "62.4", pay: "储值卡", status: 4, name: "宁波天一广场充电站" },
+  { orderNo: "213486", date: "2025-07-06", startTime: "14:20:28", endTime: "15:30:42", equipmentNo: "YY047", money: "47.8", pay: "支付宝", status: 2, name: "贵阳甲秀楼充电站" },
+  { orderNo: "864213", date: "2025-07-09", startTime: "11:00:45", endTime: "12:10:18", equipmentNo: "ZZ148", money: "84.6", pay: "微信", status: 3, name: "珠海长隆海洋王国充电站" },
+  { orderNo: "213864", date: "2025-07-12", startTime: "16:50:33", endTime: "18:00:15", equipmentNo: "AAA249", money: "35.2", pay: "储值卡", status: 4, name: "天津滨海新区充电站" },
+  { orderNo: "486864", date: "2025-07-15", startTime: "09:30:28", endTime: "10:40:42", equipmentNo: "BBB350", money: "71.9", pay: "支付宝", status: 2, name: "北京西单充电站" },
+  { orderNo: "864486", date: "2025-07-18", startTime: "13:10:45", endTime: "14:20:18", equipmentNo: "CCC451", money: "53.7", pay: "微信", status: 3, name: "上海陆家嘴充电站" },
+  { orderNo: "213213", date: "2025-07-22", startTime: "15:40:33", endTime: "16:50:28", equipmentNo: "DDD552", money: "90.1", pay: "储值卡", status: 4, name: "广州花城广场充电站" },
+  { orderNo: "486486", date: "2025-07-25", startTime: "10:20:15", endTime: "11:30:42", equipmentNo: "EEE653", money: "41.5", pay: "支付宝", status: 2, name: "深圳大梅沙充电站" },
+  { orderNo: "864864", date: "2025-07-28", startTime: "12:35:28", endTime: "13:45:45", equipmentNo: "FFF754", money: "78.3", pay: "微信", status: 3, name: "成都天府广场充电站" },
+  { orderNo: "135792", date: "2025-07-30", startTime: "17:25:33", endTime: "18:35:18", equipmentNo: "GGG855", money: "24.8", pay: "储值卡", status: 4, name: "西安钟楼充电站" },
+
+  // 8月份订单 (10条)
+  { orderNo: "792468", date: "2025-08-02", startTime: "08:55:42", endTime: "10:05:28", equipmentNo: "HHH956", money: "67.6", pay: "支付宝", status: 2, name: "杭州西湖充电站" },
+  { orderNo: "468135", date: "2025-08-05", startTime: "14:35:15", endTime: "15:45:33", equipmentNo: "III057", money: "42.9", pay: "微信", status: 3, name: "南京夫子庙充电站" },
+  { orderNo: "135468", date: "2025-08-08", startTime: "11:45:28", endTime: "12:55:42", equipmentNo: "JJJ158", money: "86.4", pay: "储值卡", status: 4, name: "天津意大利风情区充电站" },
+  { orderNo: "792135", date: "2025-08-12", startTime: "16:25:45", endTime: "17:35:18", equipmentNo: "KKK259", money: "33.7", pay: "支付宝", status: 2, name: "青岛栈桥充电站" },
+  { orderNo: "468792", date: "2025-08-15", startTime: "09:15:33", endTime: "10:25:28", equipmentNo: "LLL360", money: "75.2", pay: "微信", status: 3, name: "武汉黄鹤楼充电站" },
+  { orderNo: "135792", date: "2025-08-18", startTime: "13:55:42", endTime: "15:05:15", equipmentNo: "MMM461", money: "48.6", pay: "储值卡", status: 4, name: "福州三坊七巷充电站" },
+  { orderNo: "792792", date: "2025-08-22", startTime: "15:05:28", endTime: "16:15:33", equipmentNo: "NNN562", money: "93.8", pay: "支付宝", status: 2, name: "合肥包公园充电站" },
+  { orderNo: "468468", date: "2025-08-25", startTime: "10:45:45", endTime: "11:55:18", equipmentNo: "OOO663", money: "37.1", pay: "微信", status: 3, name: "重庆解放碑充电站" },
+  { orderNo: "135135", date: "2025-08-28", startTime: "12:25:33", endTime: "13:35:42", equipmentNo: "PPP764", money: "69.5", pay: "储值卡", status: 4, name: "桂林漓江充电站" },
+  { orderNo: "246810", date: "2025-08-30", startTime: "17:40:28", endTime: "18:50:15", equipmentNo: "QQQ865", money: "25.3", pay: "支付宝", status: 2, name: "苏州园区充电站" },
+
+  // 9月份订单 (10条)
+  { orderNo: "810246", date: "2025-09-02", startTime: "08:10:45", endTime: "09:20:33", equipmentNo: "RRR966", money: "82.7", pay: "微信", status: 3, name: "昆明滇池充电站" },
+  { orderNo: "024681", date: "2025-09-05", startTime: "14:50:18", endTime: "16:00:28", equipmentNo: "SSS067", money: "46.4", pay: "储值卡", status: 4, name: "南宁青秀山充电站" },
+  { orderNo: "681024", date: "2025-09-08", startTime: "11:30:33", endTime: "12:40:42", equipmentNo: "TTT168", money: "74.9", pay: "支付宝", status: 2, name: "长沙橘子洲头充电站" },
+  { orderNo: "246024", date: "2025-09-12", startTime: "16:10:15", endTime: "17:20:45", equipmentNo: "UUU269", money: "38.8", pay: "微信", status: 3, name: "哈尔滨中央大街充电站" },
+  { orderNo: "810681", date: "2025-09-15", startTime: "09:50:28", endTime: "11:00:33", equipmentNo: "VVV370", money: "91.6", pay: "储值卡", status: 4, name: "石家庄正定古城充电站" },
+  { orderNo: "024246", date: "2025-09-18", startTime: "13:20:42", endTime: "14:30:18", equipmentNo: "WWW471", money: "44.2", pay: "支付宝", status: 2, name: "兰州黄河桥充电站" },
+  { orderNo: "681681", date: "2025-09-22", startTime: "15:00:45", endTime: "16:10:33", equipmentNo: "XXX572", money: "77.5", pay: "微信", status: 3, name: "济南大明湖充电站" },
+  { orderNo: "246246", date: "2025-09-25", startTime: "10:35:28", endTime: "11:45:15", equipmentNo: "YYY673", money: "31.9", pay: "储值卡", status: 4, name: "沈阳故宫充电站" },
+  { orderNo: "810810", date: "2025-09-28", startTime: "12:15:33", endTime: "13:25:42", equipmentNo: "ZZZ774", money: "88.3", pay: "支付宝", status: 2, name: "福州西湖充电站" },
+  { orderNo: "024024", date: "2025-09-30", startTime: "17:55:18", endTime: "19:05:28", equipmentNo: "AAAA875", money: "22.7", pay: "微信", status: 3, name: "无锡灵山大佛充电站" },
+
+  // 10月份订单 (10条)
+  { orderNo: "369258", date: "2025-10-03", startTime: "08:30:42", endTime: "09:40:15", equipmentNo: "BBBB976", money: "65.1", pay: "储值卡", status: 4, name: "郑州二七广场充电站" },
+  { orderNo: "258147", date: "2025-10-06", startTime: "14:10:28", endTime: "15:20:33", equipmentNo: "CCCC077", money: "49.7", pay: "支付宝", status: 2, name: "大连星海广场充电站" },
+  { orderNo: "147369", date: "2025-10-09", startTime: "11:50:45", endTime: "13:00:18", equipmentNo: "DDDD178", money: "83.4", pay: "微信", status: 3, name: "宁波天一广场充电站" },
+  { orderNo: "369147", date: "2025-10-12", startTime: "16:40:33", endTime: "17:50:28", equipmentNo: "EEEE279", money: "36.6", pay: "储值卡", status: 4, name: "贵阳甲秀楼充电站" },
+  { orderNo: "258369", date: "2025-10-15", startTime: "09:20:15", endTime: "10:30:42", equipmentNo: "FFFF380", money: "72.8", pay: "支付宝", status: 2, name: "珠海长隆海洋王国充电站" },
+  { orderNo: "147258", date: "2025-10-18", startTime: "13:00:28", endTime: "14:10:45", equipmentNo: "GGGG481", money: "51.3", pay: "微信", status: 3, name: "天津滨海新区充电站" },
+  { orderNo: "369369", date: "2025-10-22", startTime: "15:35:33", endTime: "16:45:18", equipmentNo: "HHHH582", money: "94.7", pay: "储值卡", status: 4, name: "北京西单充电站" },
+  { orderNo: "258258", date: "2025-10-25", startTime: "10:55:42", endTime: "12:05:28", equipmentNo: "IIII683", money: "40.9", pay: "支付宝", status: 2, name: "上海陆家嘴充电站" },
+  { orderNo: "147147", date: "2025-10-28", startTime: "12:40:15", endTime: "13:50:33", equipmentNo: "JJJJ784", money: "76.2", pay: "微信", status: 3, name: "广州花城广场充电站" },
+  { orderNo: "987321", date: "2025-10-30", startTime: "17:15:28", endTime: "18:25:42", equipmentNo: "KKKK885", money: "29.4", pay: "储值卡", status: 4, name: "深圳大梅沙充电站" },
+
+  // 11月份订单 (10条)
+  { orderNo: "321654", date: "2025-11-02", startTime: "08:45:33", endTime: "09:55:18", equipmentNo: "LLLL986", money: "68.5", pay: "支付宝", status: 2, name: "成都天府广场充电站" },
+  { orderNo: "654987", date: "2025-11-05", startTime: "14:25:42", endTime: "15:35:28", equipmentNo: "MMMM087", money: "43.1", pay: "微信", status: 3, name: "西安钟楼充电站" },
+  { orderNo: "987654", date: "2025-11-08", startTime: "11:05:15", endTime: "12:15:33", equipmentNo: "NNNN188", money: "85.8", pay: "储值卡", status: 4, name: "杭州西湖充电站" },
+  { orderNo: "321987", date: "2025-11-12", startTime: "16:55:28", endTime: "18:05:42", equipmentNo: "OOOO289", money: "34.7", pay: "支付宝", status: 2, name: "南京夫子庙充电站" },
+  { orderNo: "654321", date: "2025-11-15", startTime: "09:35:45", endTime: "10:45:18", equipmentNo: "PPPP390", money: "79.3", pay: "微信", status: 3, name: "天津意大利风情区充电站" },
+  { orderNo: "987987", date: "2025-11-18", startTime: "13:15:33", endTime: "14:25:28", equipmentNo: "QQQQ491", money: "52.6", pay: "储值卡", status: 4, name: "青岛栈桥充电站" },
+  { orderNo: "321321", date: "2025-11-22", startTime: "15:50:42", endTime: "17:00:15", equipmentNo: "RRRR592", money: "96.4", pay: "支付宝", status: 2, name: "武汉黄鹤楼充电站" },
+  { orderNo: "654654", date: "2025-11-25", startTime: "10:10:28", endTime: "11:20:33", equipmentNo: "SSSS693", money: "39.8", pay: "微信", status: 3, name: "福州三坊七巷充电站" },
+  { orderNo: "789456", date: "2025-11-28", startTime: "12:50:45", endTime: "14:00:18", equipmentNo: "TTTT794", money: "73.7", pay: "储值卡", status: 4, name: "合肥包公园充电站" },
+  { orderNo: "456123", date: "2025-11-30", startTime: "17:30:33", endTime: "18:40:28", equipmentNo: "UUUU895", money: "27.2", pay: "支付宝", status: 2, name: "重庆解放碑充电站" },
+
+  // 12月份订单 (10条)
+  { orderNo: "123789", date: "2025-12-03", startTime: "08:20:15", endTime: "09:30:42", equipmentNo: "VVVV996", money: "61.9", pay: "微信", status: 3, name: "桂林漓江充电站" },
+  { orderNo: "789456", date: "2025-12-06", startTime: "14:40:28", endTime: "15:50:45", equipmentNo: "WWWW097", money: "47.5", pay: "储值卡", status: 4, name: "苏州园区充电站" },
+  { orderNo: "456789", date: "2025-12-09", startTime: "11:20:33", endTime: "12:30:18", equipmentNo: "XXXX198", money: "84.2", pay: "支付宝", status: 2, name: "昆明滇池充电站" },
+  { orderNo: "123456", date: "2025-12-12", startTime: "16:00:42", endTime: "17:10:28", equipmentNo: "YYYY299", money: "35.8", pay: "微信", status: 3, name: "南宁青秀山充电站" },
+  { orderNo: "789123", date: "2025-12-15", startTime: "09:45:15", endTime: "10:55:33", equipmentNo: "ZZZZ400", money: "78.6", pay: "储值卡", status: 4, name: "长沙橘子洲头充电站" },
+  { orderNo: "456456", date: "2025-12-18", startTime: "13:25:28", endTime: "14:35:42", equipmentNo: "AAAAA501", money: "50.4", pay: "支付宝", status: 2, name: "哈尔滨中央大街充电站" },
+  { orderNo: "123123", date: "2025-12-22", startTime: "15:15:45", endTime: "16:25:18", equipmentNo: "BBBBB602", money: "92.1", pay: "微信", status: 3, name: "石家庄正定古城充电站" },
+  { orderNo: "789789", date: "2025-12-25", startTime: "10:25:33", endTime: "11:35:28", equipmentNo: "CCCCC703", money: "41.7", pay: "储值卡", status: 4, name: "兰州黄河桥充电站" },
+  { orderNo: "456789", date: "2025-12-28", startTime: "12:05:42", endTime: "13:15:15", equipmentNo: "DDDDD804", money: "75.9", pay: "支付宝", status: 2, name: "济南大明湖充电站" },
+  { orderNo: "999888", date: "2025-12-30", startTime: "17:45:28", endTime: "18:55:33", equipmentNo: "EEEEE905", money: "23.6", pay: "微信", status: 3, name: "沈阳故宫充电站" }
+];
+
+// 原始数据备份
+const originalOrderList = JSON.parse(JSON.stringify(orderList));
+
 Mock.mock('https://www.demo.com/orderList', 'post', (options: any) => {
-  const { pageSize } = JSON.parse(options.body);
-  console.log("后端订单管理接到参数", JSON.parse(options.body))
+  // 重置为原始数据
+  orderList = JSON.parse(JSON.stringify(originalOrderList));
+
+  const requestBody = JSON.parse(options.body);
+  const { orderNo = "", status = 1, no = "", name = "", startDate = "", endDate = "", page = 1, pageSize = 10 } = requestBody;
+
+  console.log("后端订单管理接到参数", requestBody);
+  console.log("解构后的参数:", { orderNo, status, no, name, startDate, endDate, page, pageSize });
+  console.log("原始订单数据长度:", orderList.length);
+
+  // 根据搜索条件过滤数据
+  if (orderNo) {
+    console.log("按订单号过滤:", orderNo);
+    orderList = orderList.filter(item => {
+      const match = item.orderNo.includes(orderNo);
+      console.log(`订单 ${item.orderNo} 是否匹配 ${orderNo}:`, match);
+      return match;
+    });
+    console.log("按订单号过滤后数据长度:", orderList.length);
+  }
+
+  if (status !== 1) { // status=1表示"全部"
+    console.log("按状态过滤:", status);
+    orderList = orderList.filter(item => item.status === status);
+    console.log("按状态过滤后数据长度:", orderList.length);
+  }
+
+  if (no) {
+    console.log("按设备编号过滤:", no);
+    orderList = orderList.filter(item => item.equipmentNo.includes(no));
+    console.log("按设备编号过滤后数据长度:", orderList.length);
+  }
+
+  if (name) {
+    console.log("按站点名称过滤:", name);
+    orderList = orderList.filter(item => item.name.includes(name));
+    console.log("按站点名称过滤后数据长度:", orderList.length);
+  }
+
+  if (startDate && endDate) {
+    console.log("按日期范围过滤:", startDate, "到", endDate);
+    orderList = orderList.filter(item => {
+      const itemDate = new Date(item.date);
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      return itemDate >= start && itemDate <= end;
+    });
+    console.log("按日期过滤后数据长度:", orderList.length);
+  }
+
+  // 实现分页
+  const total = orderList.length;
+  const start = (page - 1) * pageSize;
+  const paginatedItems = orderList.slice(start, start + pageSize);
+
+  console.log("最终返回数据:", { total, paginatedItems });
+
   return {
     code: 200,
     message: "成功",
-    data: Mock.mock({
-      [`list|${pageSize}`]: [{
-        'orderNo': '@string("number", 6)', //订单号
-        'date': '@date("yyyy-MM-dd")',//订单日期
-        'startTime': "08:00:23",//开始时间
-        'endTime': "09:10:11",//结束时间
-        "equipmentNo|1": ['B109', 'C227', 'C106', "D158"],//设备编号
-        'money|1': [66.5,88.9,22.7,36.5,42.0],//金额
-        'pay|1': ["微信", "支付宝", "储值卡",],//支付方式
-        'status|1': [2, 3, 4],//订单状态
-      }],
-      "total": 54
-    })
-    // 生成55条数据
+    data: {
+      list: paginatedItems,
+      total
+    }
   }
 });
 

@@ -16,8 +16,8 @@
                 <el-input placeholder="设备编号" v-model="searchParams.no" />
             </el-col>
             <el-col :span="6">
-                <el-button type="primary">查询</el-button>
-                <el-button>重置</el-button>
+                <el-button type="primary" @click="loadData">查询</el-button>
+                <el-button @click="handleReset">重置</el-button>
             </el-col>
             <el-col :span="6" class="mt">
                 <el-input placeholder="请输入站点名称" v-model="searchParams.name" />
@@ -25,14 +25,8 @@
             <el-col :span="6" class="mt">
                 <!-- 日期区间选择绑定的是数组,第一个是开始日期,第二个是结束日期 -->
                 <!-- value-format="YYYY-MM-DD"改为日期格式的字符串 -->
-                <el-date-picker 
-                v-model="date" 
-                type="daterange" 
-                range-separator="/" 
-                start-placeholder="开始时间"
-                end-placeholder="结束时间" 
-                @change="handleChange" 
-                value-format="YYYY-MM-DD" />
+                <el-date-picker v-model="date" type="daterange" range-separator="/" start-placeholder="开始时间"
+                    end-placeholder="结束时间" @change="handleChange" value-format="YYYY-MM-DD" />
             </el-col>
         </el-row>
     </el-card>
@@ -41,7 +35,7 @@
         <el-button type="primary" icon="Download">导出订单数据到Excel</el-button>
     </el-card>
     <el-card class="mt">
-        <el-table>
+        <el-table :data="dataList" v-loading="loading">
             <el-table-column label="订单号" prop="orderNo"></el-table-column>
             <el-table-column label="设备编号" prop="equipmentNo"></el-table-column>
             <el-table-column label="订单日期" prop="date"></el-table-column>
@@ -57,10 +51,23 @@
                 </template>
             </el-table-column>
         </el-table>
+        <el-pagination 
+            class="fr mt mb"
+            v-model:current-page="pageInfo.page" 
+            v-model:page-size="pageInfo.pageSize"
+            :page-sizes="[10, 20, 30, 40]" 
+            layout="sizes, prev, pager, next, jumper,total" 
+            :total="totals" 
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange" 
+            background
+        />
     </el-card>
 </template>
 <script setup lang="ts">
 import { ref } from "vue"
+import { useHttp } from "@/hooks/useHttp"
+
 interface SearchType {
     orderNo: string,
     status: number,
@@ -68,6 +75,17 @@ interface SearchType {
     name: string,
     startDate: string,
     endDate: string
+}
+
+interface SelectionListType {
+    orderNo: string,
+    equipmentNo: string,
+    date: string,
+    startTime: string,
+    endTime: string,
+    money: string,
+    pay: string,
+    status: number
 }
 
 const date = ref()
@@ -79,8 +97,34 @@ const searchParams = ref<SearchType>({
     startDate: "",
     endDate: ""
 })
+
 const handleChange = (val: string[]) => {
     searchParams.value.startDate = val[0]
     searchParams.value.endDate = val[1]
+}
+
+const {
+    dataList,
+    loading,
+    totals,
+    pageInfo,
+    loadData,
+    handleSizeChange,
+    handleCurrentChange,
+    resetPagination
+} = useHttp<SelectionListType>("/orderList", searchParams);
+
+const handleReset = () => {
+    date.value=""
+    searchParams.value={
+        orderNo:"",
+        status:1,
+        no:"",
+        name:"",
+        startDate:"",
+        endDate:""
+    }
+    // 重置分页
+    resetPagination()
 }
 </script>
