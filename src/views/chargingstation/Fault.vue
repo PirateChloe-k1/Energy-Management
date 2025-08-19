@@ -47,8 +47,19 @@
                     <div>
                         <p class="fl ml" style="font-size: 12px;color: #999;">暂无预警</p>
                         <div class="fr" style="text-align: right;">
-                            <el-button size="small">维保记录</el-button>
-                            <el-button size="small">使用记录</el-button>
+                            <!-- <el-button size="small">维保记录</el-button> -->
+                            <el-popover placement="right" :width="300" trigger="click">
+                                <template #reference>
+                                    <el-button size="small" type="primary" class="mr">使用记录</el-button>
+                                </template>
+                                <h3 class="mb">使用记录</h3>
+                                <el-timeline style="max-width: 600px">
+                                    <el-timeline-item :timestamp="j.time" v-for="j in item.record" :key="j.time"
+                                        :hollow="true" type="primary">
+                                        {{ j.msg }}
+                                    </el-timeline-item>
+                                </el-timeline>
+                            </el-popover>
                         </div>
                     </div>
                 </div>

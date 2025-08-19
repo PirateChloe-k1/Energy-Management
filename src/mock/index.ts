@@ -1222,46 +1222,285 @@ let chargingPile = [
           {time:"17:27:17",msg:"充电90度，消费90元"},
           {time:"18:08:33",msg:"充电100度，消费100元"},
         ]
-    
     },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "29°c", status: 2, percent: "23%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "67%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "30°c", status: 2, percent: "41%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "78%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "52%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "85%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "29°c", status: 2, percent: "23%",
+        record:[
+          {time:"08:15:23",msg:"充电45度，消费45元"},
+          {time:"10:22:17",msg:"充电65度，消费65元"},
+          {time:"14:33:09",msg:"充电55度，消费55元"},
+          {time:"16:45:22",msg:"充电75度，消费75元"},
+          {time:"19:08:33",msg:"充电85度，消费85元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"07:30:15",msg:"充电60度，消费60元"},
+          {time:"11:45:28",msg:"充电40度，消费40元"},
+          {time:"15:20:33",msg:"充电70度，消费70元"},
+          {time:"18:55:17",msg:"充电95度，消费95元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "67%",
+        record:[
+          {time:"09:12:45",msg:"充电35度，消费35元"},
+          {time:"12:28:19",msg:"充电80度，消费80元"},
+          {time:"16:15:42",msg:"充电50度，消费50元"},
+          {time:"20:33:28",msg:"充电65度，消费65元"},
+          {time:"22:18:55",msg:"充电90度，消费90元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "30°c", status: 2, percent: "41%",
+        record:[
+          {time:"06:45:12",msg:"充电55度，消费55元"},
+          {time:"10:18:37",msg:"充电75度，消费75元"},
+          {time:"13:42:15",msg:"充电45度，消费45元"},
+          {time:"17:25:48",msg:"充电85度，消费85元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "78%",
+        record:[
+          {time:"08:33:27",msg:"充电42度，消费42元"},
+          {time:"11:55:14",msg:"充电68度，消费68元"},
+          {time:"15:12:39",msg:"充电58度，消费58元"},
+          {time:"18:47:22",msg:"充电72度，消费72元"},
+          {time:"21:15:33",msg:"充电88度，消费88元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:22:18",msg:"充电38度，消费38元"},
+          {time:"10:45:33",msg:"充电62度，消费62元"},
+          {time:"14:18:27",msg:"充电48度，消费48元"},
+          {time:"17:52:15",msg:"充电78度，消费78元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "52%",
+        record:[
+          {time:"09:28:42",msg:"充电52度，消费52元"},
+          {time:"12:15:18",msg:"充电72度，消费72元"},
+          {time:"16:33:45",msg:"充电62度，消费62元"},
+          {time:"19:48:27",msg:"充电82度，消费82元"},
+          {time:"22:05:33",msg:"充电92度，消费92元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"06:55:23",msg:"充电48度，消费48元"},
+          {time:"10:22:17",msg:"充电68度，消费68元"},
+          {time:"13:45:39",msg:"充电58度，消费58元"},
+          {time:"17:18:22",msg:"充电78度，消费78元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"08:12:35",msg:"充电44度，消费44元"},
+          {time:"11:38:28",msg:"充电64度，消费64元"},
+          {time:"15:25:17",msg:"充电54度，消费54元"},
+          {time:"18:42:33",msg:"充电74度，消费74元"},
+          {time:"21:28:45",msg:"充电84度，消费84元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"07:45:18",msg:"充电56度，消费56元"},
+          {time:"10:58:33",msg:"充电76度，消费76元"},
+          {time:"14:22:27",msg:"充电66度，消费66元"},
+          {time:"17:55:15",msg:"充电86度，消费86元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"09:18:42",msg:"充电41度，消费41元"},
+          {time:"12:35:28",msg:"充电61度，消费61元"},
+          {time:"16:12:45",msg:"充电51度，消费51元"},
+          {time:"19:28:17",msg:"充电71度，消费71元"},
+          {time:"22:15:33",msg:"充电91度，消费91元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"06:32:25",msg:"充电47度，消费47元"},
+          {time:"09:48:17",msg:"充电67度，消费67元"},
+          {time:"13:15:39",msg:"充电57度，消费57元"},
+          {time:"16:42:22",msg:"充电77度，消费77元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"08:25:33",msg:"充电43度，消费43元"},
+          {time:"11:42:18",msg:"充电63度，消费63元"},
+          {time:"15:18:45",msg:"充电53度，消费53元"},
+          {time:"18:35:27",msg:"充电73度，消费73元"},
+          {time:"21:52:15",msg:"充电83度，消费83元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"07:15:28",msg:"充电59度，消费59元"},
+          {time:"10:32:17",msg:"充电79度，消费79元"},
+          {time:"14:48:33",msg:"充电69度，消费69元"},
+          {time:"18:15:22",msg:"充电89度，消费89元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "85%",
+        record:[
+          {time:"09:35:42",msg:"充电36度，消费36元"},
+          {time:"12:52:28",msg:"充电56度，消费56元"},
+          {time:"16:28:15",msg:"充电46度，消费46元"},
+          {time:"19:45:33",msg:"充电66度，消费66元"},
+          {time:"22:32:18",msg:"充电86度，消费86元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"06:48:15",msg:"充电52度，消费52元"},
+          {time:"10:15:33",msg:"充电72度，消费72元"},
+          {time:"13:32:27",msg:"充电62度，消费62元"},
+          {time:"17:08:22",msg:"充电82度，消费82元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"08:58:38",msg:"充电39度，消费39元"},
+          {time:"12:25:17",msg:"充电59度，消费59元"},
+          {time:"15:42:33",msg:"充电49度，消费49元"},
+          {time:"18:58:28",msg:"充电69度，消费69元"},
+          {time:"21:45:15",msg:"充电79度，消费79元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:38:22",msg:"充电54度，消费54元"},
+          {time:"11:05:17",msg:"充电74度，消费74元"},
+          {time:"14:32:39",msg:"充电64度，消费64元"},
+          {time:"17:48:33",msg:"充电84度，消费84元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10002",
     name: "上海陆家嘴充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "34%" },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "62%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "27°c", status: 6 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "47%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "89%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "34%",//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"06:25:18",msg:"充电65度，消费65元"},
+          {time:"09:42:33",msg:"充电85度，消费85元"},
+          {time:"13:18:27",msg:"充电75度，消费75元"},
+          {time:"16:55:15",msg:"充电95度，消费95元"},
+          {time:"20:32:42",msg:"充电105度，消费105元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "62%",
+        record:[
+          {time:"07:48:25",msg:"充电58度，消费58元"},
+          {time:"11:15:17",msg:"充电78度，消费78元"},
+          {time:"14:42:39",msg:"充电68度，消费68元"},
+          {time:"18:28:22",msg:"充电88度，消费88元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "27°c", status: 6,
+        record:[
+          {time:"08:35:42",msg:"充电42度，消费42元"},
+          {time:"12:08:28",msg:"充电62度，消费62元"},
+          {time:"15:25:15",msg:"充电52度，消费52元"},
+          {time:"19:12:33",msg:"充电72度，消费72元"},
+          {time:"22:48:18",msg:"充电82度，消费82元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"06:58:15",msg:"充电55度，消费55元"},
+          {time:"10:32:27",msg:"充电75度，消费75元"},
+          {time:"13:48:39",msg:"充电65度，消费65元"},
+          {time:"17:25:22",msg:"充电85度，消费85元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"09:15:33",msg:"充电48度，消费48元"},
+          {time:"12:42:18",msg:"充电68度，消费68元"},
+          {time:"16:18:45",msg:"充电58度，消费58元"},
+          {time:"19:55:27",msg:"充电78度，消费78元"},
+          {time:"23:12:15",msg:"充电88度，消费88元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "47%",
+        record:[
+          {time:"07:22:28",msg:"充电51度，消费51元"},
+          {time:"10:48:17",msg:"充电71度，消费71元"},
+          {time:"14:15:33",msg:"充电61度，消费61元"},
+          {time:"17:42:22",msg:"充电81度，消费81元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"08:45:42",msg:"充电44度，消费44元"},
+          {time:"12:22:28",msg:"充电64度，消费64元"},
+          {time:"15:58:15",msg:"充电54度，消费54元"},
+          {time:"19:35:33",msg:"充电74度，消费74元"},
+          {time:"22:18:45",msg:"充电84度，消费84元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "89%",
+        record:[
+          {time:"06:38:15",msg:"充电57度，消费57元"},
+          {time:"10:15:27",msg:"充电77度，消费77元"},
+          {time:"13:52:39",msg:"充电67度，消费67元"},
+          {time:"17:28:22",msg:"充电87度，消费87元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"09:28:33",msg:"充电41度，消费41元"},
+          {time:"12:55:18",msg:"充电61度，消费61元"},
+          {time:"16:32:45",msg:"充电51度，消费51元"},
+          {time:"20:08:27",msg:"充电71度，消费71元"},
+          {time:"23:25:15",msg:"充电81度，消费81元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:52:28",msg:"充电54度，消费54元"},
+          {time:"11:28:17",msg:"充电74度，消费74元"},
+          {time:"14:45:33",msg:"充电64度，消费64元"},
+          {time:"18:22:22",msg:"充电84度，消费84元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:18:42",msg:"充电47度，消费47元"},
+          {time:"11:45:28",msg:"充电67度，消费67元"},
+          {time:"15:22:15",msg:"充电57度，消费57元"},
+          {time:"18:58:33",msg:"充电77度，消费77元"},
+          {time:"22:35:45",msg:"充电87度，消费87元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"06:42:15",msg:"充电50度，消费50元"},
+          {time:"10:18:27",msg:"充电70度，消费70元"},
+          {time:"13:35:39",msg:"充电60度，消费60元"},
+          {time:"17:12:22",msg:"充电80度，消费80元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:05:33",msg:"充电43度，消费43元"},
+          {time:"12:32:18",msg:"充电63度，消费63元"},
+          {time:"16:08:45",msg:"充电53度，消费53元"},
+          {time:"19:45:27",msg:"充电73度，消费73元"},
+          {time:"23:02:15",msg:"充电83度，消费83元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"07:35:28",msg:"充电56度，消费56元"},
+          {time:"11:12:17",msg:"充电76度，消费76元"},
+          {time:"14:48:33",msg:"充电66度，消费66元"},
+          {time:"18:25:22",msg:"充电86度，消费86元"},
+        ]
+      },
 
     ],
   },
@@ -1269,322 +1508,2151 @@ let chargingPile = [
     id: "VXZ10003",
     name: "广州花城广场充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "19%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "53%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "76%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"06:15:22",msg:"充电63度，消费63元"},
+          {time:"09:38:17",msg:"充电83度，消费83元"},
+          {time:"13:25:33",msg:"充电73度，消费73元"},
+          {time:"16:52:28",msg:"充电93度，消费93元"},
+          {time:"20:18:45",msg:"充电103度，消费103元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "19%",
+        record:[
+          {time:"07:42:15",msg:"充电46度，消费46元"},
+          {time:"11:18:33",msg:"充电66度，消费66元"},
+          {time:"14:55:27",msg:"充电56度，消费56元"},
+          {time:"18:32:22",msg:"充电76度，消费76元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"08:28:42",msg:"充电49度，消费49元"},
+          {time:"12:05:18",msg:"充电69度，消费69元"},
+          {time:"15:42:45",msg:"充电59度，消费59元"},
+          {time:"19:18:27",msg:"充电79度，消费79元"},
+          {time:"22:55:15",msg:"充电89度，消费89元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "53%",
+        record:[
+          {time:"06:52:28",msg:"充电52度，消费52元"},
+          {time:"10:28:17",msg:"充电72度，消费72元"},
+          {time:"13:45:33",msg:"充电62度，消费62元"},
+          {time:"17:22:22",msg:"充电82度，消费82元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:18:15",msg:"充电45度，消费45元"},
+          {time:"12:45:33",msg:"充电65度，消费65元"},
+          {time:"16:22:28",msg:"充电55度，消费55元"},
+          {time:"19:58:45",msg:"充电75度，消费75元"},
+          {time:"23:35:22",msg:"充电85度，消费85元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "76%",
+        record:[
+          {time:"07:25:42",msg:"充电58度，消费58元"},
+          {time:"11:02:17",msg:"充电78度，消费78元"},
+          {time:"14:38:33",msg:"充电68度，消费68元"},
+          {time:"18:15:28",msg:"充电88度，消费88元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"08:48:28",msg:"充电41度，消费41元"},
+          {time:"12:25:15",msg:"充电61度，消费61元"},
+          {time:"16:02:42",msg:"充电51度，消费51元"},
+          {time:"19:38:33",msg:"充电71度，消费71元"},
+          {time:"23:15:18",msg:"充电81度，消费81元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"06:35:17",msg:"充电54度，消费54元"},
+          {time:"10:12:33",msg:"充电74度，消费74元"},
+          {time:"13:48:28",msg:"充电64度，消费64元"},
+          {time:"17:25:45",msg:"充电84度，消费84元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:22:42",msg:"充电47度，消费47元"},
+          {time:"12:58:17",msg:"充电67度，消费67元"},
+          {time:"16:35:33",msg:"充电57度，消费57元"},
+          {time:"20:12:28",msg:"充电77度，消费77元"},
+          {time:"23:48:45",msg:"充电87度，消费87元"},
+        ]
+      },
 
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2 ,percent: "38%" },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"07:58:15",msg:"充电53度，消费53元"},
+          {time:"11:35:33",msg:"充电73度，消费73元"},
+          {time:"15:12:28",msg:"充电63度，消费63元"},
+          {time:"18:48:45",msg:"充电83度，消费83元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2 ,percent: "38%",
+        record:[
+          {time:"08:32:42",msg:"充电50度，消费50元"},
+          {time:"12:08:17",msg:"充电70度，消费70元"},
+          {time:"15:45:33",msg:"充电60度，消费60元"},
+          {time:"19:22:28",msg:"充电80度，消费80元"},
+          {time:"22:58:15",msg:"充电90度，消费90元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"06:45:28",msg:"充电56度，消费56元"},
+          {time:"10:22:17",msg:"充电76度，消费76元"},
+          {time:"13:58:33",msg:"充电66度，消费66元"},
+          {time:"17:35:45",msg:"充电86度，消费86元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"09:12:15",msg:"充电43度，消费43元"},
+          {time:"12:48:33",msg:"充电63度，消费63元"},
+          {time:"16:25:28",msg:"充电53度，消费53元"},
+          {time:"20:02:42",msg:"充电73度，消费73元"},
+          {time:"23:38:17",msg:"充电83度，消费83元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:18:42",msg:"充电59度，消费59元"},
+          {time:"10:55:28",msg:"充电79度，消费79元"},
+          {time:"14:32:15",msg:"充电69度，消费69元"},
+          {time:"18:08:33",msg:"充电89度，消费89元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"08:55:17",msg:"充电42度，消费42元"},
+          {time:"12:32:33",msg:"充电62度，消费62元"},
+          {time:"16:08:28",msg:"充电52度，消费52元"},
+          {time:"19:45:42",msg:"充电72度，消费72元"},
+          {time:"23:22:15",msg:"充电82度，消费82元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10004",
     name: "深圳大梅沙充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "42%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "68%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "15%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "83%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "57%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "91%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"06:28:15",msg:"充电61度，消费61元"},
+          {time:"09:45:33",msg:"充电81度，消费81元"},
+          {time:"13:22:28",msg:"充电71度，消费71元"},
+          {time:"16:58:42",msg:"充电91度，消费91元"},
+          {time:"20:35:17",msg:"充电101度，消费101元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "42%",
+        record:[
+          {time:"07:52:42",msg:"充电44度，消费44元"},
+          {time:"11:28:17",msg:"充电64度，消费64元"},
+          {time:"15:05:33",msg:"充电54度，消费54元"},
+          {time:"18:42:28",msg:"充电74度，消费74元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:18:28",msg:"充电47度，消费47元"},
+          {time:"12:15:15",msg:"充电67度，消费67元"},
+          {time:"15:52:42",msg:"充电57度，消费57元"},
+          {time:"19:28:33",msg:"充电77度，消费77元"},
+          {time:"23:05:18",msg:"充电87度，消费87元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "68%",
+        record:[
+          {time:"06:45:17",msg:"充电50度，消费50元"},
+          {time:"10:22:33",msg:"充电70度，消费70元"},
+          {time:"13:58:28",msg:"充电60度，消费60元"},
+          {time:"17:35:42",msg:"充电80度，消费80元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "15%",
+        record:[
+          {time:"09:32:15",msg:"充电43度，消费43元"},
+          {time:"13:08:33",msg:"充电63度，消费63元"},
+          {time:"16:45:28",msg:"充电53度，消费53元"},
+          {time:"20:22:42",msg:"充电73度，消费73元"},
+          {time:"23:58:17",msg:"充电83度，消费83元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "83%",
+        record:[
+          {time:"07:15:42",msg:"充电56度，消费56元"},
+          {time:"10:52:17",msg:"充电76度，消费76元"},
+          {time:"14:28:33",msg:"充电66度，消费66元"},
+          {time:"18:05:28",msg:"充电86度，消费86元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"08:38:28",msg:"充电39度，消费39元"},
+          {time:"12:15:15",msg:"充电59度，消费59元"},
+          {time:"15:52:42",msg:"充电49度，消费49元"},
+          {time:"19:28:33",msg:"充电69度，消费69元"},
+          {time:"23:05:18",msg:"充电79度，消费79元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "57%",
+        record:[
+          {time:"06:22:17",msg:"充电52度，消费52元"},
+          {time:"09:58:33",msg:"充电72度，消费72元"},
+          {time:"13:35:28",msg:"充电62度，消费62元"},
+          {time:"17:12:42",msg:"充电82度，消费82元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:48:15",msg:"充电45度，消费45元"},
+          {time:"13:25:33",msg:"充电65度，消费65元"},
+          {time:"17:02:28",msg:"充电55度，消费55元"},
+          {time:"20:38:42",msg:"充电75度，消费75元"},
+          {time:"00:15:17",msg:"充电85度，消费85元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:35:42",msg:"充电58度，消费58元"},
+          {time:"11:12:17",msg:"充电78度，消费78元"},
+          {time:"14:48:33",msg:"充电68度，消费68元"},
+          {time:"18:25:28",msg:"充电88度，消费88元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:58:28",msg:"充电41度，消费41元"},
+          {time:"12:35:15",msg:"充电61度，消费61元"},
+          {time:"16:12:42",msg:"充电51度，消费51元"},
+          {time:"19:48:33",msg:"充电71度，消费71元"},
+          {time:"23:25:18",msg:"充电81度，消费81元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"06:12:17",msg:"充电54度，消费54元"},
+          {time:"09:48:33",msg:"充电74度，消费74元"},
+          {time:"13:25:28",msg:"充电64度，消费64元"},
+          {time:"17:02:42",msg:"充电84度，消费84元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:25:15",msg:"充电47度，消费47元"},
+          {time:"13:02:33",msg:"充电67度，消费67元"},
+          {time:"16:38:28",msg:"充电57度，消费57元"},
+          {time:"20:15:42",msg:"充电77度，消费77元"},
+          {time:"23:52:17",msg:"充电87度，消费87元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"07:48:42",msg:"充电50度，消费50元"},
+          {time:"11:25:17",msg:"充电70度，消费70元"},
+          {time:"15:02:33",msg:"充电60度，消费60元"},
+          {time:"18:38:28",msg:"充电80度，消费80元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:15:28",msg:"充电53度，消费53元"},
+          {time:"11:52:15",msg:"充电73度，消费73元"},
+          {time:"15:28:42",msg:"充电63度，消费63元"},
+          {time:"19:05:33",msg:"充电83度，消费83元"},
+          {time:"22:42:18",msg:"充电93度，消费93元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "91%",
+        record:[
+          {time:"06:38:17",msg:"充电56度，消费56元"},
+          {time:"10:15:33",msg:"充电76度，消费76元"},
+          {time:"13:52:28",msg:"充电66度，消费66元"},
+          {time:"17:28:42",msg:"充电86度，消费86元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"09:05:15",msg:"充电49度，消费49元"},
+          {time:"12:42:33",msg:"充电69度，消费69元"},
+          {time:"16:18:28",msg:"充电59度，消费59元"},
+          {time:"19:55:42",msg:"充电79度，消费79元"},
+          {time:"23:32:17",msg:"充电89度，消费89元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:28:42",msg:"充电42度，消费42元"},
+          {time:"11:05:17",msg:"充电62度，消费62元"},
+          {time:"14:42:33",msg:"充电52度，消费52元"},
+          {time:"18:18:28",msg:"充电72度，消费72元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"08:52:28",msg:"充电45度，消费45元"},
+          {time:"12:28:15",msg:"充电65度，消费65元"},
+          {time:"16:05:42",msg:"充电55度，消费55元"},
+          {time:"19:42:33",msg:"充电75度，消费75元"},
+          {time:"23:18:18",msg:"充电85度，消费85元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10005",
     name: "成都天府广场充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "58%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "55%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "36%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "44%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "48%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "60%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"06:18:25",msg:"充电59度，消费59元"},
+          {time:"09:35:17",msg:"充电79度，消费79元"},
+          {time:"13:12:33",msg:"充电69度，消费69元"},
+          {time:"16:48:28",msg:"充电89度，消费89元"},
+          {time:"20:25:42",msg:"充电99度，消费99元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "58%",
+        record:[
+          {time:"07:42:18",msg:"充电42度，消费42元"},
+          {time:"11:18:33",msg:"充电62度，消费62元"},
+          {time:"14:55:28",msg:"充电52度，消费52元"},
+          {time:"18:32:42",msg:"充电72度，消费72元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:28:42",msg:"充电45度，消费45元"},
+          {time:"12:05:17",msg:"充电65度，消费65元"},
+          {time:"15:42:33",msg:"充电55度，消费55元"},
+          {time:"19:18:28",msg:"充电75度，消费75元"},
+          {time:"22:55:15",msg:"充电85度，消费85元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "55%",
+        record:[
+          {time:"06:52:15",msg:"充电48度，消费48元"},
+          {time:"10:28:33",msg:"充电68度，消费68元"},
+          {time:"14:05:28",msg:"充电58度，消费58元"},
+          {time:"17:42:42",msg:"充电78度，消费78元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "36%",
+        record:[
+          {time:"09:15:28",msg:"充电41度，消费41元"},
+          {time:"12:52:17",msg:"充电61度，消费61元"},
+          {time:"16:28:33",msg:"充电51度，消费51元"},
+          {time:"20:05:42",msg:"充电71度，消费71元"},
+          {time:"23:42:18",msg:"充电81度，消费81元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "44%",
+        record:[
+          {time:"07:38:42",msg:"充电54度，消费54元"},
+          {time:"11:15:17",msg:"充电74度，消费74元"},
+          {time:"14:52:33",msg:"充电64度，消费64元"},
+          {time:"18:28:28",msg:"充电84度，消费84元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"08:05:15",msg:"充电37度，消费37元"},
+          {time:"11:42:33",msg:"充电57度，消费57元"},
+          {time:"15:18:28",msg:"充电47度，消费47元"},
+          {time:"18:55:42",msg:"充电67度，消费67元"},
+          {time:"22:32:17",msg:"充电77度，消费77元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "48%",
+        record:[
+          {time:"06:32:28",msg:"充电50度，消费50元"},
+          {time:"10:08:17",msg:"充电70度，消费70元"},
+          {time:"13:45:33",msg:"充电60度，消费60元"},
+          {time:"17:22:42",msg:"充电80度，消费80元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:58:42",msg:"充电43度，消费43元"},
+          {time:"13:35:17",msg:"充电63度，消费63元"},
+          {time:"17:12:33",msg:"充电53度，消费53元"},
+          {time:"20:48:28",msg:"充电73度，消费73元"},
+          {time:"00:25:15",msg:"充电83度，消费83元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:25:15",msg:"充电56度，消费56元"},
+          {time:"11:02:33",msg:"充电76度，消费76元"},
+          {time:"14:38:28",msg:"充电66度，消费66元"},
+          {time:"18:15:42",msg:"充电86度，消费86元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:48:28",msg:"充电39度，消费39元"},
+          {time:"12:25:17",msg:"充电59度，消费59元"},
+          {time:"16:02:33",msg:"充电49度，消费49元"},
+          {time:"19:38:42",msg:"充电69度，消费69元"},
+          {time:"23:15:18",msg:"充电79度，消费79元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"06:15:42",msg:"充电52度，消费52元"},
+          {time:"09:52:17",msg:"充电72度，消费72元"},
+          {time:"13:28:33",msg:"充电62度，消费62元"},
+          {time:"17:05:28",msg:"充电82度，消费82元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:38:15",msg:"充电45度，消费45元"},
+          {time:"13:15:33",msg:"充电65度，消费65元"},
+          {time:"16:52:28",msg:"充电55度，消费55元"},
+          {time:"20:28:42",msg:"充电75度，消费75元"},
+          {time:"00:05:17",msg:"充电85度，消费85元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"07:02:28",msg:"充电48度，消费48元"},
+          {time:"10:38:17",msg:"充电68度，消费68元"},
+          {time:"14:15:33",msg:"充电58度，消费58元"},
+          {time:"17:52:42",msg:"充电78度，消费78元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:25:42",msg:"充电51度，消费51元"},
+          {time:"12:02:17",msg:"充电71度，消费71元"},
+          {time:"15:38:33",msg:"充电61度，消费61元"},
+          {time:"19:15:28",msg:"充电81度，消费81元"},
+          {time:"22:52:15",msg:"充电91度，消费91元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "60%",
+        record:[
+          {time:"06:48:15",msg:"充电54度，消费54元"},
+          {time:"10:25:33",msg:"充电74度，消费74元"},
+          {time:"14:02:28",msg:"充电64度，消费64元"},
+          {time:"17:38:42",msg:"充电84度，消费84元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"09:12:28",msg:"充电47度，消费47元"},
+          {time:"12:48:17",msg:"充电67度，消费67元"},
+          {time:"16:25:33",msg:"充电57度，消费57元"},
+          {time:"20:02:42",msg:"充电77度，消费77元"},
+          {time:"23:38:18",msg:"充电87度，消费87元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:35:42",msg:"充电40度，消费40元"},
+          {time:"11:12:17",msg:"充电60度，消费60元"},
+          {time:"14:48:33",msg:"充电50度，消费50元"},
+          {time:"18:25:28",msg:"充电70度，消费70元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"08:58:15",msg:"充电43度，消费43元"},
+          {time:"12:35:33",msg:"充电63度，消费63元"},
+          {time:"16:12:28",msg:"充电53度，消费53元"},
+          {time:"19:48:42",msg:"充电73度，消费73元"},
+          {time:"23:25:17",msg:"充电83度，消费83元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10006",
     name: "西安钟楼充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "29%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "64%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "37%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "81%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "56%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "73%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"06:22:18",msg:"充电57度，消费57元"},
+          {time:"09:48:33",msg:"充电77度，消费77元"},
+          {time:"13:25:28",msg:"充电67度，消费67元"},
+          {time:"17:02:42",msg:"充电87度，消费87元"},
+          {time:"20:38:17",msg:"充电97度，消费97元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "29%",
+        record:[
+          {time:"07:45:25",msg:"充电40度，消费40元"},
+          {time:"11:22:17",msg:"充电60度，消费60元"},
+          {time:"14:58:33",msg:"充电50度，消费50元"},
+          {time:"18:35:28",msg:"充电70度，消费70元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:12:42",msg:"充电43度，消费43元"},
+          {time:"11:48:17",msg:"充电63度，消费63元"},
+          {time:"15:25:33",msg:"充电53度，消费53元"},
+          {time:"19:02:28",msg:"充电73度，消费73元"},
+          {time:"22:38:15",msg:"充电83度，消费83元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "64%",
+        record:[
+          {time:"06:35:28",msg:"充电46度，消费46元"},
+          {time:"10:12:17",msg:"充电66度，消费66元"},
+          {time:"13:48:33",msg:"充电56度，消费56元"},
+          {time:"17:25:42",msg:"充电76度，消费76元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "37%",
+        record:[
+          {time:"09:58:15",msg:"充电39度，消费39元"},
+          {time:"13:35:33",msg:"充电59度，消费59元"},
+          {time:"17:12:28",msg:"充电49度，消费49元"},
+          {time:"20:48:42",msg:"充电69度，消费69元"},
+          {time:"00:25:17",msg:"充电79度，消费79元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "81%",
+        record:[
+          {time:"07:22:42",msg:"充电52度，消费52元"},
+          {time:"10:58:17",msg:"充电72度，消费72元"},
+          {time:"14:35:33",msg:"充电62度，消费62元"},
+          {time:"18:12:28",msg:"充电82度，消费82元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"08:45:28",msg:"充电35度，消费35元"},
+          {time:"12:22:15",msg:"充电55度，消费55元"},
+          {time:"15:58:42",msg:"充电45度，消费45元"},
+          {time:"19:35:33",msg:"充电65度，消费65元"},
+          {time:"23:12:18",msg:"充电75度，消费75元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "56%",
+        record:[
+          {time:"06:08:17",msg:"充电48度，消费48元"},
+          {time:"09:45:33",msg:"充电68度，消费68元"},
+          {time:"13:22:28",msg:"充电58度，消费58元"},
+          {time:"16:58:42",msg:"充电78度，消费78元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:32:15",msg:"充电41度，消费41元"},
+          {time:"13:08:33",msg:"充电61度，消费61元"},
+          {time:"16:45:28",msg:"充电51度，消费51元"},
+          {time:"20:22:42",msg:"充电71度，消费71元"},
+          {time:"23:58:17",msg:"充电81度，消费81元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:55:42",msg:"充电54度，消费54元"},
+          {time:"11:32:17",msg:"充电74度，消费74元"},
+          {time:"15:08:33",msg:"充电64度，消费64元"},
+          {time:"18:45:28",msg:"充电84度，消费84元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:18:28",msg:"充电37度，消费37元"},
+          {time:"11:55:15",msg:"充电57度，消费57元"},
+          {time:"15:32:42",msg:"充电47度，消费47元"},
+          {time:"19:08:33",msg:"充电67度，消费67元"},
+          {time:"22:45:18",msg:"充电77度，消费77元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"06:42:17",msg:"充电50度，消费50元"},
+          {time:"10:18:33",msg:"充电70度，消费70元"},
+          {time:"13:55:28",msg:"充电60度，消费60元"},
+          {time:"17:32:42",msg:"充电80度，消费80元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:05:15",msg:"充电43度，消费43元"},
+          {time:"12:42:33",msg:"充电63度，消费63元"},
+          {time:"16:18:28",msg:"充电53度，消费53元"},
+          {time:"19:55:42",msg:"充电73度，消费73元"},
+          {time:"23:32:17",msg:"充电83度，消费83元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"07:28:42",msg:"充电46度，消费46元"},
+          {time:"11:05:17",msg:"充电66度，消费66元"},
+          {time:"14:42:33",msg:"充电56度，消费56元"},
+          {time:"18:18:28",msg:"充电76度，消费76元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:52:28",msg:"充电49度，消费49元"},
+          {time:"12:28:15",msg:"充电69度，消费69元"},
+          {time:"16:05:42",msg:"充电59度，消费59元"},
+          {time:"19:42:33",msg:"充电79度，消费79元"},
+          {time:"23:18:18",msg:"充电89度，消费89元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "73%",
+        record:[
+          {time:"06:15:17",msg:"充电52度，消费52元"},
+          {time:"09:52:33",msg:"充电72度，消费72元"},
+          {time:"13:28:28",msg:"充电62度，消费62元"},
+          {time:"17:05:42",msg:"充电82度，消费82元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"09:38:15",msg:"充电45度，消费45元"},
+          {time:"13:15:33",msg:"充电65度，消费65元"},
+          {time:"16:52:28",msg:"充电55度，消费55元"},
+          {time:"20:28:42",msg:"充电75度，消费75元"},
+          {time:"00:05:17",msg:"充电85度，消费85元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:02:42",msg:"充电38度，消费38元"},
+          {time:"10:38:17",msg:"充电58度，消费58元"},
+          {time:"14:15:33",msg:"充电48度，消费48元"},
+          {time:"17:52:28",msg:"充电68度，消费68元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"08:25:28",msg:"充电41度，消费41元"},
+          {time:"12:02:15",msg:"充电61度，消费61元"},
+          {time:"15:38:42",msg:"充电51度，消费51元"},
+          {time:"19:15:33",msg:"充电71度，消费71元"},
+          {time:"22:52:18",msg:"充电81度，消费81元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10007",
     name: "杭州西湖充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "33%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "59%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "74%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "46%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "87%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "18%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"06:32:25",msg:"充电55度，消费55元"},
+          {time:"09:58:17",msg:"充电75度，消费75元"},
+          {time:"13:35:33",msg:"充电65度，消费65元"},
+          {time:"17:12:28",msg:"充电85度，消费85元"},
+          {time:"20:48:42",msg:"充电95度，消费95元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "33%",
+        record:[
+          {time:"07:55:18",msg:"充电38度，消费38元"},
+          {time:"11:32:33",msg:"充电58度，消费58元"},
+          {time:"15:08:28",msg:"充电48度，消费48元"},
+          {time:"18:45:42",msg:"充电68度，消费68元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:22:42",msg:"充电41度，消费41元"},
+          {time:"11:58:17",msg:"充电61度，消费61元"},
+          {time:"15:35:33",msg:"充电51度，消费51元"},
+          {time:"19:12:28",msg:"充电71度，消费71元"},
+          {time:"22:48:15",msg:"充电81度，消费81元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "59%",
+        record:[
+          {time:"06:45:28",msg:"充电44度，消费44元"},
+          {time:"10:22:17",msg:"充电64度，消费64元"},
+          {time:"13:58:33",msg:"充电54度，消费54元"},
+          {time:"17:35:42",msg:"充电74度，消费74元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "74%",
+        record:[
+          {time:"09:08:15",msg:"充电37度，消费37元"},
+          {time:"12:45:33",msg:"充电57度，消费57元"},
+          {time:"16:22:28",msg:"充电47度，消费47元"},
+          {time:"19:58:42",msg:"充电67度，消费67元"},
+          {time:"23:35:17",msg:"充电77度，消费77元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "46%",
+        record:[
+          {time:"07:32:42",msg:"充电50度，消费50元"},
+          {time:"11:08:17",msg:"充电70度，消费70元"},
+          {time:"14:45:33",msg:"充电60度，消费60元"},
+          {time:"18:22:28",msg:"充电80度，消费80元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"08:55:28",msg:"充电33度，消费33元"},
+          {time:"12:32:15",msg:"充电53度，消费53元"},
+          {time:"16:08:42",msg:"充电43度，消费43元"},
+          {time:"19:45:33",msg:"充电63度，消费63元"},
+          {time:"23:22:18",msg:"充电73度，消费73元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "87%",
+        record:[
+          {time:"06:18:17",msg:"充电46度，消费46元"},
+          {time:"09:55:33",msg:"充电66度，消费66元"},
+          {time:"13:32:28",msg:"充电56度，消费56元"},
+          {time:"17:08:42",msg:"充电76度，消费76元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:42:15",msg:"充电39度，消费39元"},
+          {time:"13:18:33",msg:"充电59度，消费59元"},
+          {time:"16:55:28",msg:"充电49度，消费49元"},
+          {time:"20:32:42",msg:"充电69度，消费69元"},
+          {time:"00:08:17",msg:"充电79度，消费79元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:05:42",msg:"充电52度，消费52元"},
+          {time:"10:42:17",msg:"充电72度，消费72元"},
+          {time:"14:18:33",msg:"充电62度，消费62元"},
+          {time:"17:55:28",msg:"充电82度，消费82元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:28:28",msg:"充电35度，消费35元"},
+          {time:"12:05:15",msg:"充电55度，消费55元"},
+          {time:"15:42:42",msg:"充电45度，消费45元"},
+          {time:"19:18:33",msg:"充电65度，消费65元"},
+          {time:"22:55:18",msg:"充电75度，消费75元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"06:52:17",msg:"充电48度，消费48元"},
+          {time:"10:28:33",msg:"充电68度，消费68元"},
+          {time:"14:05:28",msg:"充电58度，消费58元"},
+          {time:"17:42:42",msg:"充电78度，消费78元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:15:15",msg:"充电41度，消费41元"},
+          {time:"12:52:33",msg:"充电61度，消费61元"},
+          {time:"16:28:28",msg:"充电51度，消费51元"},
+          {time:"20:05:42",msg:"充电71度，消费71元"},
+          {time:"23:42:17",msg:"充电81度，消费81元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"07:38:42",msg:"充电44度，消费44元"},
+          {time:"11:15:17",msg:"充电64度，消费64元"},
+          {time:"14:52:33",msg:"充电54度，消费54元"},
+          {time:"18:28:28",msg:"充电74度，消费74元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:02:28",msg:"充电47度，消费47元"},
+          {time:"12:38:15",msg:"充电67度，消费67元"},
+          {time:"16:15:42",msg:"充电57度，消费57元"},
+          {time:"19:52:33",msg:"充电77度，消费77元"},
+          {time:"23:28:18",msg:"充电87度，消费87元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "18%",
+        record:[
+          {time:"06:25:17",msg:"充电50度，消费50元"},
+          {time:"10:02:33",msg:"充电70度，消费70元"},
+          {time:"13:38:28",msg:"充电60度，消费60元"},
+          {time:"17:15:42",msg:"充电80度，消费80元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"09:48:15",msg:"充电43度，消费43元"},
+          {time:"13:25:33",msg:"充电63度，消费63元"},
+          {time:"17:02:28",msg:"充电53度，消费53元"},
+          {time:"20:38:42",msg:"充电73度，消费73元"},
+          {time:"00:15:17",msg:"充电83度，消费83元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:12:42",msg:"充电36度，消费36元"},
+          {time:"10:48:17",msg:"充电56度，消费56元"},
+          {time:"14:25:33",msg:"充电46度，消费46元"},
+          {time:"18:02:28",msg:"充电66度，消费66元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"08:35:28",msg:"充电39度，消费39元"},
+          {time:"12:12:15",msg:"充电59度，消费59元"},
+          {time:"15:48:42",msg:"充电49度，消费49元"},
+          {time:"19:25:33",msg:"充电69度，消费69元"},
+          {time:"23:02:18",msg:"充电79度，消费79元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10008",
     name: "南京夫子庙充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "51%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "26%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "79%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "43%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "65%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "92%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"06:28:32",msg:"充电53度，消费53元"},
+          {time:"09:55:18",msg:"充电73度，消费73元"},
+          {time:"13:32:33",msg:"充电63度，消费63元"},
+          {time:"17:08:28",msg:"充电83度，消费83元"},
+          {time:"20:45:42",msg:"充电93度，消费93元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "51%",
+        record:[
+          {time:"07:52:25",msg:"充电36度，消费36元"},
+          {time:"11:28:17",msg:"充电56度，消费56元"},
+          {time:"15:05:33",msg:"充电46度，消费46元"},
+          {time:"18:42:28",msg:"充电66度，消费66元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:18:42",msg:"充电39度，消费39元"},
+          {time:"11:55:17",msg:"充电59度，消费59元"},
+          {time:"15:32:33",msg:"充电49度，消费49元"},
+          {time:"19:08:28",msg:"充电69度，消费69元"},
+          {time:"22:45:15",msg:"充电79度，消费79元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "26%",
+        record:[
+          {time:"06:42:28",msg:"充电42度，消费42元"},
+          {time:"10:18:17",msg:"充电62度，消费62元"},
+          {time:"13:55:33",msg:"充电52度，消费52元"},
+          {time:"17:32:42",msg:"充电72度，消费72元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "79%",
+        record:[
+          {time:"09:05:15",msg:"充电35度，消费35元"},
+          {time:"12:42:33",msg:"充电55度，消费55元"},
+          {time:"16:18:28",msg:"充电45度，消费45元"},
+          {time:"19:55:42",msg:"充电65度，消费65元"},
+          {time:"23:32:17",msg:"充电75度，消费75元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "43%",
+        record:[
+          {time:"07:28:42",msg:"充电48度，消费48元"},
+          {time:"11:05:17",msg:"充电68度，消费68元"},
+          {time:"14:42:33",msg:"充电58度，消费58元"},
+          {time:"18:18:28",msg:"充电78度，消费78元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"08:52:28",msg:"充电31度，消费31元"},
+          {time:"12:28:15",msg:"充电51度，消费51元"},
+          {time:"16:05:42",msg:"充电41度，消费41元"},
+          {time:"19:42:33",msg:"充电61度，消费61元"},
+          {time:"23:18:18",msg:"充电71度，消费71元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "65%",
+        record:[
+          {time:"06:15:17",msg:"充电44度，消费44元"},
+          {time:"09:52:33",msg:"充电64度，消费64元"},
+          {time:"13:28:28",msg:"充电54度，消费54元"},
+          {time:"17:05:42",msg:"充电74度，消费74元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:38:15",msg:"充电37度，消费37元"},
+          {time:"13:15:33",msg:"充电57度，消费57元"},
+          {time:"16:52:28",msg:"充电47度，消费47元"},
+          {time:"20:28:42",msg:"充电67度，消费67元"},
+          {time:"00:05:17",msg:"充电77度，消费77元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:02:42",msg:"充电50度，消费50元"},
+          {time:"10:38:17",msg:"充电70度，消费70元"},
+          {time:"14:15:33",msg:"充电60度，消费60元"},
+          {time:"17:52:28",msg:"充电80度，消费80元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:25:28",msg:"充电33度，消费33元"},
+          {time:"12:02:15",msg:"充电53度，消费53元"},
+          {time:"15:38:42",msg:"充电43度，消费43元"},
+          {time:"19:15:33",msg:"充电63度，消费63元"},
+          {time:"22:52:18",msg:"充电73度，消费73元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"06:48:17",msg:"充电46度，消费46元"},
+          {time:"10:25:33",msg:"充电66度，消费66元"},
+          {time:"14:02:28",msg:"充电56度，消费56元"},
+          {time:"17:38:42",msg:"充电76度，消费76元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:12:15",msg:"充电39度，消费39元"},
+          {time:"12:48:33",msg:"充电59度，消费59元"},
+          {time:"16:25:28",msg:"充电49度，消费49元"},
+          {time:"20:02:42",msg:"充电69度，消费69元"},
+          {time:"23:38:17",msg:"充电79度，消费79元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"07:35:42",msg:"充电42度，消费42元"},
+          {time:"11:12:17",msg:"充电62度，消费62元"},
+          {time:"14:48:33",msg:"充电52度，消费52元"},
+          {time:"18:25:28",msg:"充电72度，消费72元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:58:28",msg:"充电45度，消费45元"},
+          {time:"12:35:15",msg:"充电65度，消费65元"},
+          {time:"16:12:42",msg:"充电55度，消费55元"},
+          {time:"19:48:33",msg:"充电75度，消费75元"},
+          {time:"23:25:18",msg:"充电85度，消费85元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "92%",
+        record:[
+          {time:"06:22:17",msg:"充电48度，消费48元"},
+          {time:"09:58:33",msg:"充电68度，消费68元"},
+          {time:"13:35:28",msg:"充电58度，消费58元"},
+          {time:"17:12:42",msg:"充电78度，消费78元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"09:45:15",msg:"充电41度，消费41元"},
+          {time:"13:22:33",msg:"充电61度，消费61元"},
+          {time:"16:58:28",msg:"充电51度，消费51元"},
+          {time:"20:35:42",msg:"充电71度，消费71元"},
+          {time:"00:12:17",msg:"充电81度，消费81元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:08:42",msg:"充电34度，消费34元"},
+          {time:"10:45:17",msg:"充电54度，消费54元"},
+          {time:"14:22:33",msg:"充电44度，消费44元"},
+          {time:"17:58:28",msg:"充电64度，消费64元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"08:32:28",msg:"充电37度，消费37元"},
+          {time:"12:08:15",msg:"充电57度，消费57元"},
+          {time:"15:45:42",msg:"充电47度，消费47元"},
+          {time:"19:22:33",msg:"充电67度，消费67元"},
+          {time:"22:58:18",msg:"充电77度，消费77元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10009",
     name: "天津意大利风情区充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "35%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "61%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "48%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "77%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "24%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "86%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"06:35:28",msg:"充电51度，消费51元"},
+          {time:"10:02:17",msg:"充电71度，消费71元"},
+          {time:"13:38:33",msg:"充电61度，消费61元"},
+          {time:"17:15:28",msg:"充电81度，消费81元"},
+          {time:"20:52:42",msg:"充电91度，消费91元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "35%",
+        record:[
+          {time:"07:58:25",msg:"充电34度，消费34元"},
+          {time:"11:35:17",msg:"充电54度，消费54元"},
+          {time:"15:12:33",msg:"充电44度，消费44元"},
+          {time:"18:48:28",msg:"充电64度，消费64元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:25:42",msg:"充电37度，消费37元"},
+          {time:"12:02:17",msg:"充电57度，消费57元"},
+          {time:"15:38:33",msg:"充电47度，消费47元"},
+          {time:"19:15:28",msg:"充电67度，消费67元"},
+          {time:"22:52:15",msg:"充电77度，消费77元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "61%",
+        record:[
+          {time:"06:48:28",msg:"充电40度，消费40元"},
+          {time:"10:25:17",msg:"充电60度，消费60元"},
+          {time:"14:02:33",msg:"充电50度，消费50元"},
+          {time:"17:38:42",msg:"充电70度，消费70元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "48%",
+        record:[
+          {time:"09:12:15",msg:"充电33度，消费33元"},
+          {time:"12:48:33",msg:"充电53度，消费53元"},
+          {time:"16:25:28",msg:"充电43度，消费43元"},
+          {time:"20:02:42",msg:"充电63度，消费63元"},
+          {time:"23:38:17",msg:"充电73度，消费73元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "77%",
+        record:[
+          {time:"07:35:42",msg:"充电46度，消费46元"},
+          {time:"11:12:17",msg:"充电66度，消费66元"},
+          {time:"14:48:33",msg:"充电56度，消费56元"},
+          {time:"18:25:28",msg:"充电76度，消费76元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"08:58:28",msg:"充电29度，消费29元"},
+          {time:"12:35:15",msg:"充电49度，消费49元"},
+          {time:"16:12:42",msg:"充电39度，消费39元"},
+          {time:"19:48:33",msg:"充电59度，消费59元"},
+          {time:"23:25:18",msg:"充电69度，消费69元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "24%",
+        record:[
+          {time:"06:22:17",msg:"充电42度，消费42元"},
+          {time:"09:58:33",msg:"充电62度，消费62元"},
+          {time:"13:35:28",msg:"充电52度，消费52元"},
+          {time:"17:12:42",msg:"充电72度，消费72元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:45:15",msg:"充电35度，消费35元"},
+          {time:"13:22:33",msg:"充电55度，消费55元"},
+          {time:"16:58:28",msg:"充电45度，消费45元"},
+          {time:"20:35:42",msg:"充电65度，消费65元"},
+          {time:"00:12:17",msg:"充电75度，消费75元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:08:42",msg:"充电48度，消费48元"},
+          {time:"10:45:17",msg:"充电68度，消费68元"},
+          {time:"14:22:33",msg:"充电58度，消费58元"},
+          {time:"17:58:28",msg:"充电78度，消费78元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:32:28",msg:"充电31度，消费31元"},
+          {time:"12:08:15",msg:"充电51度，消费51元"},
+          {time:"15:45:42",msg:"充电41度，消费41元"},
+          {time:"19:22:33",msg:"充电61度，消费61元"},
+          {time:"22:58:18",msg:"充电71度，消费71元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"06:55:17",msg:"充电44度，消费44元"},
+          {time:"10:32:33",msg:"充电64度，消费64元"},
+          {time:"14:08:28",msg:"充电54度，消费54元"},
+          {time:"17:45:42",msg:"充电74度，消费74元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:18:15",msg:"充电37度，消费37元"},
+          {time:"12:55:33",msg:"充电57度，消费57元"},
+          {time:"16:32:28",msg:"充电47度，消费47元"},
+          {time:"20:08:42",msg:"充电67度，消费67元"},
+          {time:"23:45:17",msg:"充电77度，消费77元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"07:42:42",msg:"充电40度，消费40元"},
+          {time:"11:18:17",msg:"充电60度，消费60元"},
+          {time:"14:55:33",msg:"充电50度，消费50元"},
+          {time:"18:32:28",msg:"充电70度，消费70元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:05:28",msg:"充电43度，消费43元"},
+          {time:"12:42:15",msg:"充电63度，消费63元"},
+          {time:"16:18:42",msg:"充电53度，消费53元"},
+          {time:"19:55:33",msg:"充电73度，消费73元"},
+          {time:"23:32:18",msg:"充电83度，消费83元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "86%",
+        record:[
+          {time:"06:28:17",msg:"充电46度，消费46元"},
+          {time:"10:05:33",msg:"充电66度，消费66元"},
+          {time:"13:42:28",msg:"充电56度，消费56元"},
+          {time:"17:18:42",msg:"充电76度，消费76元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"09:52:15",msg:"充电39度，消费39元"},
+          {time:"13:28:33",msg:"充电59度，消费59元"},
+          {time:"17:05:28",msg:"充电49度，消费49元"},
+          {time:"20:42:42",msg:"充电69度，消费69元"},
+          {time:"00:18:17",msg:"充电79度，消费79元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:15:42",msg:"充电32度，消费32元"},
+          {time:"10:52:17",msg:"充电52度，消费52元"},
+          {time:"14:28:33",msg:"充电42度，消费42元"},
+          {time:"18:05:28",msg:"充电62度，消费62元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"08:38:28",msg:"充电35度，消费35元"},
+          {time:"12:15:15",msg:"充电55度，消费55元"},
+          {time:"15:52:42",msg:"充电45度，消费45元"},
+          {time:"19:28:33",msg:"充电65度，消费65元"},
+          {time:"23:05:18",msg:"充电75度，消费75元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10010",
     name: "青岛栈桥充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "32%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "71%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "66%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "62%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "39%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "66%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"06:42:35",msg:"充电49度，消费49元"},
+          {time:"10:18:17",msg:"充电69度，消费69元"},
+          {time:"13:55:33",msg:"充电59度，消费59元"},
+          {time:"17:32:28",msg:"充电79度，消费79元"},
+          {time:"21:08:42",msg:"充电89度，消费89元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "32%",
+        record:[
+          {time:"08:05:25",msg:"充电32度，消费32元"},
+          {time:"11:42:17",msg:"充电52度，消费52元"},
+          {time:"15:18:33",msg:"充电42度，消费42元"},
+          {time:"18:55:28",msg:"充电62度，消费62元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:32:42",msg:"充电35度，消费35元"},
+          {time:"12:08:17",msg:"充电55度，消费55元"},
+          {time:"15:45:33",msg:"充电45度，消费45元"},
+          {time:"19:22:28",msg:"充电65度，消费65元"},
+          {time:"22:58:15",msg:"充电75度，消费75元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "71%",
+        record:[
+          {time:"06:55:28",msg:"充电38度，消费38元"},
+          {time:"10:32:17",msg:"充电58度，消费58元"},
+          {time:"14:08:33",msg:"充电48度，消费48元"},
+          {time:"17:45:42",msg:"充电68度，消费68元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "66%",
+        record:[
+          {time:"09:18:15",msg:"充电31度，消费31元"},
+          {time:"12:55:33",msg:"充电51度，消费51元"},
+          {time:"16:32:28",msg:"充电41度，消费41元"},
+          {time:"20:08:42",msg:"充电61度，消费61元"},
+          {time:"23:45:17",msg:"充电71度，消费71元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "62%",
+        record:[
+          {time:"07:42:42",msg:"充电44度，消费44元"},
+          {time:"11:18:17",msg:"充电64度，消费64元"},
+          {time:"14:55:33",msg:"充电54度，消费54元"},
+          {time:"18:32:28",msg:"充电74度，消费74元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"09:05:28",msg:"充电27度，消费27元"},
+          {time:"12:42:15",msg:"充电47度，消费47元"},
+          {time:"16:18:42",msg:"充电37度，消费37元"},
+          {time:"19:55:33",msg:"充电57度，消费57元"},
+          {time:"23:32:18",msg:"充电67度，消费67元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "39%",
+        record:[
+          {time:"06:28:17",msg:"充电40度，消费40元"},
+          {time:"10:05:33",msg:"充电60度，消费60元"},
+          {time:"13:42:28",msg:"充电50度，消费50元"},
+          {time:"17:18:42",msg:"充电70度，消费70元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:52:15",msg:"充电33度，消费33元"},
+          {time:"13:28:33",msg:"充电53度，消费53元"},
+          {time:"17:05:28",msg:"充电43度，消费43元"},
+          {time:"20:42:42",msg:"充电63度，消费63元"},
+          {time:"00:18:17",msg:"充电73度，消费73元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:15:42",msg:"充电46度，消费46元"},
+          {time:"10:52:17",msg:"充电66度，消费66元"},
+          {time:"14:28:33",msg:"充电56度，消费56元"},
+          {time:"18:05:28",msg:"充电76度，消费76元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:38:28",msg:"充电29度，消费29元"},
+          {time:"12:15:15",msg:"充电49度，消费49元"},
+          {time:"15:52:42",msg:"充电39度，消费39元"},
+          {time:"19:28:33",msg:"充电59度，消费59元"},
+          {time:"23:05:18",msg:"充电69度，消费69元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:02:17",msg:"充电42度，消费42元"},
+          {time:"10:38:33",msg:"充电62度，消费62元"},
+          {time:"14:15:28",msg:"充电52度，消费52元"},
+          {time:"17:52:42",msg:"充电72度，消费72元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:25:15",msg:"充电35度，消费35元"},
+          {time:"13:02:33",msg:"充电55度，消费55元"},
+          {time:"16:38:28",msg:"充电45度，消费45元"},
+          {time:"20:15:42",msg:"充电65度，消费65元"},
+          {time:"23:52:17",msg:"充电75度，消费75元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"07:48:42",msg:"充电38度，消费38元"},
+          {time:"11:25:17",msg:"充电58度，消费58元"},
+          {time:"15:02:33",msg:"充电48度，消费48元"},
+          {time:"18:38:28",msg:"充电68度，消费68元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:12:28",msg:"充电41度，消费41元"},
+          {time:"12:48:15",msg:"充电61度，消费61元"},
+          {time:"16:25:42",msg:"充电51度，消费51元"},
+          {time:"20:02:33",msg:"充电71度，消费71元"},
+          {time:"23:38:18",msg:"充电81度，消费81元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "66%",
+        record:[
+          {time:"06:35:17",msg:"充电44度，消费44元"},
+          {time:"10:12:33",msg:"充电64度，消费64元"},
+          {time:"13:48:28",msg:"充电54度，消费54元"},
+          {time:"17:25:42",msg:"充电74度，消费74元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"09:58:15",msg:"充电37度，消费37元"},
+          {time:"13:35:33",msg:"充电57度，消费57元"},
+          {time:"17:12:28",msg:"充电47度，消费47元"},
+          {time:"20:48:42",msg:"充电67度，消费67元"},
+          {time:"00:25:17",msg:"充电77度，消费77元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:22:42",msg:"充电30度，消费30元"},
+          {time:"10:58:17",msg:"充电50度，消费50元"},
+          {time:"14:35:33",msg:"充电40度，消费40元"},
+          {time:"18:12:28",msg:"充电60度，消费60元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"08:45:28",msg:"充电33度，消费33元"},
+          {time:"12:22:15",msg:"充电53度，消费53元"},
+          {time:"15:58:42",msg:"充电43度，消费43元"},
+          {time:"19:35:33",msg:"充电63度，消费63元"},
+          {time:"23:12:18",msg:"充电73度，消费73元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10011",
     name: "武汉黄鹤楼充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "88%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "55%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "35%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "49%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "41%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "56%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"06:48:32",msg:"充电47度，消费47元"},
+          {time:"10:25:18",msg:"充电67度，消费67元"},
+          {time:"14:02:33",msg:"充电57度，消费57元"},
+          {time:"17:38:28",msg:"充电77度，消费77元"},
+          {time:"21:15:42",msg:"充电87度，消费87元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "88%",
+        record:[
+          {time:"08:12:25",msg:"充电30度，消费30元"},
+          {time:"11:48:17",msg:"充电50度，消费50元"},
+          {time:"15:25:33",msg:"充电40度，消费40元"},
+          {time:"19:02:28",msg:"充电60度，消费60元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:38:42",msg:"充电33度，消费33元"},
+          {time:"12:15:17",msg:"充电53度，消费53元"},
+          {time:"15:52:33",msg:"充电43度，消费43元"},
+          {time:"19:28:28",msg:"充电63度，消费63元"},
+          {time:"23:05:15",msg:"充电73度，消费73元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "55%",
+        record:[
+          {time:"07:02:28",msg:"充电36度，消费36元"},
+          {time:"10:38:17",msg:"充电56度，消费56元"},
+          {time:"14:15:33",msg:"充电46度，消费46元"},
+          {time:"17:52:42",msg:"充电66度，消费66元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "35%",
+        record:[
+          {time:"09:25:15",msg:"充电29度，消费29元"},
+          {time:"13:02:33",msg:"充电49度，消费49元"},
+          {time:"16:38:28",msg:"充电39度，消费39元"},
+          {time:"20:15:42",msg:"充电59度，消费59元"},
+          {time:"23:52:17",msg:"充电69度，消费69元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "49%",
+        record:[
+          {time:"07:48:42",msg:"充电42度，消费42元"},
+          {time:"11:25:17",msg:"充电62度，消费62元"},
+          {time:"15:02:33",msg:"充电52度，消费52元"},
+          {time:"18:38:28",msg:"充电72度，消费72元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"09:12:28",msg:"充电25度，消费25元"},
+          {time:"12:48:15",msg:"充电45度，消费45元"},
+          {time:"16:25:42",msg:"充电35度，消费35元"},
+          {time:"20:02:33",msg:"充电55度，消费55元"},
+          {time:"23:38:18",msg:"充电65度，消费65元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "41%",
+        record:[
+          {time:"06:35:17",msg:"充电38度，消费38元"},
+          {time:"10:12:33",msg:"充电58度，消费58元"},
+          {time:"13:48:28",msg:"充电48度，消费48元"},
+          {time:"17:25:42",msg:"充电68度，消费68元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:58:15",msg:"充电31度，消费31元"},
+          {time:"13:35:33",msg:"充电51度，消费51元"},
+          {time:"17:12:28",msg:"充电41度，消费41元"},
+          {time:"20:48:42",msg:"充电61度，消费61元"},
+          {time:"00:25:17",msg:"充电71度，消费71元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:22:42",msg:"充电44度，消费44元"},
+          {time:"10:58:17",msg:"充电64度，消费64元"},
+          {time:"14:35:33",msg:"充电54度，消费54元"},
+          {time:"18:12:28",msg:"充电74度，消费74元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:45:28",msg:"充电27度，消费27元"},
+          {time:"12:22:15",msg:"充电47度，消费47元"},
+          {time:"15:58:42",msg:"充电37度，消费37元"},
+          {time:"19:35:33",msg:"充电57度，消费57元"},
+          {time:"23:12:18",msg:"充电67度，消费67元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:08:17",msg:"充电40度，消费40元"},
+          {time:"10:45:33",msg:"充电60度，消费60元"},
+          {time:"14:22:28",msg:"充电50度，消费50元"},
+          {time:"17:58:42",msg:"充电70度，消费70元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:32:15",msg:"充电33度，消费33元"},
+          {time:"13:08:33",msg:"充电53度，消费53元"},
+          {time:"16:45:28",msg:"充电43度，消费43元"},
+          {time:"20:22:42",msg:"充电63度，消费63元"},
+          {time:"23:58:17",msg:"充电73度，消费73元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"07:55:42",msg:"充电36度，消费36元"},
+          {time:"11:32:17",msg:"充电56度，消费56元"},
+          {time:"15:08:33",msg:"充电46度，消费46元"},
+          {time:"18:45:28",msg:"充电66度，消费66元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:18:28",msg:"充电39度，消费39元"},
+          {time:"12:55:15",msg:"充电59度，消费59元"},
+          {time:"16:32:42",msg:"充电49度，消费49元"},
+          {time:"20:08:33",msg:"充电69度，消费69元"},
+          {time:"23:45:18",msg:"充电79度，消费79元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "56%",
+        record:[
+          {time:"06:42:17",msg:"充电42度，消费42元"},
+          {time:"10:18:33",msg:"充电62度，消费62元"},
+          {time:"13:55:28",msg:"充电52度，消费52元"},
+          {time:"17:32:42",msg:"充电72度，消费72元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"10:05:15",msg:"充电35度，消费35元"},
+          {time:"13:42:33",msg:"充电55度，消费55元"},
+          {time:"17:18:28",msg:"充电45度，消费45元"},
+          {time:"20:55:42",msg:"充电65度，消费65元"},
+          {time:"00:32:17",msg:"充电75度，消费75元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:28:42",msg:"充电28度，消费28元"},
+          {time:"11:05:17",msg:"充电48度，消费48元"},
+          {time:"14:42:33",msg:"充电38度，消费38元"},
+          {time:"18:18:28",msg:"充电58度，消费58元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"08:52:28",msg:"充电31度，消费31元"},
+          {time:"12:28:15",msg:"充电51度，消费51元"},
+          {time:"16:05:42",msg:"充电41度，消费41元"},
+          {time:"19:42:33",msg:"充电61度，消费61元"},
+          {time:"23:18:18",msg:"充电71度，消费71元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10012",
     name: "福州三坊七巷充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "57%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "20%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "68%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "17%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "81%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "85%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"06:55:28",msg:"充电45度，消费45元"},
+          {time:"10:32:18",msg:"充电65度，消费65元"},
+          {time:"14:08:33",msg:"充电55度，消费55元"},
+          {time:"17:45:28",msg:"充电75度，消费75元"},
+          {time:"21:22:42",msg:"充电85度，消费85元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "57%",
+        record:[
+          {time:"08:18:25",msg:"充电28度，消费28元"},
+          {time:"11:55:17",msg:"充电48度，消费48元"},
+          {time:"15:32:33",msg:"充电38度，消费38元"},
+          {time:"19:08:28",msg:"充电58度，消费58元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:45:42",msg:"充电31度，消费31元"},
+          {time:"12:22:17",msg:"充电51度，消费51元"},
+          {time:"15:58:33",msg:"充电41度，消费41元"},
+          {time:"19:35:28",msg:"充电61度，消费61元"},
+          {time:"23:12:15",msg:"充电71度，消费71元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "20%",
+        record:[
+          {time:"07:08:28",msg:"充电34度，消费34元"},
+          {time:"10:45:17",msg:"充电54度，消费54元"},
+          {time:"14:22:33",msg:"充电44度，消费44元"},
+          {time:"17:58:42",msg:"充电64度，消费64元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "68%",
+        record:[
+          {time:"09:32:15",msg:"充电27度，消费27元"},
+          {time:"13:08:33",msg:"充电47度，消费47元"},
+          {time:"16:45:28",msg:"充电37度，消费37元"},
+          {time:"20:22:42",msg:"充电57度，消费57元"},
+          {time:"23:58:17",msg:"充电67度，消费67元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "17%",
+        record:[
+          {time:"07:55:42",msg:"充电40度，消费40元"},
+          {time:"11:32:17",msg:"充电60度，消费60元"},
+          {time:"15:08:33",msg:"充电50度，消费50元"},
+          {time:"18:45:28",msg:"充电70度，消费70元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"09:18:28",msg:"充电23度，消费23元"},
+          {time:"12:55:15",msg:"充电43度，消费43元"},
+          {time:"16:32:42",msg:"充电33度，消费33元"},
+          {time:"20:08:33",msg:"充电53度，消费53元"},
+          {time:"23:45:18",msg:"充电63度，消费63元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "81%",
+        record:[
+          {time:"06:42:17",msg:"充电36度，消费36元"},
+          {time:"10:18:33",msg:"充电56度，消费56元"},
+          {time:"13:55:28",msg:"充电46度，消费46元"},
+          {time:"17:32:42",msg:"充电66度，消费66元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"10:05:15",msg:"充电29度，消费29元"},
+          {time:"13:42:33",msg:"充电49度，消费49元"},
+          {time:"17:18:28",msg:"充电39度，消费39元"},
+          {time:"20:55:42",msg:"充电59度，消费59元"},
+          {time:"00:32:17",msg:"充电69度，消费69元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:28:42",msg:"充电42度，消费42元"},
+          {time:"11:05:17",msg:"充电62度，消费62元"},
+          {time:"14:42:33",msg:"充电52度，消费52元"},
+          {time:"18:18:28",msg:"充电72度，消费72元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:52:28",msg:"充电25度，消费25元"},
+          {time:"12:28:15",msg:"充电45度，消费45元"},
+          {time:"16:05:42",msg:"充电35度，消费35元"},
+          {time:"19:42:33",msg:"充电55度，消费55元"},
+          {time:"23:18:18",msg:"充电65度，消费65元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:15:17",msg:"充电38度，消费38元"},
+          {time:"10:52:33",msg:"充电58度，消费58元"},
+          {time:"14:28:28",msg:"充电48度，消费48元"},
+          {time:"18:05:42",msg:"充电68度，消费68元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:38:15",msg:"充电31度，消费31元"},
+          {time:"13:15:33",msg:"充电51度，消费51元"},
+          {time:"16:52:28",msg:"充电41度，消费41元"},
+          {time:"20:28:42",msg:"充电61度，消费61元"},
+          {time:"00:05:17",msg:"充电71度，消费71元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"08:02:42",msg:"充电34度，消费34元"},
+          {time:"11:38:17",msg:"充电54度，消费54元"},
+          {time:"15:15:33",msg:"充电44度，消费44元"},
+          {time:"18:52:28",msg:"充电64度，消费64元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:25:28",msg:"充电37度，消费37元"},
+          {time:"13:02:15",msg:"充电57度，消费57元"},
+          {time:"16:38:42",msg:"充电47度，消费47元"},
+          {time:"20:15:33",msg:"充电67度，消费67元"},
+          {time:"23:52:18",msg:"充电77度，消费77元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "85%",
+        record:[
+          {time:"06:48:17",msg:"充电40度，消费40元"},
+          {time:"10:25:33",msg:"充电60度，消费60元"},
+          {time:"14:02:28",msg:"充电50度，消费50元"},
+          {time:"17:38:42",msg:"充电70度，消费70元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"10:12:15",msg:"充电33度，消费33元"},
+          {time:"13:48:33",msg:"充电53度，消费53元"},
+          {time:"17:25:28",msg:"充电43度，消费43元"},
+          {time:"21:02:42",msg:"充电63度，消费63元"},
+          {time:"00:38:17",msg:"充电73度，消费73元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:35:42",msg:"充电26度，消费26元"},
+          {time:"11:12:17",msg:"充电46度，消费46元"},
+          {time:"14:48:33",msg:"充电36度，消费36元"},
+          {time:"18:25:28",msg:"充电56度，消费56元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"08:58:28",msg:"充电29度，消费29元"},
+          {time:"12:35:15",msg:"充电49度，消费49元"},
+          {time:"16:12:42",msg:"充电39度，消费39元"},
+          {time:"19:48:33",msg:"充电59度，消费59元"},
+          {time:"23:25:18",msg:"充电69度，消费69元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10013",
     name: "合肥包公园充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "93%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "33%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "83%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "39%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "57%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "55%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"07:02:35",msg:"充电43度，消费43元"},
+          {time:"10:38:18",msg:"充电63度，消费63元"},
+          {time:"14:15:33",msg:"充电53度，消费53元"},
+          {time:"17:52:28",msg:"充电73度，消费73元"},
+          {time:"21:28:42",msg:"充电83度，消费83元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "93%",
+        record:[
+          {time:"08:25:25",msg:"充电26度，消费26元"},
+          {time:"12:02:17",msg:"充电46度，消费46元"},
+          {time:"15:38:33",msg:"充电36度，消费36元"},
+          {time:"19:15:28",msg:"充电56度，消费56元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:52:42",msg:"充电29度，消费29元"},
+          {time:"12:28:17",msg:"充电49度，消费49元"},
+          {time:"16:05:33",msg:"充电39度，消费39元"},
+          {time:"19:42:28",msg:"充电59度，消费59元"},
+          {time:"23:18:15",msg:"充电69度，消费69元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "33%",
+        record:[
+          {time:"07:15:28",msg:"充电32度，消费32元"},
+          {time:"10:52:17",msg:"充电52度，消费52元"},
+          {time:"14:28:33",msg:"充电42度，消费42元"},
+          {time:"18:05:42",msg:"充电62度，消费62元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "83%",
+        record:[
+          {time:"09:38:15",msg:"充电25度，消费25元"},
+          {time:"13:15:33",msg:"充电45度，消费45元"},
+          {time:"16:52:28",msg:"充电35度，消费35元"},
+          {time:"20:28:42",msg:"充电55度，消费55元"},
+          {time:"00:05:17",msg:"充电65度，消费65元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "39%",
+        record:[
+          {time:"08:02:42",msg:"充电38度，消费38元"},
+          {time:"11:38:17",msg:"充电58度，消费58元"},
+          {time:"15:15:33",msg:"充电48度，消费48元"},
+          {time:"18:52:28",msg:"充电68度，消费68元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"09:25:28",msg:"充电21度，消费21元"},
+          {time:"13:02:15",msg:"充电41度，消费41元"},
+          {time:"16:38:42",msg:"充电31度，消费31元"},
+          {time:"20:15:33",msg:"充电51度，消费51元"},
+          {time:"23:52:18",msg:"充电61度，消费61元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "57%",
+        record:[
+          {time:"06:48:17",msg:"充电34度，消费34元"},
+          {time:"10:25:33",msg:"充电54度，消费54元"},
+          {time:"14:02:28",msg:"充电44度，消费44元"},
+          {time:"17:38:42",msg:"充电64度，消费64元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"10:12:15",msg:"充电27度，消费27元"},
+          {time:"13:48:33",msg:"充电47度，消费47元"},
+          {time:"17:25:28",msg:"充电37度，消费37元"},
+          {time:"21:02:42",msg:"充电57度，消费57元"},
+          {time:"00:38:17",msg:"充电67度，消费67元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:35:42",msg:"充电40度，消费40元"},
+          {time:"11:12:17",msg:"充电60度，消费60元"},
+          {time:"14:48:33",msg:"充电50度，消费50元"},
+          {time:"18:25:28",msg:"充电70度，消费70元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:58:28",msg:"充电23度，消费23元"},
+          {time:"12:35:15",msg:"充电43度，消费43元"},
+          {time:"16:12:42",msg:"充电33度，消费33元"},
+          {time:"19:48:33",msg:"充电53度，消费53元"},
+          {time:"23:25:18",msg:"充电63度，消费63元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:22:17",msg:"充电36度，消费36元"},
+          {time:"10:58:33",msg:"充电56度，消费56元"},
+          {time:"14:35:28",msg:"充电46度，消费46元"},
+          {time:"18:12:42",msg:"充电66度，消费66元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:45:15",msg:"充电29度，消费29元"},
+          {time:"13:22:33",msg:"充电49度，消费49元"},
+          {time:"16:58:28",msg:"充电39度，消费39元"},
+          {time:"20:35:42",msg:"充电59度，消费59元"},
+          {time:"00:12:17",msg:"充电69度，消费69元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"08:08:42",msg:"充电32度，消费32元"},
+          {time:"11:45:17",msg:"充电52度，消费52元"},
+          {time:"15:22:33",msg:"充电42度，消费42元"},
+          {time:"18:58:28",msg:"充电62度，消费62元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:32:28",msg:"充电35度，消费35元"},
+          {time:"13:08:15",msg:"充电55度，消费55元"},
+          {time:"16:45:42",msg:"充电45度，消费45元"},
+          {time:"20:22:33",msg:"充电65度，消费65元"},
+          {time:"23:58:18",msg:"充电75度，消费75元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "55%",
+        record:[
+          {time:"06:55:17",msg:"充电38度，消费38元"},
+          {time:"10:32:33",msg:"充电58度，消费58元"},
+          {time:"14:08:28",msg:"充电48度，消费48元"},
+          {time:"17:45:42",msg:"充电68度，消费68元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"10:18:15",msg:"充电31度，消费31元"},
+          {time:"13:55:33",msg:"充电51度，消费51元"},
+          {time:"17:32:28",msg:"充电41度，消费41元"},
+          {time:"21:08:42",msg:"充电61度，消费61元"},
+          {time:"00:45:17",msg:"充电71度，消费71元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:42:42",msg:"充电24度，消费24元"},
+          {time:"11:18:17",msg:"充电44度，消费44元"},
+          {time:"14:55:33",msg:"充电34度，消费34元"},
+          {time:"18:32:28",msg:"充电54度，消费54元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"09:05:28",msg:"充电27度，消费27元"},
+          {time:"12:42:15",msg:"充电47度，消费47元"},
+          {time:"16:18:42",msg:"充电37度，消费37元"},
+          {time:"19:55:33",msg:"充电57度，消费57元"},
+          {time:"23:32:18",msg:"充电67度，消费67元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10014",
     name: "重庆解放碑充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "24%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "28%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "91%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "79%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "49%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "78%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"07:08:35",msg:"充电41度，消费41元"},
+          {time:"10:45:18",msg:"充电61度，消费61元"},
+          {time:"14:22:33",msg:"充电51度，消费51元"},
+          {time:"17:58:28",msg:"充电71度，消费71元"},
+          {time:"21:35:42",msg:"充电81度，消费81元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "24%",
+        record:[
+          {time:"08:32:25",msg:"充电24度，消费24元"},
+          {time:"12:08:17",msg:"充电44度，消费44元"},
+          {time:"15:45:33",msg:"充电34度，消费34元"},
+          {time:"19:22:28",msg:"充电54度，消费54元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"08:58:42",msg:"充电27度，消费27元"},
+          {time:"12:35:17",msg:"充电47度，消费47元"},
+          {time:"16:12:33",msg:"充电37度，消费37元"},
+          {time:"19:48:28",msg:"充电57度，消费57元"},
+          {time:"23:25:15",msg:"充电67度，消费67元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "28%",
+        record:[
+          {time:"07:22:28",msg:"充电30度，消费30元"},
+          {time:"10:58:17",msg:"充电50度，消费50元"},
+          {time:"14:35:33",msg:"充电40度，消费40元"},
+          {time:"18:12:42",msg:"充电60度，消费60元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "91%",
+        record:[
+          {time:"09:45:15",msg:"充电23度，消费23元"},
+          {time:"13:22:33",msg:"充电43度，消费43元"},
+          {time:"16:58:28",msg:"充电33度，消费33元"},
+          {time:"20:35:42",msg:"充电53度，消费53元"},
+          {time:"00:12:17",msg:"充电63度，消费63元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "79%",
+        record:[
+          {time:"08:08:42",msg:"充电36度，消费36元"},
+          {time:"11:45:17",msg:"充电56度，消费56元"},
+          {time:"15:22:33",msg:"充电46度，消费46元"},
+          {time:"18:58:28",msg:"充电66度，消费66元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"09:32:28",msg:"充电19度，消费19元"},
+          {time:"13:08:15",msg:"充电39度，消费39元"},
+          {time:"16:45:42",msg:"充电29度，消费29元"},
+          {time:"20:22:33",msg:"充电49度，消费49元"},
+          {time:"23:58:18",msg:"充电59度，消费59元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "49%",
+        record:[
+          {time:"06:55:17",msg:"充电32度，消费32元"},
+          {time:"10:32:33",msg:"充电52度，消费52元"},
+          {time:"14:08:28",msg:"充电42度，消费42元"},
+          {time:"17:45:42",msg:"充电62度，消费62元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"10:18:15",msg:"充电25度，消费25元"},
+          {time:"13:55:33",msg:"充电45度，消费45元"},
+          {time:"17:32:28",msg:"充电35度，消费35元"},
+          {time:"21:08:42",msg:"充电55度，消费55元"},
+          {time:"00:45:17",msg:"充电65度，消费65元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:42:42",msg:"充电38度，消费38元"},
+          {time:"11:18:17",msg:"充电58度，消费58元"},
+          {time:"14:55:33",msg:"充电48度，消费48元"},
+          {time:"18:32:28",msg:"充电68度，消费68元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:05:28",msg:"充电21度，消费21元"},
+          {time:"12:42:15",msg:"充电41度，消费41元"},
+          {time:"16:18:42",msg:"充电31度，消费31元"},
+          {time:"19:55:33",msg:"充电51度，消费51元"},
+          {time:"23:32:18",msg:"充电61度，消费61元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:28:17",msg:"充电34度，消费34元"},
+          {time:"11:05:33",msg:"充电54度，消费54元"},
+          {time:"14:42:28",msg:"充电44度，消费44元"},
+          {time:"18:18:42",msg:"充电64度，消费64元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:52:15",msg:"充电27度，消费27元"},
+          {time:"13:28:33",msg:"充电47度，消费47元"},
+          {time:"17:05:28",msg:"充电37度，消费37元"},
+          {time:"20:42:42",msg:"充电57度，消费57元"},
+          {time:"00:18:17",msg:"充电67度，消费67元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"08:15:42",msg:"充电30度，消费30元"},
+          {time:"11:52:17",msg:"充电50度，消费50元"},
+          {time:"15:28:33",msg:"充电40度，消费40元"},
+          {time:"19:05:28",msg:"充电60度，消费60元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:38:28",msg:"充电33度，消费33元"},
+          {time:"13:15:15",msg:"充电53度，消费53元"},
+          {time:"16:52:42",msg:"充电43度，消费43元"},
+          {time:"20:28:33",msg:"充电63度，消费63元"},
+          {time:"00:05:18",msg:"充电73度，消费73元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "78%",
+        record:[
+          {time:"07:02:17",msg:"充电36度，消费36元"},
+          {time:"10:38:33",msg:"充电56度，消费56元"},
+          {time:"14:15:28",msg:"充电46度，消费46元"},
+          {time:"17:52:42",msg:"充电66度，消费66元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"10:25:15",msg:"充电29度，消费29元"},
+          {time:"14:02:33",msg:"充电49度，消费49元"},
+          {time:"17:38:28",msg:"充电39度，消费39元"},
+          {time:"21:15:42",msg:"充电59度，消费59元"},
+          {time:"00:52:17",msg:"充电69度，消费69元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:48:42",msg:"充电22度，消费22元"},
+          {time:"11:25:17",msg:"充电42度，消费42元"},
+          {time:"15:02:33",msg:"充电32度，消费32元"},
+          {time:"18:38:28",msg:"充电52度，消费52元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"09:12:28",msg:"充电25度，消费25元"},
+          {time:"12:48:15",msg:"充电45度，消费45元"},
+          {time:"16:25:42",msg:"充电35度，消费35元"},
+          {time:"20:02:33",msg:"充电55度，消费55元"},
+          {time:"23:38:18",msg:"充电65度，消费65元"},
+        ]
+      },
     ],
   },
   {
     id: "VXZ10015",
     name: "桂林漓江充电站",
     list: [
-      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
-      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "29%" },
-      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "26%" },
-      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "55%" },
-      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "58%" },
-      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3 },
-      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "81%" },
-      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4 },
-      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5 },
-      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1 },
-      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "81%" },
-      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
-      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6 },
+      { id: "CD1001", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,//1空闲 2充电中 3连接中 4排队中 5被预约 6故障/离线
+        record:[
+          {time:"07:15:35",msg:"充电39度，消费39元"},
+          {time:"10:52:18",msg:"充电59度，消费59元"},
+          {time:"14:28:33",msg:"充电49度，消费49元"},
+          {time:"18:05:28",msg:"充电69度，消费69元"},
+          {time:"21:42:42",msg:"充电79度，消费79元"},
+        ]
+      },
+      { id: "CD1002", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "29%",
+        record:[
+          {time:"08:38:25",msg:"充电22度，消费22元"},
+          {time:"12:15:17",msg:"充电42度，消费42元"},
+          {time:"15:52:33",msg:"充电32度，消费32元"},
+          {time:"19:28:28",msg:"充电52度，消费52元"},
+        ]
+      },
+      { id: "CD1003", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:05:42",msg:"充电25度，消费25元"},
+          {time:"12:42:17",msg:"充电45度，消费45元"},
+          {time:"16:18:33",msg:"充电35度，消费35元"},
+          {time:"19:55:28",msg:"充电55度，消费55元"},
+          {time:"23:32:15",msg:"充电65度，消费65元"},
+        ]
+      },
+      { id: "CD1004", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "26%",
+        record:[
+          {time:"07:28:28",msg:"充电28度，消费28元"},
+          {time:"11:05:17",msg:"充电48度，消费48元"},
+          {time:"14:42:33",msg:"充电38度，消费38元"},
+          {time:"18:18:42",msg:"充电58度，消费58元"},
+        ]
+      },
+      { id: "CD1005", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "55%",
+        record:[
+          {time:"09:52:15",msg:"充电21度，消费21元"},
+          {time:"13:28:33",msg:"充电41度，消费41元"},
+          {time:"17:05:28",msg:"充电31度，消费31元"},
+          {time:"20:42:42",msg:"充电51度，消费51元"},
+          {time:"00:18:17",msg:"充电61度，消费61元"},
+        ]
+      },
+      { id: "CD1006", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "58%",
+        record:[
+          {time:"08:15:42",msg:"充电34度，消费34元"},
+          {time:"11:52:17",msg:"充电54度，消费54元"},
+          {time:"15:28:33",msg:"充电44度，消费44元"},
+          {time:"19:05:28",msg:"充电64度，消费64元"},
+        ]
+      },
+      { id: "CD1007", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 3,
+        record:[
+          {time:"09:38:28",msg:"充电17度，消费17元"},
+          {time:"13:15:15",msg:"充电37度，消费37元"},
+          {time:"16:52:42",msg:"充电27度，消费27元"},
+          {time:"20:28:33",msg:"充电47度，消费47元"},
+          {time:"00:05:18",msg:"充电57度，消费57元"},
+        ]
+      },
+      { id: "CD1008", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "81%",
+        record:[
+          {time:"07:02:17",msg:"充电30度，消费30元"},
+          {time:"10:38:33",msg:"充电50度，消费50元"},
+          {time:"14:15:28",msg:"充电40度，消费40元"},
+          {time:"17:52:42",msg:"充电60度，消费60元"},
+        ]
+      },
+      { id: "CD1009", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"10:25:15",msg:"充电23度，消费23元"},
+          {time:"14:02:33",msg:"充电43度，消费43元"},
+          {time:"17:38:28",msg:"充电33度，消费33元"},
+          {time:"21:15:42",msg:"充电53度，消费53元"},
+          {time:"00:52:17",msg:"充电63度，消费63元"},
+        ]
+      },
+      { id: "CD1010", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:48:42",msg:"充电36度，消费36元"},
+          {time:"11:25:17",msg:"充电56度，消费56元"},
+          {time:"15:02:33",msg:"充电46度，消费46元"},
+          {time:"18:38:28",msg:"充电66度，消费66元"},
+        ]
+      },
+      { id: "CD1011", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:12:28",msg:"充电19度，消费19元"},
+          {time:"12:48:15",msg:"充电39度，消费39元"},
+          {time:"16:25:42",msg:"充电29度，消费29元"},
+          {time:"20:02:33",msg:"充电49度，消费49元"},
+          {time:"23:38:18",msg:"充电59度，消费59元"},
+        ]
+      },
+      { id: "CD1012", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 4,
+        record:[
+          {time:"07:35:17",msg:"充电32度，消费32元"},
+          {time:"11:12:33",msg:"充电52度，消费52元"},
+          {time:"14:48:28",msg:"充电42度，消费42元"},
+          {time:"18:25:42",msg:"充电62度，消费62元"},
+        ]
+      },
+      { id: "CD1013", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:58:15",msg:"充电25度，消费25元"},
+          {time:"13:35:33",msg:"充电45度，消费45元"},
+          {time:"17:12:28",msg:"充电35度，消费35元"},
+          {time:"20:48:42",msg:"充电55度，消费55元"},
+          {time:"00:25:17",msg:"充电65度，消费65元"},
+        ]
+      },
+      { id: "CD1014", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 5,
+        record:[
+          {time:"08:22:42",msg:"充电28度，消费28元"},
+          {time:"11:58:17",msg:"充电48度，消费48元"},
+          {time:"15:35:33",msg:"充电38度，消费38元"},
+          {time:"19:12:28",msg:"充电58度，消费58元"},
+        ]
+      },
+      { id: "CD1015", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 1,
+        record:[
+          {time:"09:45:28",msg:"充电31度，消费31元"},
+          {time:"13:22:15",msg:"充电51度，消费51元"},
+          {time:"16:58:42",msg:"充电41度，消费41元"},
+          {time:"20:35:33",msg:"充电61度，消费61元"},
+          {time:"00:12:18",msg:"充电71度，消费71元"},
+        ]
+      },
+      { id: "CD1016", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 2, percent: "81%",
+        record:[
+          {time:"07:08:17",msg:"充电34度，消费34元"},
+          {time:"10:45:33",msg:"充电54度，消费54元"},
+          {time:"14:22:28",msg:"充电44度，消费44元"},
+          {time:"17:58:42",msg:"充电64度，消费64元"},
+        ]
+      },
+      { id: "CD1017", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"10:32:15",msg:"充电27度，消费27元"},
+          {time:"14:08:33",msg:"充电47度，消费47元"},
+          {time:"17:45:28",msg:"充电37度，消费37元"},
+          {time:"21:22:42",msg:"充电57度，消费57元"},
+          {time:"00:58:17",msg:"充电67度，消费67元"},
+        ]
+      },
+      { id: "CD1018", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"07:55:42",msg:"充电20度，消费20元"},
+          {time:"11:32:17",msg:"充电40度，消费40元"},
+          {time:"15:08:33",msg:"充电30度，消费30元"},
+          {time:"18:45:28",msg:"充电50度，消费50元"},
+        ]
+      },
+      { id: "CD1019", voltage: "314v", current: "212.2A", power: "21KW", tem: "32°c", status: 6,
+        record:[
+          {time:"09:18:28",msg:"充电23度，消费23元"},
+          {time:"12:55:15",msg:"充电43度，消费43元"},
+          {time:"16:32:42",msg:"充电33度，消费33元"},
+          {time:"20:08:33",msg:"充电53度，消费53元"},
+          {time:"23:45:18",msg:"充电63度，消费63元"},
+        ]
+      },
     ],
   },
   {
