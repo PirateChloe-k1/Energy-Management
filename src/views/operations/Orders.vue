@@ -32,7 +32,7 @@
     </el-card>
     <el-card class="mt">
         <!-- 只有selectionList.length为0才禁用 -->
-        <el-button type="danger" :disabled="!selectionList.length">批量删除</el-button>
+        <el-button type="danger" :disabled="!selectionList.length" @click="handleBatchDelete">批量删除</el-button>
         <el-button type="primary" icon="Download" :disabled="!selectionList.length">导出订单数据到Excel</el-button>
     </el-card>
     <el-card class="mt">
@@ -76,6 +76,8 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import { useHttp } from "@/hooks/useHttp"
+import { batchDeleteApi } from "@/api/operation"
+import { ElMessage } from "element-plus"
 
 interface SearchType {
     orderNo: string,
@@ -140,5 +142,20 @@ const handleReset = () => {
 const selectionList = ref<SelectionListType[]>([])
 const handleSelectionChange = (selection:SelectionListType[]) => {
     selectionList.value = selection
+}
+
+const handleBatchDelete = async () => {
+    try{
+        const res = await batchDeleteApi(selectionList.value.map((item:SelectionListType)=>item.orderNo))
+        if(res.code){
+            ElMessage({
+                message:res.data,
+                type:"success"
+            })
+            loadData()
+        }
+    }catch(error){
+        console.log(error)
+    }
 }
 </script>

@@ -4447,60 +4447,63 @@ let orderList = [
 const originalOrderList = JSON.parse(JSON.stringify(orderList));
 
 Mock.mock('https://www.demo.com/orderList', 'post', (options: any) => {
-  // 重置为原始数据
-  orderList = JSON.parse(JSON.stringify(originalOrderList));
+  // 不要重置为原始数据，保持已删除的状态
+  // orderList = JSON.parse(JSON.stringify(originalOrderList));
 
   const requestBody = JSON.parse(options.body);
   const { orderNo = "", status = 1, no = "", name = "", startDate = "", endDate = "", page = 1, pageSize = 10 } = requestBody;
 
   console.log("后端订单管理接到参数", requestBody);
   console.log("解构后的参数:", { orderNo, status, no, name, startDate, endDate, page, pageSize });
-  console.log("原始订单数据长度:", orderList.length);
+  console.log("当前订单数据长度:", orderList.length);
+
+  // 使用副本进行过滤，不修改原数组
+  let filteredOrderList = [...orderList];
 
   // 根据搜索条件过滤数据
   if (orderNo) {
     console.log("按订单号过滤:", orderNo);
-    orderList = orderList.filter(item => {
+    filteredOrderList = filteredOrderList.filter(item => {
       const match = item.orderNo.includes(orderNo);
       console.log(`订单 ${item.orderNo} 是否匹配 ${orderNo}:`, match);
       return match;
     });
-    console.log("按订单号过滤后数据长度:", orderList.length);
+    console.log("按订单号过滤后数据长度:", filteredOrderList.length);
   }
 
   if (status !== 1) { // status=1表示"全部"
     console.log("按状态过滤:", status);
-    orderList = orderList.filter(item => item.status === status);
-    console.log("按状态过滤后数据长度:", orderList.length);
+    filteredOrderList = filteredOrderList.filter(item => item.status === status);
+    console.log("按状态过滤后数据长度:", filteredOrderList.length);
   }
 
   if (no) {
     console.log("按设备编号过滤:", no);
-    orderList = orderList.filter(item => item.equipmentNo.includes(no));
-    console.log("按设备编号过滤后数据长度:", orderList.length);
+    filteredOrderList = filteredOrderList.filter(item => item.equipmentNo.includes(no));
+    console.log("按设备编号过滤后数据长度:", filteredOrderList.length);
   }
 
   if (name) {
     console.log("按站点名称过滤:", name);
-    orderList = orderList.filter(item => item.name.includes(name));
-    console.log("按站点名称过滤后数据长度:", orderList.length);
+    filteredOrderList = filteredOrderList.filter(item => item.name.includes(name));
+    console.log("按站点名称过滤后数据长度:", filteredOrderList.length);
   }
 
   if (startDate && endDate) {
     console.log("按日期范围过滤:", startDate, "到", endDate);
-    orderList = orderList.filter(item => {
+    filteredOrderList = filteredOrderList.filter(item => {
       const itemDate = new Date(item.date);
       const start = new Date(startDate);
       const end = new Date(endDate);
       return itemDate >= start && itemDate <= end;
     });
-    console.log("按日期过滤后数据长度:", orderList.length);
+    console.log("按日期过滤后数据长度:", filteredOrderList.length);
   }
 
   // 实现分页
-  const total = orderList.length;
+  const total = filteredOrderList.length;
   const start = (page - 1) * pageSize;
-  const paginatedItems = orderList.slice(start, start + pageSize);
+  const paginatedItems = filteredOrderList.slice(start, start + pageSize);
 
   console.log("最终返回数据:", { total, paginatedItems });
 
@@ -4518,11 +4521,30 @@ Mock.mock('https://www.demo.com/orderList', 'post', (options: any) => {
 //订单管理-批量删除接口
 Mock.mock('https://www.demo.com/batchDelete', "post", (options: any) => {
   const { order } = JSON.parse(options.body)
-  console.log("订单管理批量删除接口",JSON.stringify(order) )
-  return {
-    code: 200,
-    message: "成功",
-    data: "操作成功"
+  console.log("订单管理批量删除接口收到参数:", JSON.stringify(order))
+
+  // 真正删除数据：根据订单号数组删除对应的订单
+  if (order && Array.isArray(order)) {
+    // 过滤掉要删除的订单，保留不在删除列表中的订单
+    const beforeLength = orderList.length;
+    orderList = orderList.filter(item => !order.includes(item.orderNo));
+    const afterLength = orderList.length;
+    const deletedCount = beforeLength - afterLength;
+
+    console.log(`批量删除成功，删除前数量: ${beforeLength}, 删除后数量: ${afterLength}, 实际删除: ${deletedCount} 条`);
+
+    return {
+      code: 200,
+      message: "成功",
+      data: `成功删除 ${deletedCount} 条订单`
+    }
+  } else {
+    console.log("批量删除失败：参数格式错误");
+    return {
+      code: 400,
+      message: "参数错误",
+      data: "删除失败"
+    }
   }
 })
 
