@@ -53,7 +53,7 @@
 </template>
 <!-- 只实现了表单填写,没有传出数据 -->
 <script setup lang="ts">
-import MapContainer from "@/components/map/MapContain.vue"
+import MapContainer from "@/components/map/MapContainer.vue"
 import { reactive } from "vue"
 const form = reactive({
     name: "",
