@@ -48,36 +48,30 @@
             <el-table-column label="支付方式" prop="pay"></el-table-column>
             <el-table-column label="订单状态" prop="status">
                 <template #default="scope">
-                    <el-tag type="success" v-if="scope.row.status==2">进行中</el-tag>
-                    <el-tag type="primary" v-else-if="scope.row.status==3">已完成</el-tag>
-                    <el-tag type="warning" v-else-if="scope.row.status==4">异常</el-tag>
+                    <el-tag type="success" v-if="scope.row.status == 2">进行中</el-tag>
+                    <el-tag type="primary" v-else-if="scope.row.status == 3">已完成</el-tag>
+                    <el-tag type="warning" v-else-if="scope.row.status == 4">异常</el-tag>
                 </template>
             </el-table-column>
             <el-table-column label="操作">
                 <template #default="scope">
-                    <el-button type="primary" size="small">详情</el-button>
+                    <el-button type="primary" size="small" @click="handleDetail(scope.row.orderNo)">详情</el-button>
                     <el-button type="danger" size="small">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
-        <el-pagination 
-            class="fr mt mb"
-            v-model:current-page="pageInfo.page" 
-            v-model:page-size="pageInfo.pageSize"
-            :page-sizes="[10, 20, 30, 40]" 
-            layout="sizes, prev, pager, next, jumper,total" 
-            :total="totals" 
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange" 
-            background
-        />
+        <el-pagination class="fr mt mb" v-model:current-page="pageInfo.page" v-model:page-size="pageInfo.pageSize"
+            :page-sizes="[10, 20, 30, 40]" layout="sizes, prev, pager, next, jumper,total" :total="totals"
+            @size-change="handleSizeChange" @current-change="handleCurrentChange" background />
     </el-card>
 </template>
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref, watch } from "vue"
 import { useHttp } from "@/hooks/useHttp"
 import { batchDeleteApi } from "@/api/operation"
 import { ElMessage } from "element-plus"
+import { useRouter, useRoute } from "vue-router"
+import { useTabsStore } from "@/store/tabs"
 
 interface SearchType {
     orderNo: string,
@@ -126,36 +120,55 @@ const {
 } = useHttp<SelectionListType>("/orderList", searchParams);
 
 const handleReset = () => {
-    date.value=""
-    searchParams.value={
-        orderNo:"",
-        status:1,
-        no:"",
-        name:"",
-        startDate:"",
-        endDate:""
+    date.value = ""
+    searchParams.value = {
+        orderNo: "",
+        status: 1,
+        no: "",
+        name: "",
+        startDate: "",
+        endDate: ""
     }
     // 重置分页
     resetPagination()
 }
 
 const selectionList = ref<SelectionListType[]>([])
-const handleSelectionChange = (selection:SelectionListType[]) => {
+const handleSelectionChange = (selection: SelectionListType[]) => {
     selectionList.value = selection
 }
 
 const handleBatchDelete = async () => {
-    try{
-        const res = await batchDeleteApi(selectionList.value.map((item:SelectionListType)=>item.orderNo))
-        if(res.code){
+    try {
+        const res = await batchDeleteApi(selectionList.value.map((item: SelectionListType) => item.orderNo))
+        if (res.code) {
             ElMessage({
-                message:res.data,
-                type:"success"
+                message: res.data,
+                type: "success"
             })
             loadData()
         }
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 }
+
+const router = useRouter()
+const tabStore = useTabsStore()
+const { addTab, setCurrentTab } = tabStore
+const handleDetail = (orderNo: string) => {
+    // 添加页签
+    addTab("订单详情", "/operations/detail", "Share")
+    // 设置订单详情的快捷页签高亮
+    setCurrentTab("订单详情", "/operations/detail")
+    router.push("/operations/detail?orderNo=" + orderNo)
+}
+
+const route = useRoute()
+watch(() => route.name, (to, from) => {
+    // 如果去的是订单管理并且不是从详情页进入的,就加载数据
+    if(to=="orders"&&from!="detail"){
+        loadData()
+    }
+})
 </script>

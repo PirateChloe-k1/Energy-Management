@@ -32,10 +32,11 @@ const routes:RouteRecordRaw[] = [
                 name:"map",
                 component:()=>import("@/views/map/ElectronicMap.vue")
             },
-                        {
+            {
                 path:"/operations/orders",
                 name:"orders",
                 component:()=>import("@/views/operations/Orders.vue"),
+                // 页面需要缓存
                 meta:{
                     keepAlive:true
                 }

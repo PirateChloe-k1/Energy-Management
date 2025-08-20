@@ -13,7 +13,13 @@
             </template>
         </el-tab-pane>
     </el-tabs>
-    <RouterView/>
+    <RouterView v-slot="{Component}">
+            <!-- 如果有KeepAlive就渲染 -->
+        <KeepAlive>
+            <component :is="Component" :key="$route.name" v-if="$route.meta.keepAlive"></component>
+        </KeepAlive>
+            <component :is="Component" :key="$route.name" v-if="!$route.meta.keepAlive"></component>
+    </RouterView>
 </template>
 <script setup lang="ts">
 import { useTabsStore } from "@/store/tabs"
