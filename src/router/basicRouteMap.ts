@@ -36,7 +36,7 @@ const routes:RouteRecordRaw[] = [
                 path:"/operations/orders",
                 name:"orders",
                 component:()=>import("@/views/operations/Orders.vue"),
-                // 页面需要缓存
+                // 页面需要缓存,使用keepAlive:true
                 meta:{
                     keepAlive:true
                 }

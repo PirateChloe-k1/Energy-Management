@@ -33,7 +33,7 @@
     <el-card class="mt">
         <!-- 只有selectionList.length为0才禁用 -->
         <el-button type="danger" :disabled="!selectionList.length" @click="handleBatchDelete">批量删除</el-button>
-        <el-button type="primary" icon="Download" :disabled="!selectionList.length">导出订单数据到Excel</el-button>
+        <el-button type="primary" icon="Download" :disabled="!selectionList.length" @click="exportToExcel">导出订单数据到Excel</el-button>
     </el-card>
     <el-card class="mt">
         <el-table :data="dataList" v-loading="loading" @selection-change="handleSelectionChange">
@@ -72,6 +72,8 @@ import { batchDeleteApi } from "@/api/operation"
 import { ElMessage } from "element-plus"
 import { useRouter, useRoute } from "vue-router"
 import { useTabsStore } from "@/store/tabs"
+import * as XLSX from "xlsx"
+import {saveAs} from "file-saver"
 
 interface SearchType {
     orderNo: string,
@@ -171,4 +173,17 @@ watch(() => route.name, (to, from) => {
         loadData()
     }
 })
+
+const exportToExcel = () => {
+    // 将数据转成工作表格式
+    const ws = XLSX.utils.json_to_sheet(selectionList.value)
+    // 创建新的工作表
+    const wb = XLSX.utils.book_new()
+    // 工作簿加到工作表中
+    XLSX.utils.book_append_sheet(wb,ws,"Sheet1")
+    // 定义输出格式
+    const wbout = XLSX.write(wb,{bookType:"xlsx",type:"array"})
+    const blob=new Blob([wbout],{type:"application/octet-stream"});
+    saveAs(blob,"导入的数据.xlsx")
+}
 </script>
