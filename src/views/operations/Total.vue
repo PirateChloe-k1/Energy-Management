@@ -7,34 +7,45 @@
                         <el-button icon="Search" />
                     </template>
                 </el-input>
-                <el-tree 
-                :data="treeData"
-                style="max-width: 600px;" 
-                :props="defaultProps"
-                class="mt"
-                ></el-tree>
+                <el-tree ref="treeRef" :data="treeData" style="max-width: 600px;" :props="defaultProps" class="mt"
+                    :filter-node-method="filterNode"></el-tree>
             </el-card>
         </el-col>
     </el-row>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { cityListApi } from '@/api/operation';
-interface Tree{
-    label:string,
-    chileren?:Tree[]
+import { ElTree } from 'element-plus';
+interface Tree {
+    label: string,
+    chileren?: Tree[]
 }
 
-const filterText = ref < string > ("")
+// InstanceType用来获取构造函数类型的实例类型
+const treeRef = ref<InstanceType<typeof ElTree>>()
+const filterText = ref<string>("")
+
+watch(filterText, (val) => {
+    // !是非空断言
+    treeRef.value!.filter(val)
+})
+
 const defaultProps = {
     chileren: 'children',
     label: 'label'
 }
 
 const treeData = ref<Tree[]>([])
-onMounted(async()=>{
-    const {data} = await cityListApi()
+onMounted(async () => {
+    const { data } = await cityListApi()
     treeData.value = data
 })
+
+const filterNode: any = (value: string, data: Tree) => {
+    console.log(value, data)
+    if (!value) return true
+    return data.label.includes(value)
+}
 </script>
