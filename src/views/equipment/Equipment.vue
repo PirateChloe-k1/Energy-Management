@@ -33,10 +33,11 @@
                     <el-popover placement="top-start" title="消费记录" :width="200" trigger="hover"
                         content="this is content, this is content, this is content">
                         <template #reference>
-                            <el-button class="m-2" >消费记录</el-button>
+                            <el-button class="m-2">消费记录</el-button>
                         </template>
                         <el-timeline style="max-width: 600px;">
-                            <el-timeline-item v-for="(item,index) in scope.row.transactionRecords" color="#0bbd87" :timestamp="item.transactionDate" :key="index">
+                            <el-timeline-item v-for="(item, index) in scope.row.transactionRecords" color="#0bbd87"
+                                :timestamp="item.transactionDate" :key="index">
                                 <p>消费金额：{{ item.transactionAmount }}</p>
                                 <p>消费类型：{{ item.transactionType }}</p>
                             </el-timeline-item>
@@ -46,17 +47,9 @@
             </el-table-column>
             <el-table-column prop="validUntil" label="有效期至"></el-table-column>
         </el-table>
-        <el-pagination 
-            class="fr mt mb"
-            v-model:current-page="pageInfo.page" 
-            v-model:page-size="pageInfo.pageSize"
-            :page-sizes="[10, 20, 30, 40]" 
-            layout="sizes, prev, pager, next, jumper,total" 
-            :total="totals" 
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange" 
-            background
-        />
+        <el-pagination class="fr mt mb" v-model:current-page="pageInfo.page" v-model:page-size="pageInfo.pageSize"
+            :page-sizes="[10, 20, 30, 40]" layout="sizes, prev, pager, next, jumper,total" :total="totals"
+            @size-change="handleSizeChange" @current-change="handleCurrentChange" background />
     </el-card>
 </template>
 
@@ -68,10 +61,10 @@ const searchParams = ref({
     tel: "",
     name: ""
 })
-const { dataList, loading, loadData, totals, pageInfo, handleCurrentChange, handleSizeChange,resetPagination } = useHttp("/member", searchParams)
+const { dataList, loading, loadData, totals, pageInfo, handleCurrentChange, handleSizeChange, resetPagination } = useHttp("/member", searchParams)
 
-const handleReset=()=>{
-    searchParams.value={
+const handleReset = () => {
+    searchParams.value = {
         no: "",
         tel: "",
         name: ""
