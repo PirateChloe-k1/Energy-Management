@@ -10,7 +10,7 @@
     <el-card class="mt" v-for="item in alarmList" :key="item.equNo">
         <el-alert :title="`${item.address}充电桩充电异常`" type="warning" show-icon/>
         <el-descriptions :border="true" :column="4" direction="vertical" class="mt">
-            <el-descriptions-item v-for="(val,key) in item" :label="key">
+            <el-descriptions-item v-for="(val,key) in item" :label="getLabel(key)">
                 <el-tag v-if="key=='level'" :type="val==1?'danger':(val==2?'warning':'info')">
                     {{ val==1?'严重':(val==2?'紧急':'一般') }}
                 </el-tag>
@@ -31,6 +31,7 @@
 <script setup lang="ts">
 import { ref ,onMounted} from 'vue';
 import { alarmListApi } from '@/api/alarm';
+import { getLabel } from './filedLabelMap';
 
 const radio1=ref<number>(1)
 interface AlarmListType{
