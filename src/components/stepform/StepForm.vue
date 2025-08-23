@@ -35,7 +35,10 @@ const prevStep = () => {
 }
 
 const nextStep = () => {
-    if (currentStep.value == 0) {
+const forms = [props.form1, props.form2, props.form3]
+    const currentForm = forms[currentStep.value]
+    currentForm.validate((valid:boolean)=>{
+        if (valid) {
         props.form1.validate((valid: boolean) => {
             if (valid) {
                 if (currentStep.value < props.steps.length - 1) {
@@ -43,27 +46,8 @@ const nextStep = () => {
                 }
             }
         })
-    } else if (currentStep.value == 1) {
-        props.form2.validate((valid: boolean) => {
-            if (valid) {
-                if (currentStep.value < props.steps.length - 1) {
-                    currentStep.value++
-                } else {
-                    console.log("提交表单")
-                }
-            }
-        })
-    } else if (currentStep.value == 2) {
-        props.form3.validate((valid: boolean) => {
-            if (valid) {
-                if (currentStep.value < props.steps.length - 1) {
-                    currentStep.value++
-                } else {
-                    console.log("提交表单")
-                }
-            }
-        })
     }
+    })
 }
 
 </script>
