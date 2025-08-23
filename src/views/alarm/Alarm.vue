@@ -8,33 +8,71 @@
         </el-radio-group>
     </el-card>
     <el-card class="mt" v-for="item in alarmList" :key="item.equNo">
-        <el-alert :title="`${item.address}充电桩充电异常`" type="warning" show-icon/>
+        <el-alert :title="`${item.address}充电桩充电异常`" type="warning" show-icon />
         <el-descriptions :border="true" :column="4" direction="vertical" class="mt">
-            <el-descriptions-item v-for="(val,key) in item" :label="getLabel(key)">
-                <el-tag v-if="key=='level'" :type="val==1?'danger':(val==2?'warning':'info')">
-                    {{ val==1?'严重':(val==2?'紧急':'一般') }}
+            <el-descriptions-item v-for="(val, key) in item" :label="getLabel(key)">
+                <el-tag v-if="key == 'level'" :type="val == 1 ? 'danger' : (val == 2 ? 'warning' : 'info')">
+                    {{ val == 1 ? '严重' : (val == 2 ? '紧急' : '一般') }}
                 </el-tag>
-                <el-text  type="danger" v-else-if="key=='status'">
-                    {{ val==1?'待指派':(val==2?'处理中':'处理异常') }}
+                <el-text type="danger" v-else-if="key == 'status'">
+                    {{ val == 1 ? '待指派' : (val == 2 ? '处理中' : '处理异常') }}
                 </el-text>
                 <span v-else>
                     {{ val }}
                 </span>
             </el-descriptions-item>
             <el-descriptions-item label="操作">
-                <el-button :type="item.status==2?'warning':'primary'"> {{ item.status==1?"指派":(item.status==2?"催办":"查看") }} </el-button>
+                <el-button @click="drawer = true" :type="item.status == 2 ? 'warning' : 'primary'"> {{
+                    item.status == 1 ? "指派" : (item.status == 2 ? "催办" : "查看") }} </el-button>
             </el-descriptions-item>
         </el-descriptions>
     </el-card>
+
+    <!-- v-model="drawer"控制显示与隐藏 -->
+    <el-drawer v-model="drawer" title="报警任务指派">
+        <StepForm :steps="steps">
+            <template #step-1>
+                <el-form :model="formData.basicInfo" :rules="basicRules">
+                    <el-form-item label="姓名：" prop="name">
+                        <el-input v-model="formData.basicInfo.name"/>
+                    </el-form-item>
+                    <el-form-item label="邮箱：" prop="email">
+                        <el-input v-model="formData.basicInfo.email"/>
+                    </el-form-item>
+                    <el-form-item label="电话：" prop="tel">
+                        <el-input v-model="formData.basicInfo.tel"/>
+                    </el-form-item>
+                    <el-form-item label="工号：" prop="no">
+                        <el-input v-model="formData.basicInfo.no"/>
+                    </el-form-item>
+                    <el-form-item label="是否加急：">
+                        <el-switch v-model="formData.basicInfo.urgent"></el-switch>
+                    </el-form-item>
+                    <el-form-item label="其他选项：">
+                        <el-checkbox-group v-model="formData.basicInfo.other">
+                            <el-checkbox value="1">更换设备</el-checkbox>
+                            <el-checkbox value="2">仅维修</el-checkbox>
+                            <el-checkbox value="3">需拍照片</el-checkbox>
+                            <el-checkbox value="4">需报备</el-checkbox>
+                        </el-checkbox-group>
+                    </el-form-item>
+                    <el-form-item label="其他备注信息：">
+                        <el-input v-model="formData.basicInfo.remarks" type="textarea" />
+                    </el-form-item>
+                </el-form>
+            </template>
+        </StepForm>
+    </el-drawer>
 </template>
 
 <script setup lang="ts">
-import { ref ,onMounted} from 'vue';
+import { ref, onMounted } from 'vue';
 import { alarmListApi } from '@/api/alarm';
 import { getLabel } from './filedLabelMap';
+import StepForm from '@/components/stepform/StepForm.vue';
 
-const radio1=ref<number>(1)
-interface AlarmListType{
+const radio1 = ref<number>(1)
+interface AlarmListType {
     description: string,
     address: string,
     equNo: string,
@@ -48,9 +86,51 @@ interface AlarmListType{
 }
 const alarmList = ref<AlarmListType[]>([])
 
-onMounted(async()=>{
-    const {data} =await alarmListApi()
-    alarmList.value= data
+onMounted(async () => {
+    const { data } = await alarmListApi()
+    alarmList.value = data
 })
 
+const drawer = ref<boolean>(false)
+
+const steps = [
+    { title: "基本信息" },
+    { title: "审批信息" },
+    { title: "负责人信息" },
+]
+
+const formData = ref({
+    basicInfo: {
+        name: "",
+        email: "",
+        tel: "",
+        no: "",
+        urgent: true,
+        other: [],
+        remarks: ""
+    },
+    shenpi: {
+        a: "",
+        b: ""
+    },
+    info: {
+        person: "",
+        tel: ""
+    }
+})
+
+const basicRules = {
+    name: [
+        { required: true, message: "请输入姓名", trigger: "blur" }
+    ],
+    email: [
+        { required: true, message: "请输入邮箱", trigger: "blur" }
+    ],
+    tel: [
+        { required: true, message: "请输入电话", trigger: "blur" }
+    ],
+    no: [
+        { required: true, message: "请输入工号", trigger: "blur" }
+    ]
+}
 </script>
