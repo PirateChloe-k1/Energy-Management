@@ -30,7 +30,7 @@
 
     <!-- v-model="drawer"控制显示与隐藏 -->
     <el-drawer v-model="drawer" title="报警任务指派">
-        <StepForm :steps="steps" :form1="form1" :form2="form2">
+                <StepForm :steps="steps" :form1="form1" :form2="form2" :form3="form3" @handle-submit="handleSubmit">
             <template #step-1>
                 <el-form :model="formData.basicInfo" :rules="basicRules" ref="form1">
                     <el-form-item label="姓名：" prop="name">
@@ -96,6 +96,11 @@
                 </el-form>
             </template>
         </StepForm>
+        <el-result icon="warning" title="设备编号：CD1001" sub-title="该任务已催促2次，请抓紧处理">
+            <template #extra>
+                <el-button type="primary" @click="drawer = false">我已知晓</el-button>
+            </template>
+        </el-result>
     </el-drawer>
 </template>
 
@@ -105,6 +110,7 @@ import { alarmListApi } from '@/api/alarm';
 import { getLabel } from './filedLabelMap';
 import StepForm from '@/components/stepform/StepForm.vue';
 import { type FormInstance } from 'element-plus';
+import { ElMessage } from 'element-plus';
 
 const radio1 = ref<number>(1)
 interface AlarmListType {
@@ -189,4 +195,32 @@ const infoRules = {
 
 const form1 = ref<FormInstance>()
 const form2 = ref<FormInstance>()
+const form3 = ref<FormInstance>()
+
+const handleSubmit = () => {
+    ElMessage({
+        message: "指派成功",
+        type: "success"
+    })
+    drawer.value = false
+    formData.value = {
+        basicInfo: {
+            name: "",
+            email: "",
+            tel: "",
+            no: "",
+            urgent: true,
+            other: [],
+            remarks: ""
+        },
+        shenpi: {
+            a: "",
+            b: ""
+        },
+        info: {
+            person: "",
+            tel: ""
+        }
+    }
+}
 </script>

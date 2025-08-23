@@ -15,7 +15,7 @@
         <div class="step-buttons">
             <el-button v-if="currentStep > 0" @click="prevStep">上一步</el-button>
             <el-button type="primary" @click="nextStep">
-                {{ currentStep === steps.length - 1 ? "上一步" : "下一步" }}
+                {{ currentStep === steps.length - 1 ? "提交" : "下一步" }}
             </el-button>
         </div>
     </div>
@@ -25,7 +25,7 @@
 import { ref } from "vue"
 
 const currentStep = ref<number>(0)
-
+const emit = defineEmits(["handleSubmit"])
 const props = defineProps(["steps", "form1", "form2", "form3"])
 
 const prevStep = () => {
@@ -35,18 +35,16 @@ const prevStep = () => {
 }
 
 const nextStep = () => {
-const forms = [props.form1, props.form2, props.form3]
+    const forms = [props.form1, props.form2, props.form3]
     const currentForm = forms[currentStep.value]
-    currentForm.validate((valid:boolean)=>{
+    currentForm.validate((valid: boolean) => {
         if (valid) {
-        props.form1.validate((valid: boolean) => {
-            if (valid) {
-                if (currentStep.value < props.steps.length - 1) {
-                    currentStep.value++
-                }
+            if (currentStep.value < props.steps.length - 1) {
+                currentStep.value++
+            } else {
+                emit("handleSubmit")
             }
-        })
-    }
+        }
     })
 }
 
