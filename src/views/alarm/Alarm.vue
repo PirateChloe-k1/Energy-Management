@@ -30,20 +30,20 @@
 
     <!-- v-model="drawer"控制显示与隐藏 -->
     <el-drawer v-model="drawer" title="报警任务指派">
-        <StepForm :steps="steps">
+        <StepForm :steps="steps" :form1="form1" :form2="form2">
             <template #step-1>
-                <el-form :model="formData.basicInfo" :rules="basicRules">
+                <el-form :model="formData.basicInfo" :rules="basicRules" ref="form1">
                     <el-form-item label="姓名：" prop="name">
-                        <el-input v-model="formData.basicInfo.name"/>
+                        <el-input v-model="formData.basicInfo.name" />
                     </el-form-item>
                     <el-form-item label="邮箱：" prop="email">
-                        <el-input v-model="formData.basicInfo.email"/>
+                        <el-input v-model="formData.basicInfo.email" />
                     </el-form-item>
                     <el-form-item label="电话：" prop="tel">
-                        <el-input v-model="formData.basicInfo.tel"/>
+                        <el-input v-model="formData.basicInfo.tel" />
                     </el-form-item>
                     <el-form-item label="工号：" prop="no">
-                        <el-input v-model="formData.basicInfo.no"/>
+                        <el-input v-model="formData.basicInfo.no" />
                     </el-form-item>
                     <el-form-item label="是否加急：">
                         <el-switch v-model="formData.basicInfo.urgent"></el-switch>
@@ -61,6 +61,40 @@
                     </el-form-item>
                 </el-form>
             </template>
+
+            <template #step-2>
+                <el-form :model="formData.shenpi" ref="form2" :rules="shenpiRules">
+                    <el-form-item label="审批部门" prop="a">
+                        <el-select placeholder="请选择审批部门" v-model="formData.shenpi.a">
+                            <el-option label="总裁办" value="1"></el-option>
+                            <el-option label="运营部" value="2"></el-option>
+                            <el-option label="维修部" value="3"></el-option>
+                            <el-option label="市场部" value="4"></el-option>
+                            <el-option label="财务部" value="5"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label="抄送部门" prop="b">
+                        <el-select placeholder="请选择抄送部门" v-model="formData.shenpi.b">
+                            <el-option label="总裁办" value="1"></el-option>
+                            <el-option label="运营部" value="2"></el-option>
+                            <el-option label="维修部" value="3"></el-option>
+                            <el-option label="市场部" value="4"></el-option>
+                            <el-option label="财务部" value="5"></el-option>
+                        </el-select>
+                    </el-form-item>
+                </el-form>
+            </template>
+
+            <template #step-3>
+                <el-form :model="formData.info" :rules="infoRules" ref="form3">
+                    <el-form-item label="负责人姓名：" prop="person">
+                        <el-input v-model="formData.info.person" />
+                    </el-form-item>
+                    <el-form-item label="负责人电话：" prop="tel">
+                        <el-input v-model="formData.info.tel" />
+                    </el-form-item>
+                </el-form>
+            </template>
         </StepForm>
     </el-drawer>
 </template>
@@ -70,6 +104,7 @@ import { ref, onMounted } from 'vue';
 import { alarmListApi } from '@/api/alarm';
 import { getLabel } from './filedLabelMap';
 import StepForm from '@/components/stepform/StepForm.vue';
+import { type FormInstance } from 'element-plus';
 
 const radio1 = ref<number>(1)
 interface AlarmListType {
@@ -133,4 +168,25 @@ const basicRules = {
         { required: true, message: "请输入工号", trigger: "blur" }
     ]
 }
+
+const shenpiRules = {
+    a: [
+        { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    b: [
+        { required: true, message: "不能为空", trigger: "blur" }
+    ],
+}
+
+const infoRules = {
+    person: [
+        { required: true, message: "不能为空", trigger: "blur" }
+    ],
+    tel: [
+        { required: true, message: "不能为空", trigger: "blur" }
+    ],
+}
+
+const form1 = ref<FormInstance>()
+const form2 = ref<FormInstance>()
 </script>

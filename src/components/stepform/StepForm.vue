@@ -13,8 +13,8 @@
             <slot name="step-3"></slot>
         </div>
         <div class="step-buttons">
-            <el-button v-if="currentStep > 0">上一步</el-button>
-            <el-button type="primary">
+            <el-button v-if="currentStep > 0" @click="prevStep">上一步</el-button>
+            <el-button type="primary" @click="nextStep">
                 {{ currentStep === steps.length - 1 ? "上一步" : "下一步" }}
             </el-button>
         </div>
@@ -26,5 +26,44 @@ import { ref } from "vue"
 
 const currentStep = ref<number>(0)
 
-defineProps(["steps"])
+const props = defineProps(["steps", "form1", "form2", "form3"])
+
+const prevStep = () => {
+    if (currentStep.value > 0) {
+        currentStep.value--
+    }
+}
+
+const nextStep = () => {
+    if (currentStep.value == 0) {
+        props.form1.validate((valid: boolean) => {
+            if (valid) {
+                if (currentStep.value < props.steps.length - 1) {
+                    currentStep.value++
+                }
+            }
+        })
+    } else if (currentStep.value == 1) {
+        props.form2.validate((valid: boolean) => {
+            if (valid) {
+                if (currentStep.value < props.steps.length - 1) {
+                    currentStep.value++
+                } else {
+                    console.log("提交表单")
+                }
+            }
+        })
+    } else if (currentStep.value == 2) {
+        props.form3.validate((valid: boolean) => {
+            if (valid) {
+                if (currentStep.value < props.steps.length - 1) {
+                    currentStep.value++
+                } else {
+                    console.log("提交表单")
+                }
+            }
+        })
+    }
+}
+
 </script>
