@@ -27,7 +27,7 @@
         <template #footer>
             <div class="dialog-footer">
                 <el-button @click="$emit('close')">取消</el-button>
-                <el-button type="primary">
+                <el-button type="primary" @click="handleConfirm">
                     确认
                 </el-button>
             </div>
@@ -41,9 +41,11 @@ import { useUserStore } from '@/store/auth';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 import { transformMenu } from '@/utils/transformMenu';
+import {setAuthApi} from  '@/api/system'
+import { ElMessage } from 'element-plus';
 
 const props = defineProps<{ visible: boolean, checkedKeys: string[], btnAuth: string[],account:string }>()
-const emit = defineEmits(["close"])
+const emit = defineEmits(["close","reload"])
 const userStore = useUserStore()
 const { menu } = storeToRefs(userStore)
 const treeData = ref(transformMenu(menu.value))
@@ -58,4 +60,15 @@ const handleClose = () => {
     emit("close")
 }
 
+const handleConfirm=async ()=>{
+    const res=await setAuthApi(props.account,treeRef.value.getCheckedKeys(true),initBtnAuth.value)
+    if(res.code==200){
+        ElMessage({
+            message:res.message,
+            type:"success"
+        })
+        emit("close");
+        emit("reload")
+    }
+}
 </script>

@@ -1,5 +1,5 @@
 <template>
-   <el-card>
+    <el-card>
         <el-row :gutter="20">
             <el-col :span="6">
                 <el-input v-model.trim="searchParams.name" placeholder="请输入姓名">
@@ -18,7 +18,7 @@
             </el-col>
             <el-col :span="6">
                 <el-button type="primary" @click="loadData">查询</el-button>
-                <el-button >重置</el-button>
+                <el-button @click="handleReset">重置</el-button>
             </el-col>
         </el-row>
     </el-card>
@@ -45,9 +45,10 @@
                     <el-tag type="info">{{ scope.row.btnAuthority }}</el-tag>
                 </template>
             </el-table-column>
-            <el-table-column  label="操作" width="280">
+            <el-table-column label="操作" width="280">
                 <template #default="scope">
-                    <el-button type="primary" size="small" @click="settingAuth(scope.row.pageAuthority)">
+                    <el-button type="primary" size="small"
+                        @click="settingAuth(scope.row.pageAuthority, scope.row.account)">
                         权限设置
                     </el-button>
                     <el-button type="danger" size="small">
@@ -59,61 +60,63 @@
                 </template>
             </el-table-column>
         </el-table>
-        <el-pagination 
-            class="fr mt mb"
-            v-model:current-page="pageInfo.page" 
-            v-model:page-size="pageInfo.pageSize"
-            :page-sizes="[10, 20, 30, 40]" 
-            layout="sizes, prev, pager, next, jumper,total" 
-            :total="totals" 
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange" 
-            background
-        />
+        <el-pagination class="fr mt mb" v-model:current-page="pageInfo.page" v-model:page-size="pageInfo.pageSize"
+            :page-sizes="[10, 20, 30, 40]" layout="sizes, prev, pager, next, jumper,total" :total="totals"
+            @size-change="handleSizeChange" @current-change="handleCurrentChange" background />
     </el-card>
-    <AuthModal :visible="visible" :checked-keys="checkedKeys" @close="visible=false" :btnAuth="btnAuth"/>
+    <AuthModal :visible="visible" :checked-keys="checkedKeys" @close="visible = false" :btnAuth="btnAuth"
+        :account="accountNo" @reload="handleReset" />
 </template>
 <script setup lang="ts">
-import {ref} from "vue"
+import { ref } from "vue"
 import { useHttp } from "@/hooks/useHttp"
 import AuthModal from "./AuthModal.vue"
 import { getAuthApi } from "@/api//system"
 import type { MenuItem } from "@/types/user"
-interface searchType{
-    name:string,
-    department:string
+interface searchType {
+    name: string,
+    department: string
 }
 
-const searchParams=ref<searchType>({
-    name:"",
-    department:""
- })
+const searchParams = ref<searchType>({
+    name: "",
+    department: ""
+})
 
-const {dataList,loading,loadData,totals,pageInfo,handleCurrentChange,handleSizeChange}= useHttp("/permissionList",searchParams)
+const { dataList, resetPagination,loading, loadData, totals, pageInfo, handleCurrentChange, handleSizeChange } = useHttp("/permissionList", searchParams)
 
 const visible = ref<boolean>(false)
 
-function collectUrls(tree:MenuItem[]){
-    const urls:string[]=[]
+function collectUrls(tree: MenuItem[]) {
+    const urls: string[] = []
     // 循环内层
-    function traverse(node:MenuItem){
-        if(node.url&&!node.children){
+    function traverse(node: MenuItem) {
+        if (node.url && !node.children) {
             urls.push(node.url)
         }
-        if(node.children){
-            node.children.forEach((child:MenuItem)=>traverse(child))
+        if (node.children) {
+            node.children.forEach((child: MenuItem) => traverse(child))
         }
     }
     // 循环外层
-    tree.forEach((node:MenuItem)=>traverse(node))
+    tree.forEach((node: MenuItem) => traverse(node))
     return urls
 }
 const btnAuth = ref<string[]>([])
 const checkedKeys = ref<string[]>([])
-const settingAuth = async (pageAuthority:string) => {
-    const {data:{list,btn}} = await getAuthApi(pageAuthority)
-    checkedKeys.value=collectUrls(list)
-    btnAuth.value=btn
-    visible.value=true
+const accountNo = ref<string>("")
+const settingAuth = async (pageAuthority: string, account: string) => {
+    accountNo.value = account
+    const { data: { list, btn } } = await getAuthApi(pageAuthority)
+    checkedKeys.value = collectUrls(list)
+    btnAuth.value = btn
+    visible.value = true
+}
+const handleReset = () => {
+    searchParams.value = {
+        name: "",
+        department: ""
+    }
+    resetPagination()
 }
 </script>

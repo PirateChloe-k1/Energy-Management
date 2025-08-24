@@ -8,4 +8,8 @@ function getAuthApi(pageAuthority: string) {
     return post(Api.auth, { pageAuthority })
 }
 
-export { getAuthApi }
+function setAuthApi(account: string, btnList: string[], pageList: string[]) {
+    return post(Api.auth, { account, btnList, pageList })
+}
+
+export { getAuthApi, setAuthApi }
