@@ -71,7 +71,7 @@
             background
         />
     </el-card>
-    <AuthModal :visible="visible" :checked-keys="checkedKeys"/>
+    <AuthModal :visible="visible" :checked-keys="checkedKeys" @close="visible=false" :btnAuth="btnAuth"/>
 </template>
 <script setup lang="ts">
 import {ref} from "vue"
@@ -91,14 +91,14 @@ const searchParams=ref<searchType>({
 
 const {dataList,loading,loadData,totals,pageInfo,handleCurrentChange,handleSizeChange}= useHttp("/permissionList",searchParams)
 
-const visible = ref<boolean>(true)
+const visible = ref<boolean>(false)
 
 function collectUrls(tree:MenuItem[]){
     const urls:string[]=[]
     // 循环内层
     function traverse(node:MenuItem){
         if(node.url&&!node.children){
-            urls.push
+            urls.push(node.url)
         }
         if(node.children){
             node.children.forEach((child:MenuItem)=>traverse(child))
@@ -108,11 +108,12 @@ function collectUrls(tree:MenuItem[]){
     tree.forEach((node:MenuItem)=>traverse(node))
     return urls
 }
-
+const btnAuth = ref<string[]>([])
 const checkedKeys = ref<string[]>([])
 const settingAuth = async (pageAuthority:string) => {
     const {data:{list,btn}} = await getAuthApi(pageAuthority)
     checkedKeys.value=collectUrls(list)
+    btnAuth.value=btn
     visible.value=true
 }
 </script>
