@@ -1,4 +1,5 @@
 <template>
+    <el-card>
     <div class="mt">
         <span class="title">文章类型：</span>
         <el-tag disable-transitions :type="currentIndex[0] == -1 ? 'primary' : 'info'" class="mr"
@@ -34,11 +35,24 @@
         {{ item.name }}
         </el-tag>
     </div>
+    </el-card>
+    <el-button @click="exportToHtlm" type="primary" class="mt mb">导出富文本到HTML文件</el-button>
+    <Editor
+        v-model="editorContent"
+        api-key="t534jz4tgoobev2x68ukb4rmiurp665ru00mzgkv0x59z9y7"
+        :init="{
+        language:'zh_CN',
+        plugins: 'lists link image table code help wordcount'
+      }"
+    />
+
 </template>
 
 <script setup lang="ts">
 import { typeListApi } from '@/api/document';
 import { onMounted, ref } from 'vue';
+// 引入富文本编辑器
+import Editor from '@tinymce/tinymce-vue';
 
 interface ListType {
     type: string[],
@@ -85,6 +99,11 @@ const selectedList = ref<SelectType[]>([])
 const handleClose = (num: number) => {
     selectedList.value=selectedList.value.filter((item: SelectType) => item.num != num)
     currentIndex.value[num] = -1
+}
+
+const editorContent = ref("")
+const exportToHtlm = () => {
+    console.log(editorContent.value)
 }
 </script>
 
