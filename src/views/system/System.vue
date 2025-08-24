@@ -18,7 +18,7 @@
             </el-col>
             <el-col :span="6">
                 <el-button type="primary" @click="loadData">查询</el-button>
-                <el-button @click="handleReset">重置</el-button>
+                <el-button >重置</el-button>
             </el-col>
         </el-row>
     </el-card>
@@ -47,7 +47,7 @@
             </el-table-column>
             <el-table-column  label="操作" width="280">
                 <template #default="scope">
-                    <el-button type="primary" size="small" @click="settingAuth(scope.row.pageAuthority,scope.row.account)">
+                    <el-button type="primary" size="small">
                         权限设置
                     </el-button>
                     <el-button type="danger" size="small">
@@ -71,9 +71,12 @@
             background
         />
     </el-card>
+    <AuthModal :visible="visible"/>
 </template>
 <script setup lang="ts">
 import {ref} from "vue"
+import { useHttp } from "@/hooks/useHttp"
+import AuthModal from "./AuthModal.vue"
 
 interface searchType{
     name:string,
@@ -85,6 +88,7 @@ const searchParams=ref<searchType>({
     department:""
  })
 
- const {dataList,loading,resetPagination,loadData,totals,pageInfo,handleCurrentChange,handleSizeChange}= useHttp("/permissionList",searchParams)
+ const {dataList,loading,loadData,totals,pageInfo,handleCurrentChange,handleSizeChange}= useHttp("/permissionList",searchParams)
 
+const visible = ref<boolean>(true)
 </script>
