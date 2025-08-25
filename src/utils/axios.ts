@@ -3,7 +3,7 @@ import { ElNotification } from "element-plus";
 
 const service:AxiosInstance = axios.create({
     // 后端 API 服务的基础地址
-    baseURL:"https://www.demo.com", // 后面会把它替换成环境变量
+    baseURL:import.meta.env.VITE_API_URL, // 后面会把它替换成环境变量
     timeout:5000
 })
 

@@ -89,13 +89,13 @@
                     <el-collapse-item title="账号注销通知！" name="1">
                         <div style="display: flex;justify-content: space-between;" class="mt">
                             <h3>员工离职，账号需要注销，请及时处理！</h3>
-                            <el-button type="primary" size="small" class="mr">去处理</el-button>
+                            <el-button type="primary" size="small" class="mr" @v-permission="'admin'">去处理</el-button>
                         </div>
                     </el-collapse-item>
                     <el-collapse-item title="权限变更通知！" name="2">
                             <div style="display: flex;justify-content: space-between;">
                                <h3>王丽丽因部门调动账号权限需调整！</h3>
-                               <el-button type="primary" size="small" class="mr">去处理</el-button>
+                               <el-button type="primary" size="small" class="mr" @v-permission="'admin'">去处理</el-button>
                             </div>
                             
                         </el-collapse-item>
