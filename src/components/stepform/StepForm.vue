@@ -12,7 +12,7 @@
         <div v-if="currentStep === 2" class="mt">
             <slot name="step-3"></slot>
         </div>
-        <div class="step-buttons">
+        <div class="step-buttons mt">
             <el-button v-if="currentStep > 0" @click="prevStep">上一步</el-button>
             <el-button type="primary" @click="nextStep">
                 {{ currentStep === steps.length - 1 ? "提交" : "下一步" }}
