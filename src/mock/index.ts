@@ -4444,7 +4444,7 @@ let orderList = [
 ];
 
 // 原始数据备份
-const originalOrderList = JSON.parse(JSON.stringify(orderList));
+// const originalOrderList = JSON.parse(JSON.stringify(orderList));
 
 Mock.mock('https://www.demo.com/orderList', 'post', (options: any) => {
   // 不要重置为原始数据，保持已删除的状态

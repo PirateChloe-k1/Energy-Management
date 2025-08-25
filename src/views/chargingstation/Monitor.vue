@@ -95,7 +95,7 @@ import { listApi, deleteApi } from "@/api/chargingstation"
 import StationForm from "./components/StationForm.vue"
 import type { RowType } from "@/types/station"
 import { useStationStore } from "@/store/station"
-import { ElMessage, messageConfig } from "element-plus"
+import { ElMessage } from "element-plus"
 
 const select = ref("name");
 const formParams = reactive({
